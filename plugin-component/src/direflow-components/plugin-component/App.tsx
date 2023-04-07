@@ -1,51 +1,20 @@
-import React, { FC, useContext } from 'react';
-import { EventContext, Styled } from 'direflow-component';
-import styles from './App.css';
+import React, { FC } from "react";
+import Home from "./pages/home";
 
 interface IProps {
   componentTitle: string;
   sampleList: string[];
 }
 
-const App: FC<IProps> = (props) => {
-  const dispatch = useContext(EventContext);
-
-  const handleClick = () => {
-    const event = new Event('my-event');
-    dispatch(event);
-  };
-
-  const renderSampleList = props.sampleList.map((sample: string) => (
-    <div key={sample} className='sample-text'>
-      → {sample}
-    </div>
-  ));
-
-  return (
-    <Styled styles={styles}>
-      <div className='app'>
-        <div className='top'>
-          <div className='header-image' />
-        </div>
-        <div className='bottom'>
-          <div className='header-title'>{props.componentTitle}</div>
-          <div>{renderSampleList}</div>
-          <button className='button' onClick={handleClick}>
-            Click me!
-          </button>
-        </div>
-      </div>
-    </Styled>
-  );
-};
+const App: FC<IProps> = (props) => <Home />;
 
 App.defaultProps = {
-  componentTitle: 'Plugin Component',
+  componentTitle: "Plugin Component",
   sampleList: [
-    'Create with React',
-    'Build as Web Component',
-    'Use it anywhere!',
+    "Create with React",
+    "Build as Web Component",
+    "Use it anywhere!",
   ],
-}
+};
 
 export default App;
