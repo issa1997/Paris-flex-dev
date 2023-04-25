@@ -1,11 +1,12 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
-export class Rate {
+@Entity('rates')
+export class RatesEntity {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  fromLocation: string;
+  fromLocation: number;
 
   @Column()
   toLocation: string;
@@ -21,5 +22,4 @@ export class Rate {
 
   @Column()
   isDelete: boolean;
-
 }
