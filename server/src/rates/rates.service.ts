@@ -1,6 +1,4 @@
 import { Injectable } from '@nestjs/common';
-import { CreateRateDto } from './dto/create-rate.dto';
-import { UpdateRateDto } from './dto/update-rate.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { RatesEntity } from './entities/rate.entity';
 import { Repository } from 'typeorm';
@@ -12,9 +10,13 @@ export class RatesService {
     private ratesRepository: Repository<RatesEntity>,
   ) {}
 
-  async create(createRateDto: CreateRateDto) {
-    const rates = this.ratesRepository.create(createRateDto);
-    await this.ratesRepository.save(createRateDto);
+  async create(createRateDto: any) {
+    const rate: RatesEntity = {
+      isDelete: false,
+      ...createRateDto,
+    };
+    const rates = this.ratesRepository.create(rate);
+    await this.ratesRepository.save(rate);
     return rates;
   }
 
@@ -30,8 +32,12 @@ export class RatesService {
     });
   }
 
-  async update(id: number, updateRateDto: UpdateRateDto) {
-    return await this.ratesRepository.update({ id }, updateRateDto);
+  async update(id: number, updateRateDto: any) {
+    const rate: RatesEntity = {
+      isDelete: false,
+      ...updateRateDto,
+    };
+    return await this.ratesRepository.update({ id }, rate);
   }
 
   async remove(id: number) {
