@@ -28,7 +28,7 @@ const PassengerDetailSummary: React.FC = () => {
           <Badge className="box-styles passengers">
             <Passengers className="icon-styles"/> <span className="text-style">3 Passengers</span>
           </Badge>
-          <Badge className="box-styles passengers">
+          <Badge className="box-styles suitcase">
             <Suitcase className="icon-styles"/> <span className="text-style">3 Suitcases</span>
           </Badge>
           <Grid container spacing={1} className="list-view-styles">
@@ -93,7 +93,7 @@ const PassengerDetailSummary: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Grid xs={3} md={3}>
+        <Grid xs={3}>
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>
             <h4 className="trip-price-style">€ 185.00</h4>
