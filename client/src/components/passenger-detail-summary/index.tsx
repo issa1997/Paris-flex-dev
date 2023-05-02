@@ -1,6 +1,5 @@
 import {
   Badge,
-  Button,
   Card,
   Grid,
   List,
@@ -27,10 +26,10 @@ const PassengerDetailSummary: React.FC = () => {
       <Grid container spacing={3}>
         <Grid xs={8}>
           <Badge className="box-styles passengers">
-            <Passengers /> <span className="text-style">3 Passengers</span>
+            <Passengers className="icon-styles"/> <span className="text-style">3 Passengers</span>
           </Badge>
-          <Badge className="box-styles">
-            <Suitcase /> <span className="text-style">3 Suitcases</span>
+          <Badge className="box-styles suitcases">
+            <Suitcase className="icon-styles"/> <span className="text-style">3 Suitcases</span>
           </Badge>
           <Grid container spacing={2} className="list-view-styles">
             <Grid xs={6}>
