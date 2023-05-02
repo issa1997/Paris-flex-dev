@@ -1,0 +1,49 @@
+.passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  width: 569px;
+  height: 320px;
+  background: #ffffff;
+  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 34px 25px;
+  gap: 17px;
+  position: absolute;
+}
+.icon-styles {
+  height: 18px;
+  width: 18px;
+  margin: 0px 5px;
+}
+.free-seats-styles {
+  border: 1px solid #969696;
+  border-radius: 10px;
+  height: 60px;
+  vertical-align: center;
+  margin: 10px;
+}
+.row-style{
+    margin-top: 30px;
+}
+.heading-style {
+  font-weight: 500;
+  font-size: 18px !important;
+  line-height: 15px;
+  color: #000000;
+}
+.submit-styles.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  position: absolute;
+  color: #ffffff;
+  width: 560px;
+  height: 45px;
+  background: #341ea0;
+  border-radius: 12px;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  background: #ffffff;
+  border: 1px solid #4b31ee;
+  border-radius: 10px !important;
+  width: 260px !important;
+  height: 140px;
+  margin: 5% 0% !important;
+}

@@ -5,11 +5,6 @@ import {
   CardContent,
   Divider,
   Grid,
-  List,
-  ListItem,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
   Step,
   StepLabel,
   Stepper,
@@ -80,7 +75,7 @@ const YourTransfer: React.FC = () => {
         </Button>
         <Grid container className="button-container">
           <Button className="box-styles passengerss">
-            <Passengers /> <p className="text-style">3 Passengers</p>
+            <Passengers className="icon-styles" /> <p className="text-style">3 Passengers</p>
           </Button>
           <Button className="box-styles onewayy">
             <OneWay /> <p className="text-style">One way</p>
