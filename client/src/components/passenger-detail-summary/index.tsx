@@ -24,17 +24,17 @@ const PassengerDetailSummary: React.FC = () => {
   return (
     <Card className="card-styles">
       <Grid container spacing={3}>
-        <Grid xs={8}>
+        <Grid xs={9}>
           <Badge className="box-styles passengers">
             <Passengers className="icon-styles"/> <span className="text-style">3 Passengers</span>
           </Badge>
-          <Badge className="box-styles suitcases">
+          <Badge className="box-styles passengers">
             <Suitcase className="icon-styles"/> <span className="text-style">3 Suitcases</span>
           </Badge>
-          <Grid container spacing={2} className="list-view-styles">
-            <Grid xs={6}>
+          <Grid container spacing={1} className="list-view-styles">
+            <Grid xs={5}>
               <List>
-                <ListItem>
+                <ListItem className='list-spacing'>
                   <ListItemButton>
                     <ListItemIcon>
                       <MeetNGreet />
@@ -42,7 +42,7 @@ const PassengerDetailSummary: React.FC = () => {
                     <ListItemText primary="Meet & Greet" />
                   </ListItemButton>
                 </ListItem>
-                <ListItem>
+                <ListItem className='list-spacing'>
                   <ListItemButton>
                     <ListItemIcon>
                       <FreeWaiting />
@@ -50,7 +50,7 @@ const PassengerDetailSummary: React.FC = () => {
                     <ListItemText primary="Free Waiting" />
                   </ListItemButton>
                 </ListItem>
-                <ListItem>
+                <ListItem className='list-spacing'>
                   <ListItemButton>
                     <ListItemIcon>
                       <HiddenCosts />
@@ -60,9 +60,9 @@ const PassengerDetailSummary: React.FC = () => {
                 </ListItem>
               </List>
             </Grid>
-            <Grid xs={6}>
+            <Grid xs={7}>
               <List>
-                <ListItem>
+                <ListItem className='list-spacing-style'>
                   <ListItemButton>
                     <ListItemIcon>
                       <FreePorter />
@@ -70,7 +70,7 @@ const PassengerDetailSummary: React.FC = () => {
                     <ListItemText primary="Free Porter" />
                   </ListItemButton>
                 </ListItem>
-                <ListItem>
+                <ListItem className='list-spacing-style'>
                   <ListItemButton>
                     <ListItemIcon>
                       <Seats />
@@ -78,7 +78,7 @@ const PassengerDetailSummary: React.FC = () => {
                     <ListItemText primary="Free Baby Seats & Booster Seats" />
                   </ListItemButton>
                 </ListItem>
-                <ListItem>
+                <ListItem className='list-spacing-style'>
                   <ListItemButton sx={{ paddingTop: "0px" }}>
                     <ListItemIcon>
                       <FreeCancel />
@@ -93,7 +93,7 @@ const PassengerDetailSummary: React.FC = () => {
           </Grid>
         </Grid>
 
-        <Grid xs={4} md={4}>
+        <Grid xs={3} md={3}>
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>
             <h4 className="trip-price-style">€ 185.00</h4>

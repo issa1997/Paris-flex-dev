@@ -28,27 +28,32 @@
   vertical-align: middle;
 }
 .box-styles.passengers {
-  width: 115px;
+  width: 120px;
   align-items: center;
-  margin-right: 16%;
+  margin: 0 9%;
+
 }
-.box-styles.suitcases {
-  width: 110px;
-  align-items: center;
-  margin-right: 16%;
-}
+
 .icon-styles{
   width: 22px !important;
 }
 .text-style {
-  margin-left: 20px;
+  margin-left: 5px;
   vertical-align: middle;
   margin-top: 5px;
 }
 .list-view-styles {
-  padding: 0% 1%;
+  padding: 6% 7%;
 }
-
+.list-spacing{
+  padding: 0% !important;
+  margin: 0 !important;
+}
+.list-spacing-style{
+  padding: 0% !important;
+  margin: 0 !important;
+  vertical-align: top;
+}
 .css-10hburv-MuiTypography-root {
   font-weight: 400 !important;
   font-size: 11px !important;
