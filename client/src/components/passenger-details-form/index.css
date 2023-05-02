@@ -3,14 +3,14 @@
   font-family: "Rubik", sans-serif;
 }
 .passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
-  width: 589px;
+  width: 569px;
   height: 320px;
   background: #ffffff;
   box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  padding: 54px 34px;
+  padding: 54px 25px;
   gap: 17px;
   position: absolute;
 }

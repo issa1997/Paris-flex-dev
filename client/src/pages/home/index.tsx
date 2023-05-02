@@ -2,6 +2,7 @@ import React from "react";
 import PassengerDetailSummary from "../../components/passenger-detail-summary";
 import { Grid } from "@mui/material";
 import PassengerDetails from "../../components/passenger-details-form";
+import YourTransfer from "../../components/your-transfer";
 
 const Home: React.FC = () => {
   return (
@@ -19,8 +20,7 @@ const Home: React.FC = () => {
     </Grid>
   </Grid>
   <Grid item xs={3}>
-    {/* Second column */}
-    {/* Insert your content here */}
+    <YourTransfer/>
   </Grid>
 </Grid>
 
