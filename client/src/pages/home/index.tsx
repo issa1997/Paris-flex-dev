@@ -19,7 +19,7 @@ const RenderStepperComponents: React.FC<{
         />
       );
     case 1:
-      return <>Extras Component</>;
+      return <ExtrasComponent/>;
   }
   return <></>;
 };

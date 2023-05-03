@@ -36,7 +36,7 @@ const ExtrasComponent: React.FC = () => {
                     <RequiredSign />
                   </span>
                 </InputLabel>
-                <TextField id="outlined-required" className="input-box" />
+                <input id="outlined-required" className="input-bx" />
               </div>
             </Grid>
             <Grid xs={6} className="row-style">
