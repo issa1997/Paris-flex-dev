@@ -4,10 +4,32 @@ import { Grid } from "@mui/material";
 import PassengerDetails from "../../components/passenger-details-form";
 import YourTransfer from "../../components/your-transfer";
 import ExtrasComponent from "../../components/extras-component";
+import ProgressStepper from "../../components/progress-stepper";
+import { useState } from "react";
+
+const RenderStepperComponents: React.FC<{
+  setActiveStep: React.Dispatch<React.SetStateAction<number>>;
+  activeStep: number;
+}> = (props) => {
+  switch (props.activeStep) {
+    case 0:
+      return (
+        <PassengerDetails
+          onClick={() => props.setActiveStep(props.activeStep + 1)}
+        />
+      );
+    case 1:
+      return <>Extras Component</>;
+  }
+  return <></>;
+};
 
 const Home: React.FC = () => {
+  const [activeStep, setActiveStep] = useState<number>(0);
+
   return (
     <>
+      <ProgressStepper activeStep={activeStep} />
       <Grid container spacing={3} style={{ padding: "8%" }}>
         <Grid item xs={9}>
           <Grid container spacing={3}>
@@ -15,8 +37,10 @@ const Home: React.FC = () => {
               <PassengerDetailSummary />
             </Grid>
             <Grid item xs={12}>
-              <ExtrasComponent />
-              {/* <PassengerDetails/> */}
+              <RenderStepperComponents
+                activeStep={activeStep}
+                setActiveStep={setActiveStep}
+              />
             </Grid>
           </Grid>
         </Grid>

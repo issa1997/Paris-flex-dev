@@ -15,14 +15,16 @@ import { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
 
 import "./index.css";
 
-const PassengerDetails: React.FC = () => {
+const PassengerDetails: React.FC<{
+  onClick: React.MouseEventHandler<HTMLButtonElement>;
+}> = (props) => {
   return (
     <>
       <Card className="passenger-detail-card-style">
         <Typography gutterBottom variant="h5" className="heading-style">
           Passenger Details
           <span>
-            <PassengersDetails className="icon-styles"/>
+            <PassengersDetails className="icon-styles" />
           </span>
         </Typography>
         <Box component="form" autoComplete="off">
@@ -92,12 +94,11 @@ const PassengerDetails: React.FC = () => {
                 <TextField id="outlined-required" />
               </div>
             </Grid>
-            
           </Grid>
-          <Button className="submit-styles">
-              Continue booking {"  "}
-              <ArrowIcon />
-            </Button>
+          <Button className="submit-styles" onClick={props.onClick}>
+            Continue booking {"  "}
+            <ArrowIcon />
+          </Button>
         </Box>
       </Card>
     </>
