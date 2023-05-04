@@ -42,7 +42,7 @@ const YourTransfer: React.FC = () => {
         <Divider variant="middle" />
         <p className="p-text-style">Outward journey</p>
         <div>
-          <Box sx={{ maxWidth: 400 }}>
+          <Box sx={{ maxWidth: 400 }} className='stepper-styles'>
             <Stepper orientation="vertical">
               <Step key={1}>
                 <StepLabel StepIconComponent={StepA}>
