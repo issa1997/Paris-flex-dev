@@ -1,0 +1,24 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+.modal-styles {
+  padding: 3%;
+  background-color: #6659a4;
+  width: 450px;
+  height: 220px;
+  border-radius: 15px;
+  background: linear-gradient(180deg, #51419a 0%, #403182 100%);
+}
+.modal-icon-corner {
+  bottom: 0;
+}
+.modal-heading {
+  color: #ffffff;
+  font-size: 16px !important;
+  font-weight: 900 !important;
+}
+.modal-content {
+  color: #ffffff;
+  font-size: 12px !important;
+}
