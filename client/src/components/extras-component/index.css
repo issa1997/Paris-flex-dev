@@ -1,3 +1,7 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
 .passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
   width: 569px;
   height: 320px;
