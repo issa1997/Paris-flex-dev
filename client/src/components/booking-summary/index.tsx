@@ -10,10 +10,10 @@ import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
 const BookingSummaryComponent: React.FC = () => {
   return (
     <>
-      <Card className="passenger-detail-card-style">
+      <Card className="booking-detail-card-style">
         <Typography gutterBottom variant="h5" className="heading-style">
           <span>
-            <HealthIcon className="icon-styles" />
+            <HealthIcon className="health-icon-styles" />
           </span>
           BOOKING SUMMARY
         </Typography>
