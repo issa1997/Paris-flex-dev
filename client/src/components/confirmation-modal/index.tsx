@@ -16,12 +16,13 @@ const ConfirmationModal: React.FC<ConfirmationModalType> = (props) => {
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Box className="modal-styles">
-        
         <Grid container spacing={2}>
-          <Grid xs={12}><div className="close-icon">
-          {" "}
-          <Cross height={15} width={15}/>
-        </div></Grid>
+          <Grid xs={12}>
+            <div className="close-icon">
+              {" "}
+              <Cross height={15} width={15} />
+            </div>
+          </Grid>
           <Grid item xs={4}></Grid>
           <Grid item xs={8}>
             <Typography
