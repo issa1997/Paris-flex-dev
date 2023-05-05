@@ -9,9 +9,6 @@ interface ConfirmationModalType {
 }
 
 const ConfirmationModal: React.FC<ConfirmationModalType> = (props) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
   return (
     <Modal
       open={props.isModalVisible}
@@ -19,11 +16,12 @@ const ConfirmationModal: React.FC<ConfirmationModalType> = (props) => {
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Box className="modal-styles">
-        <div style={{ float: "right" }}>
-          {" "}
-          <Cross />
-        </div>
+        
         <Grid container spacing={2}>
+          <Grid xs={12}><div className="close-icon">
+          {" "}
+          <Cross height={15} width={15}/>
+        </div></Grid>
           <Grid item xs={4}></Grid>
           <Grid item xs={8}>
             <Typography

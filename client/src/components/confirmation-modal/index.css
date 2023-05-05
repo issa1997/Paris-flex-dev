@@ -3,12 +3,18 @@
   font-family: "Rubik", sans-serif;
 }
 .modal-styles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   padding: 3%;
-  background-color: #6659a4;
-  width: 450px;
-  height: 220px;
-  border-radius: 15px;
-  background: linear-gradient(180deg, #51419a 0%, #403182 100%);
+  width: 469px;
+  height: 280px;
+  border-radius: 15px !important;
+  background: url("../../assets/modal-back.png") no-repeat center center fixed;
+}
+.close-icon {
+  float: right;
+  margin: 10px;
 }
 .modal-icon-corner {
   bottom: 0;
