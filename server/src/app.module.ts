@@ -8,6 +8,7 @@ import { RatesModule } from './rates/rates.module';
 import { dataSourceOptions } from 'db/data-source';
 import { PassengersModule } from './passengers/passengers.module';
 import { BookingsModule } from './bookings/bookings.module';
+import { PassengerExtrasModule } from './passenger-extras/passenger-extras.module';
 /**
  * Usage and Description - This file will act as the main
  * app wrapper combining the controller functions and the
@@ -21,6 +22,7 @@ import { BookingsModule } from './bookings/bookings.module';
     RatesModule,
     PassengersModule,
     BookingsModule,
+    PassengerExtrasModule,
   ],
   controllers: [AppController],
   providers: [AppService],
