@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+.passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
+  width: 569px;
+  height: 320px;
+  background: #ffffff;
+  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  padding: 54px 25px;
+  gap: 17px;
+  position: absolute;
+}
+.icon-styles{
+  margin: 0px 5px ;
+}
+.heading-style {
+  font-weight: 500;
+  font-size: 16px !important;
+  line-height: 15px;
+  color: #000000;
+}
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  border: 1px solid #341ea0;
+  position: absolute;
+  width: 200px;
+  background: #341ea0;
+  border-radius: 12px;
+}
+.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+  background: #ffffff;
+  border: 1px solid #4b31ee;
+  border-radius: 10px !important;
+  width: 260px !important;
+  height: 35px;
+  margin: 5% 0% !important;
+}
+.warning-text{
+  font-size: 10px;
+  margin: 0;
+}
+.form-styles {
+  padding: 10px auto;
+}
+.submit-styles.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+  position: absolute;
+  color: #ffffff;
+  width: 560px;
+  height: 45px;
+  background: #341ea0;
+  border-radius: 12px;
+}
+.css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
+  font-weight: 400 !important;
+  font-size: 12px !important;
+  line-height: 16px !important;
+  color: #000000 !important;
+}
