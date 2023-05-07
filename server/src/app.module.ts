@@ -6,8 +6,6 @@ import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { RatesModule } from './rates/rates.module';
 import { dataSourceOptions } from 'db/data-source';
-import { PassengersModule } from './passengers/passengers.module';
-import { BookingsModule } from './bookings/bookings.module';
 /**
  * Usage and Description - This file will act as the main
  * app wrapper combining the controller functions and the
@@ -19,8 +17,6 @@ import { BookingsModule } from './bookings/bookings.module';
     TypeOrmModule.forRoot(dataSourceOptions),
     CommandModule,
     RatesModule,
-    PassengersModule,
-    BookingsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

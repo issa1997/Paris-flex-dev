@@ -23,6 +23,7 @@ export class RatesController {
   ) {}
 
   @Post()
+  @Post()
   @UsePipes(new ValidationPipe())
   async create(@Body() rate: RateDto) {
     try {
