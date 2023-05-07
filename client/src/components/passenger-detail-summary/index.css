@@ -43,7 +43,8 @@ font-weight: 700 !important;
 .icon-styles{
   width: 22px !important;
 }
-.text-style {
+.text-styles {
+  font-size: 12px !important;
   margin-left: 5px;
   vertical-align: middle;
   margin-top: 5px;
@@ -98,4 +99,39 @@ font-weight: 700 !important;
   text-align: center;
   color: #676767;
   font-style: italic;
+}
+@media (max-width: 768px) {
+  .card-styles.css-bhp9pd-MuiPaper-root-MuiCard-root  {
+    width: 300px !important;
+    height: 480px !important;
+    text-align: center;
+  } 
+  .price-box {
+    display: inline-block;
+    margin: 0 auto;
+    width: 105%;
+    height:135%;
+    padding: 0;
+  }
+  .list-view-styles{
+    background: #F5F6FF;
+    display: inline-block;
+    margin: 0% auto !important;
+    width: 130% !important;
+    height: 89%;
+  }
+  .passengers{
+    display: inline-block;
+    width: 110px !important;
+    font-size: 11px !important; 
+    padding: 7px;
+  }
+  .suitcase{
+    display: inline-block;
+    width: 100px !important;
+    font-size: 11px !important;
+  }
+  .passenger-div-styles{
+    margin-bottom: 5% !important;
+  }
 }

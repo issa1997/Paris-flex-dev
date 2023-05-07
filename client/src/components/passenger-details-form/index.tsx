@@ -29,7 +29,7 @@ const PassengerDetails: React.FC<{
         </Typography>
         <Box component="form" autoComplete="off">
           <Grid container className="form-styles">
-            <Grid xs={6} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid xs={12} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
                 <InputLabel>
                   Name{" "}
@@ -47,7 +47,7 @@ const PassengerDetails: React.FC<{
                   </span>
                 </InputLabel>
                 <TextField id="outlined-required" />
-                <p className="warning-text">
+                <p className="warning-text" style={{marginBottom: '6%'}}>
                   <TriangleIcon /> We will send you booking details here
                 </p>
               </div>
@@ -79,12 +79,12 @@ const PassengerDetails: React.FC<{
                   </span>
                 </InputLabel>
                 <TextField id="outlined-required" />
-                <p className="warning-text">
+                <p className="warning-text" style={{marginBottom: '2%'}}>
                   <TriangleIcon /> Please provide us a working phone number in
                   France. We will contact you using WhatsApp
                 </p>
               </div>
-              <div>
+              <div >
                 <InputLabel>
                   Flight/ train from{"  "}
                   <span>
@@ -97,7 +97,7 @@ const PassengerDetails: React.FC<{
           </Grid>
           <Button className="submit-styles" onClick={props.onClick}>
             Continue booking {"  "}
-            <ArrowIcon />
+            <ArrowIcon className="submit-icon-style"/>
           </Button>
         </Box>
       </Card>

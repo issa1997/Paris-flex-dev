@@ -59,3 +59,28 @@
   line-height: 16px !important;
   color: #000000 !important;
 }
+@media (max-width: 768px) {
+  .passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
+    width: 300px !important;
+    height: 700px !important;
+  } 
+  .submit-styles.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
+    position: absolute;
+    color: #ffffff;
+    width: 260px !important;
+    height: 45px;
+    background: #341ea0;
+    border-radius: 12px;
+    font-size: 12px !important;
+  }
+  .submit-icon-style{
+    margin: 1% 5% !important;
+    width: 15px;
+  }
+  .warning-text{
+    font-size: 10px;
+    margin: 0;
+    width: 155%;
+  }
+  
+}
