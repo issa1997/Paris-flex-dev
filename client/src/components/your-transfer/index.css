@@ -79,3 +79,11 @@
   margin: 10px !important;
 
 }
+
+@media (max-width: 768px) {
+  .main-card-style {
+    width: 86% !important;
+    height: 550px !important;
+    margin: 0 auto;
+  } 
+}

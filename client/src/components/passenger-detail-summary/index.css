@@ -102,7 +102,7 @@ font-weight: 700 !important;
 }
 @media (max-width: 768px) {
   .card-styles.css-bhp9pd-MuiPaper-root-MuiCard-root  {
-    width: 300px !important;
+    width: 30% !important;
     height: 480px !important;
     text-align: center;
   } 

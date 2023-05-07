@@ -59,9 +59,13 @@
   line-height: 16px !important;
   color: #000000 !important;
 }
+.submit-icon-style{
+  margin: 0 7px;
+}
 @media (max-width: 768px) {
   .passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
-    width: 300px !important;
+    top: 1331px;
+    width: 258px !important;
     height: 700px !important;
   } 
   .submit-styles.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
