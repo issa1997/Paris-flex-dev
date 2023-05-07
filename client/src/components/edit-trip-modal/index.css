@@ -1,0 +1,43 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+.edit-modal-styles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+  width: 699px;
+  height: fit-content;
+  border-radius: 15px !important;
+  background-color: white !important;
+}
+.select-styles {
+  width: 130px !important;
+  height: 35px;
+  margin: 1% 2%;
+  border: none !important;
+}
+.location-input{
+  width: 165px !important;
+  height: 35px;
+  margin-top: 2%;
+  border: none !important;
+}
+.save-trip{
+  position: absolute;
+  margin: 5% 4% !important;
+  width: 200px;
+  height:40px;
+  font-size: 12px !important;
+  background-color: #341ea0 !important;
+  border-radius: 5px !important;
+  color: #ffffff !important;
+}
+
+.return-button-styles{
+  width: 110px;
+  background: #5B5B5B !important;
+  color: white !important;
+  margin: 10px !important;
+}
