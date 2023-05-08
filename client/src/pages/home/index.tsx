@@ -6,6 +6,7 @@ import YourTransfer from "../../components/your-transfer";
 import ExtrasComponent from "../../components/extras-component";
 import ProgressStepper from "../../components/progress-stepper";
 import { useState } from "react";
+import { useSearchParams } from "react-router-dom";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -35,6 +36,19 @@ const RenderStepperComponents: React.FC<{
 
 const Home: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
+  const [searchParams] = useSearchParams();
+  const luggagePieces = searchParams.get("luggagePieces");
+  const pickupLocation = searchParams.get("pickupLocation");
+  const dropLocation = searchParams.get("dropLocation");
+  const passengers = searchParams.get("passengers");
+  const pickupDate = searchParams.get("pickupDate");
+  const pickupTime = searchParams.get("pickupTime");
+  console.log(luggagePieces);
+  console.log(pickupLocation);
+  console.log(dropLocation);
+  console.log(passengers);
+  console.log(pickupDate);
+  console.log(pickupTime);
 
   return (
     <>
