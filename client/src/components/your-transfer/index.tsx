@@ -20,8 +20,8 @@ import { ReactComponent as StepB } from "../../assets/icons/step-b.svg";
 import { ReactComponent as Calendar } from "../../assets/icons/calendar.svg";
 import { ReactComponent as Clock } from "../../assets/icons/clock.svg";
 import "./index.css";
-import EditTripModal from "../edit-trip-modal";
-import AddReturnTripModal from "../add-return-trip";
+import EditTripModal from "../edit-trp-modal";
+import AddReturnTripModal from "../return-trip-modal";
 
 const YourTransfer: React.FC = () => {
   const [editModal, setEditModal] = useState(false);
