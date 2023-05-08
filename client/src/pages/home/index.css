@@ -1,5 +1,27 @@
-/* .step-div-styles {
-  background: #f5f6ff;
-  align-items: center;
-  display: flex;
-} */
+.grid-container {
+  display: grid;
+  grid-template-columns: 65% 35%;
+  width: 1000px;
+  padding: 8%;
+}
+.step-back {
+  background: red;
+  width: 120%;
+}
+
+.column1 {
+  grid-row: 1 / span 2;
+}
+@media only screen and (max-width: 768px) {
+  .grid-container {
+    grid-template-columns: 100%;
+  }
+
+  .column1 {
+    grid-row: auto;
+  }
+  .step-back {
+    background: red;
+    width: 120%;
+  }
+}

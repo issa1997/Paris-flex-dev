@@ -14,8 +14,8 @@
   gap: 17px;
   position: absolute;
 }
-.icon-styles{
-  margin: 0px 5px ;
+.icon-styles {
+  margin: 0px 5px;
 }
 .heading-style {
   font-weight: 500;
@@ -38,7 +38,7 @@
   height: 35px;
   margin: 5% 0% !important;
 }
-.warning-text{
+.warning-text {
   font-size: 10px;
   margin: 0;
 }
@@ -59,15 +59,15 @@
   line-height: 16px !important;
   color: #000000 !important;
 }
-.submit-icon-style{
+.submit-icon-style {
   margin: 0 7px;
 }
 @media (max-width: 768px) {
   .passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
     top: 1331px;
-    width: 258px !important;
-    height: 700px !important;
-  } 
+    width: 100% !important;
+    height: auto !important;
+  }
   .submit-styles.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
     position: absolute;
     color: #ffffff;
@@ -77,14 +77,13 @@
     border-radius: 12px;
     font-size: 12px !important;
   }
-  .submit-icon-style{
+  .submit-icon-style {
     margin: 1% 5% !important;
     width: 15px;
   }
-  .warning-text{
+  .warning-text {
     font-size: 10px;
     margin: 0;
     width: 155%;
   }
-  
 }

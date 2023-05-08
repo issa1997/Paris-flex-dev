@@ -4,7 +4,7 @@
 }
 .main-card-style {
   position: absolute;
-  width: 246px;
+  width: 269px !important;
   height: 560px;
   background: #ffffff;
   box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
@@ -74,16 +74,15 @@
 }
 .edit-button {
   width: 110px;
-  background: #5B5B5B !important;
+  background: #5b5b5b !important;
   color: white !important;
   margin: 10px !important;
-
 }
 
 @media (max-width: 768px) {
   .main-card-style {
-    width: 86% !important;
-    height: 550px !important;
+    width: 80% !important;
+    height: auto !important;
     margin: 0 auto;
-  } 
+  }
 }

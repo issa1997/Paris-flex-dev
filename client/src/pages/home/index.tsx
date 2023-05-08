@@ -30,29 +30,24 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div style={{background: '#F5F6FF'}}>
+      <div className="step-back">
         <ProgressStepper activeStep={activeStep} />
       </div>
-
-      <div style={{ width: "1000px", padding: "8% 15%" }}>
-        <Grid container spacing={0}>
-          <Grid item xs={12} md={8} sm={8}>
-            <Grid container spacing={3}>
-              <Grid item xs={12}>
-                <PassengerDetailSummary />
-              </Grid>
-              <Grid item xs={12}>
-                <RenderStepperComponents
-                  activeStep={activeStep}
-                  setActiveStep={setActiveStep}
-                />
-              </Grid>
-            </Grid>
-          </Grid>
-          <Grid item xs={12} md={4} sm={4}>
-            <YourTransfer />
-          </Grid>
-        </Grid>
+      <div className="grid-container">
+        <div className="column1">
+          <div className="row1">
+            <PassengerDetailSummary />
+          </div>
+          <div className="row2">
+            <RenderStepperComponents
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+            />
+          </div>
+        </div>
+        <div className="column2">
+          <YourTransfer />
+        </div>
       </div>
     </>
   );

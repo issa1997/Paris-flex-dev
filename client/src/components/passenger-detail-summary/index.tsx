@@ -23,21 +23,22 @@ import { Box } from "@mui/system";
 const PassengerDetailSummary: React.FC = () => {
   return (
     <Card className="card-styles">
-      <Grid container spacing={3}>
-        <Grid xs={12} md={9} sm={9}>
-          <div className="passenger-div-styles">
-            <Badge className="box-styles passengers">
-              <Passengers className="icon-styles" />{" "}
-              <span className="text-styles">3 Passengers</span>
-            </Badge>
-            <Badge className="box-styles suitcase">
-              <Suitcase className="icon-styles" />{" "}
-              <span className="text-styles">3 Suitcases</span>
-            </Badge>
+      <div className="grid">
+        <div className="col-main">
+          <div className="row-1">
+            <div className="passenger-div-styles">
+              <Badge className="box-styles passengers">
+                <Passengers className="icon-styles" />{" "}
+                <span className="text-styles">3 Passengers</span>
+              </Badge>
+              <Badge className="box-styles suitcase">
+                <Suitcase className="icon-styles" />{" "}
+                <span className="text-styles">3 Suitcases</span>
+              </Badge>
+            </div>
           </div>
-
-          <Grid container spacing={0} className="list-view-styles">
-            <Grid xs={12} md={5} sm={5}>
+          <div className="row-2">
+            <div className="col-sub-1">
               <List>
                 <ListItem className="list-spacing">
                   <ListItemButton>
@@ -64,8 +65,8 @@ const PassengerDetailSummary: React.FC = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-            </Grid>
-            <Grid xs={12} md={7} sm={7}>
+            </div>
+            <div className="col-sub-2">
               <List>
                 <ListItem className="list-spacing-style">
                   <ListItemButton>
@@ -94,18 +95,17 @@ const PassengerDetailSummary: React.FC = () => {
                   </ListItemButton>
                 </ListItem>
               </List>
-            </Grid>
-          </Grid>
-        </Grid>
-
-        <Grid xs={12} md={3} sm={3}>
+            </div>
+          </div>
+        </div>
+        <div className="col-side">
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>
             <h4 className="trip-price-style">€ 185.00</h4>
             <p className="trip-tax-style">All prices include VAT & Fees</p>
           </Box>
-        </Grid>
-      </Grid>
+        </div>
+      </div>
     </Card>
   );
 };
