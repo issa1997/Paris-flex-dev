@@ -3,7 +3,6 @@
   font-family: "Rubik" !important;
 }
 .main-card-style {
-  position: absolute;
   width: 269px !important;
   height: 560px;
   background: #ffffff;
@@ -77,12 +76,4 @@
   background: #5b5b5b !important;
   color: white !important;
   margin: 10px !important;
-}
-
-@media (max-width: 768px) {
-  .main-card-style {
-    width: 80% !important;
-    height: auto !important;
-    margin: 0 auto;
-  }
 }

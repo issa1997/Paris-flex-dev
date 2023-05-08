@@ -7,6 +7,7 @@ import ExtrasComponent from "../../components/extras-component";
 import ProgressStepper from "../../components/progress-stepper";
 import { useState } from "react";
 import "./index.css";
+import { Container } from "@mui/system";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -30,24 +31,21 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <div className="step-back">
+      <div className="home-container">
         <ProgressStepper activeStep={activeStep} />
-      </div>
-      <div className="grid-container">
-        <div className="column1">
-          <div className="row1">
+
+        <Grid container spacing={2}>
+          <Grid item md={8}>
             <PassengerDetailSummary />
-          </div>
-          <div className="row2">
             <RenderStepperComponents
               activeStep={activeStep}
               setActiveStep={setActiveStep}
             />
-          </div>
-        </div>
-        <div className="column2">
-          <YourTransfer />
-        </div>
+          </Grid>
+          <Grid item md={4} order={0}>
+            <YourTransfer />
+          </Grid>
+        </Grid>
       </div>
     </>
   );
