@@ -20,8 +20,6 @@ import { ReactComponent as StepB } from "../../assets/icons/step-b.svg";
 import { ReactComponent as Calendar } from "../../assets/icons/calendar.svg";
 import { ReactComponent as Clock } from "../../assets/icons/clock.svg";
 import "./index.css";
-import EditTripModal from "../edit-trip-modal";
-import AddReturnTripModal from "../add-return-trip";
 
 const YourTransfer: React.FC = () => {
   const [editModal, setEditModal] = useState(false);
@@ -108,8 +106,8 @@ const YourTransfer: React.FC = () => {
           </Button>
         </CardContent>
       </Card>
-      <EditTripModal isModalVisible={editModal} onClose={handleClose} />
-      <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} />
+      {/* <EditTripModal isModalVisible={editModal} onClose={handleClose} /> */}
+      {/* <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} /> */}
     </>
   );
 };
