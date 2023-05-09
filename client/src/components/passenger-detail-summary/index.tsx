@@ -20,7 +20,11 @@ import { ReactComponent as Passengers } from "../../assets/icons/passengers.svg"
 import { ReactComponent as Suitcase } from "../../assets/icons/suitcase.svg";
 import { Box } from "@mui/system";
 
-const PassengerDetailSummary: React.FC = () => {
+const PassengerDetailSummary: React.FC<{
+  passengerCount: string | null;
+  luggagePieces: string | null;
+  bookingPrice: number;
+}> = (props) => {
   return (
     <Card className="card-styles">
       <div className="grid">
@@ -29,11 +33,11 @@ const PassengerDetailSummary: React.FC = () => {
             <div className="passenger-div-styles">
               <Badge className="box-styles passengers">
                 <Passengers className="icon-styles" />{" "}
-                <span className="text-styles">3 Passengers</span>
+                <span className="text-styles">{`${props.passengerCount} Passengers`}</span>
               </Badge>
               <Badge className="box-styles suitcase">
                 <Suitcase className="icon-styles" />{" "}
-                <span className="text-styles">3 Suitcases</span>
+                <span className="text-styles">{`${props.luggagePieces} Suitcases`}</span>
               </Badge>
             </div>
           </div>
@@ -101,7 +105,7 @@ const PassengerDetailSummary: React.FC = () => {
         <div className="col-side">
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>
-            <h4 className="trip-price-style">€ 185.00</h4>
+            <h4 className="trip-price-style">{`€ ${props.bookingPrice}`}</h4>
             <p className="trip-tax-style">All prices include VAT & Fees</p>
           </Box>
         </div>
