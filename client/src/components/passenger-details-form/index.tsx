@@ -88,7 +88,7 @@ const PassengerDetails: React.FC<{
                   </span>
                 </InputLabel>
                 <TextField id="outlined-required" />
-                <p className="warning-text" style={{marginBottom: '6%'}}>
+                <p className="warning-text" style={{ marginBottom: "6%" }}>
                   <TriangleIcon /> We will send you booking details here
                 </p>
               </div>
@@ -119,13 +119,13 @@ const PassengerDetails: React.FC<{
                     <RequiredSign />
                   </span>
                 </InputLabel>
-              <TextField id="outlined-required" />
-                <p className="warning-text" style={{marginBottom: '2%'}}>
-  <TriangleIcon /> Please provide us a working phone number in
+                <TextField id="outlined-required" />
+                <p className="warning-text" style={{ marginBottom: "2%" }}>
+                  <TriangleIcon /> Please provide us a working phone number in
                   France. We will contact you using WhatsApp
                 </p>
               </div>
-              <div >
+              <div>
                 <InputLabel>
                   Flight/ train from{"  "}
                   <span>
@@ -138,7 +138,7 @@ const PassengerDetails: React.FC<{
           </Grid>
           <Button className="submit-styles" type="submit">
             Continue booking {"  "}
-            <ArrowIcon className="submit-icon-style"/>
+            <ArrowIcon className="submit-icon-style" />
           </Button>
         </Box>
       </Card>

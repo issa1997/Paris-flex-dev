@@ -1,12 +1,23 @@
 import React from "react";
 import "./index.css";
-import { Card, Typography, Box, Grid, InputLabel, Button } from "@mui/material";
+import {
+  Card,
+  Typography,
+  Box,
+  Grid,
+  InputLabel,
+  Button,
+  Fab,
+  Stack,
+} from "@mui/material";
 import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
 import { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
 import { ReactComponent as BabySeats } from "../../assets/icons/toddler-1.svg";
-import { ReactComponent as Booster } from "../../assets/icons/seat.svg";
+import { ReactComponent as Booster } from "../../assets/icons/seats-one.svg";
 import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
+import { ReactComponent as Add } from "../../assets/icons/add.svg";
+import { ReactComponent as Minus } from "../../assets/icons/minus.svg";
 import {
   PassengerDetailExtrasType,
   createPassengerExtra,
@@ -25,7 +36,7 @@ const ExtrasComponent: React.FC<{
     event: React.FormEvent<HTMLFormElement>
   ) => {
     // todo - if no extras handle the response
-    
+
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
     const passengerExtra: Omit<PassengerDetailExtrasType, "id" | "isDelete"> = {
@@ -74,7 +85,7 @@ const ExtrasComponent: React.FC<{
                     <RequiredSign />
                   </span>
                 </InputLabel>
-                <input
+                <textarea
                   id="txtExtraDescription"
                   name="txtExtraDescription"
                   className="input-bx"
@@ -82,27 +93,41 @@ const ExtrasComponent: React.FC<{
               </div>
             </Grid>
             <Grid xs={6} className="row-style">
-              <Grid item xs={12}>
-                <Box className="free-seats-styles">
-                  <BabySeats />
-                  <FreeTag className="free-tag-style" />
-                  <span>Baby Seats</span>
-                </Box>
-              </Grid>
-              <Grid item xs={12}>
-                <Box className="free-seats-styles">
-                  <Booster />
-                  <span>
-                    <FreeTag />
-                  </span>{" "}
-                  <span>Booster Seats</span>
-                </Box>
-              </Grid>
+              <Box className="free-seats-styles">
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <BabySeats className="seating-icon-style" />
+                  <FreeTag />
+                  <span className="seats-text">Baby Seats</span>
+                  <Minus />
+                  <span className="seats-number">5</span>
+                  <Add />
+                </Stack>
+              </Box>
+              <Box className="free-seats-styles">
+                <Stack
+                  direction="row"
+                  spacing={1}
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <Booster className="seating-icon-style" />
+                  <FreeTag />
+                  <span className="seats-text">Booster Seats</span>
+                  <Minus />
+                  <span className="seats-number">5</span>
+                  <Add />
+                </Stack>
+              </Box>
             </Grid>
           </Grid>
           <Button className="submit-styles" type="submit">
             Continue booking {"  "}
-            <ArrowIcon />
+            <ArrowIcon className="submit-icon-style" />
           </Button>
         </Box>
       </Card>

@@ -109,8 +109,8 @@ const YourTransfer: React.FC = () => {
           </Button>
         </CardContent>
       </Card>
-      {/* <EditTripModal isModalVisible={editModal} onClose={handleClose} /> */}
-      {/* <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} /> */}
+      <EditTripModal isModalVisible={editModal} onClose={handleClose} />
+      <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} />
     </>
 
   );
