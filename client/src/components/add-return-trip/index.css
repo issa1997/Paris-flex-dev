@@ -1,0 +1,13 @@
+@import url("https://fonts.googleapis.com/css2?family=Rubik:wght@300&display=swap");
+* {
+  font-family: "Rubik", sans-serif;
+}
+.return-modal-styles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 3%;
+    height: fit-content;
+    border-radius: 15px !important;
+    background: white;
+}

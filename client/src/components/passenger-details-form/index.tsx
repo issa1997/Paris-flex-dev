@@ -70,7 +70,7 @@ const PassengerDetails: React.FC<{
         </Typography>
         <Box component="form" autoComplete="off" onSubmit={handleAddPassenger}>
           <Grid container className="form-styles">
-            <Grid xs={6} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid xs={12} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
                 <InputLabel>
                   Name{" "}
@@ -87,8 +87,8 @@ const PassengerDetails: React.FC<{
                     <RequiredSign />
                   </span>
                 </InputLabel>
-                <TextField id="txtEmail" name="txtEmail" />
-                <p className="warning-text">
+                <TextField id="outlined-required" />
+                <p className="warning-text" style={{marginBottom: '6%'}}>
                   <TriangleIcon /> We will send you booking details here
                 </p>
               </div>
@@ -119,13 +119,13 @@ const PassengerDetails: React.FC<{
                     <RequiredSign />
                   </span>
                 </InputLabel>
-                <TextField id="txtContactNumber" name="txtContactNumber" />
-                <p className="warning-text">
-                  <TriangleIcon /> Please provide us a working phone number in
+              <TextField id="outlined-required" />
+                <p className="warning-text" style={{marginBottom: '2%'}}>
+  <TriangleIcon /> Please provide us a working phone number in
                   France. We will contact you using WhatsApp
                 </p>
               </div>
-              <div>
+              <div >
                 <InputLabel>
                   Flight/ train from{"  "}
                   <span>
@@ -138,7 +138,7 @@ const PassengerDetails: React.FC<{
           </Grid>
           <Button className="submit-styles" type="submit">
             Continue booking {"  "}
-            <ArrowIcon />
+            <ArrowIcon className="submit-icon-style"/>
           </Button>
         </Box>
       </Card>

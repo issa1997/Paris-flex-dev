@@ -6,6 +6,8 @@ import YourTransfer from "../../components/your-transfer";
 import ExtrasComponent from "../../components/extras-component";
 import ProgressStepper from "../../components/progress-stepper";
 import { useState } from "react";
+import "./index.css";
+import { Container } from "@mui/system";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -22,6 +24,7 @@ const RenderStepperComponents: React.FC<{
         />
       );
     case 1:
+
       return (
         <ExtrasComponent
           setActiveStep={props.setActiveStep}
@@ -38,25 +41,22 @@ const Home: React.FC = () => {
 
   return (
     <>
-      <ProgressStepper activeStep={activeStep} />
-      <Grid container spacing={3} style={{ padding: "8%" }}>
-        <Grid item xs={9}>
-          <Grid container spacing={3}>
-            <Grid item xs={12}>
-              <PassengerDetailSummary />
-            </Grid>
-            <Grid item xs={12}>
-              <RenderStepperComponents
-                activeStep={activeStep}
-                setActiveStep={setActiveStep}
-              />
-            </Grid>
+      <div className="home-container">
+        <ProgressStepper activeStep={activeStep} />
+
+        <Grid container spacing={2}>
+          <Grid item md={8}>
+            <PassengerDetailSummary />
+            <RenderStepperComponents
+              activeStep={activeStep}
+              setActiveStep={setActiveStep}
+            />
+          </Grid>
+          <Grid item md={4} order={0}>
+            <YourTransfer />
           </Grid>
         </Grid>
-        <Grid item xs={3}>
-          <YourTransfer />
-        </Grid>
-      </Grid>
+      </div>
     </>
   );
 };

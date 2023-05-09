@@ -4,11 +4,11 @@ import StepLabel from "@mui/material/StepLabel";
 import { ReactComponent as Details } from "../../assets/icons/details.svg";
 import { ReactComponent as Extras } from "../../assets/icons/extras-step.svg";
 import { ReactComponent as Confirm } from "../../assets/icons/confirm.svg";
-
+import './index.css'
 const ProgressStepper: React.FC<{ activeStep: number }> = (props) => {
   
   return (
-    <>
+    <div className="stepper-class-style">
       <Stepper activeStep={props.activeStep}>
         <Step>
           <StepLabel StepIconComponent={Details}>Details</StepLabel>
@@ -20,7 +20,7 @@ const ProgressStepper: React.FC<{ activeStep: number }> = (props) => {
           <StepLabel StepIconComponent={Confirm}>Confirm</StepLabel>
         </Step>
       </Stepper>
-    </>
+    </div>
   );
 };
 
