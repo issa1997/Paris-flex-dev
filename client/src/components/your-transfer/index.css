@@ -5,7 +5,7 @@
 .main-card-style {
   position: absolute;
   width: 246px;
-  height: 460px;
+  height: 560px;
   background: #ffffff;
   box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
   border-radius: 20px;
@@ -78,3 +78,4 @@
   color: white !important;
   margin: 10px !important;
 }
+

@@ -15,8 +15,8 @@ export class PassengersService {
       isDelete: false,
       ...createPassengerDto,
     };
-    const passengers = this.passengerRepositoy.create(Passenger);
-    await this.passengerRepositoy.save(Passenger);
+    this.passengerRepositoy.create(Passenger);
+    const passengers = await this.passengerRepositoy.save(Passenger);
     return passengers;
   }
 

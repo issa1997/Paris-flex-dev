@@ -13,15 +13,25 @@ const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
 }> = (props) => {
+  const [passengerId, setPassengerId] = useState<number>(0);
   switch (props.activeStep) {
     case 0:
       return (
         <PassengerDetails
-          onClick={() => props.setActiveStep(props.activeStep + 1)}
+          setActiveStep={props.setActiveStep}
+          activeStep={props.activeStep}
+          setPassengerId={setPassengerId}
         />
       );
     case 1:
-      return <ExtrasComponent />;
+
+      return (
+        <ExtrasComponent
+          setActiveStep={props.setActiveStep}
+          activeStep={props.activeStep}
+          passengerId={passengerId}
+        />
+      );
   }
   return <></>;
 };
