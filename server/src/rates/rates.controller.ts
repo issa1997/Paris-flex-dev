@@ -11,7 +11,11 @@ import {
   UsePipes,
 } from '@nestjs/common';
 import { RatesService } from './rates.service';
-import { RateDto, RatesParamsDto } from './dto/rate.dto';
+import {
+  RateDto,
+  RatesFromLocationParamsDto,
+  RatesParamsDto,
+} from './dto/rate.dto';
 import { errorRes, successRes } from 'src/utls/response.formatter';
 import _ = require('lodash');
 
@@ -79,5 +83,19 @@ export class RatesController {
   @Delete(':id')
   async remove(@Param() params: RatesParamsDto) {
     return this.ratesService.remove(parseInt(params.id));
+  }
+
+  @Get('from-location/:toLocation/:fromLocaiton/:passengerCount')
+  async getRatesFromLocation(@Param() params: RatesFromLocationParamsDto) {
+    try {
+      const rates = await this.ratesService.getRateFromLocation(params);
+      if (_.isEmpty(rates)) {
+        return errorRes('Error fetching rate from location');
+      }
+      return successRes('Rate from location fetched successfully', rates);
+    } catch (error) {
+      this.logger.error((error as Error).message);
+      return errorRes((error as Error).message);
+    }
   }
 }

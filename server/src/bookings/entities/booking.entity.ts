@@ -42,5 +42,8 @@ export class BookingsEntity {
   bookingRefId: string;
 
   @Column()
+  price: number;
+
+  @Column()
   isDelete: boolean;
 }

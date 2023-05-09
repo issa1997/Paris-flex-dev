@@ -6,7 +6,7 @@ export class RatesEntity {
   id: number;
 
   @Column()
-  fromLocation: number;
+  fromLocation: string;
 
   @Column()
   toLocation: string;

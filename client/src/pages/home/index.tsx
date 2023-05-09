@@ -7,7 +7,11 @@ import ExtrasComponent from "../../components/extras-component";
 import ProgressStepper from "../../components/progress-stepper";
 import { useState } from "react";
 import "./index.css";
-import { Container } from "@mui/system";
+import { getRateFromLocation } from "../../services/rates";
+import { AxiosResponse } from "axios";
+import "react-toastify/dist/ReactToastify.min.css";
+import { toast, ToastContainer } from "react-toastify";
+import { ResponseType } from "../../utls/api-adapter";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -24,7 +28,6 @@ const RenderStepperComponents: React.FC<{
         />
       );
     case 1:
-
       return (
         <ExtrasComponent
           setActiveStep={props.setActiveStep}
@@ -38,9 +41,21 @@ const RenderStepperComponents: React.FC<{
 
 const Home: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
-
+  const getRatesForLocation = async () => {
+    getRateFromLocation()
+      .then((response: AxiosResponse) => {
+        const restrcutredResponse: ResponseType = response.data;
+        if (!_.isEmpty(restrcutredResponse.data)) {
+        }
+      })
+      .catch((error: any) => {
+        const response: ResponseType = error.response.data;
+        toast.error(response.message, { position: "bottom-right" });
+      });
+  };
   return (
     <>
+      <ToastContainer />
       <div className="home-container">
         <ProgressStepper activeStep={activeStep} />
 

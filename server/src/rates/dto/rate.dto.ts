@@ -30,3 +30,17 @@ export class RatesParamsDto {
   @IsNotEmpty()
   id: string;
 }
+
+export class RatesFromLocationParamsDto {
+  @IsString()
+  @IsNotEmpty()
+  toLocation: string;
+
+  @IsString()
+  @IsNotEmpty()
+  fromLocation: string;
+
+  @IsNumber()
+  @IsNotEmpty()
+  passengerCount: number;
+}
