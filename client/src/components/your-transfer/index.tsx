@@ -58,7 +58,7 @@ const YourTransfer: React.FC<{
           <p className="p-text-style">Outward journey</p>
           <div>
             <Box className="stepper-styles">
-              <Stepper orientation="vertical">
+              <Stepper orientation="vertical" className="step-text-styles">
                 <Step key={1}>
                   <StepLabel StepIconComponent={StepA}>
                     {props.pickupLocation}

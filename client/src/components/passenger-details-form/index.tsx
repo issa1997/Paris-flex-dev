@@ -26,7 +26,7 @@ const PassengerDetails: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
   setPassengerId: React.Dispatch<React.SetStateAction<number>>;
-}> = (props) => {
+  }> = (props) => {
   const handleAddPassenger = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -135,11 +135,11 @@ const PassengerDetails: React.FC<{
                 <TextField id="txtFlightFrom" name="txtFlightFrom" />
               </div>
             </Grid>
+            <Button className="submit-styles" type="submit">
+              Continue booking {"  "}
+              <ArrowIcon className="submit-icon-style" />
+            </Button>
           </Grid>
-          <Button className="submit-styles" type="submit">
-            Continue booking {"  "}
-            <ArrowIcon className="submit-icon-style" />
-          </Button>
         </Box>
       </Card>
     </>
