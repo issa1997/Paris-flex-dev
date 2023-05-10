@@ -46,4 +46,16 @@ export class BookingsEntity {
 
   @Column()
   isDelete: boolean;
+
+  @Column()
+  returnLocation: string;
+
+  @Column()
+  returnDropLocation: string;
+
+  @Column()
+  returnTime: string;
+
+  @Column()
+  returnDate: string;
 }

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import "./index.css";
 import {
   Card,
@@ -9,6 +9,7 @@ import {
   Button,
   Fab,
   Stack,
+  IconButton,
 } from "@mui/material";
 import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
@@ -32,6 +33,9 @@ const ExtrasComponent: React.FC<{
   activeStep: number;
   passengerId: number;
 }> = (props) => {
+  const [boosterSeats, setBoosterSeats] = useState<number>(0);
+  const [babySeats, setBabySeaters] = useState<number>(0);
+
   const handleAddPassengerExtra = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
@@ -41,8 +45,8 @@ const ExtrasComponent: React.FC<{
     const formData = new FormData(event.currentTarget);
     const passengerExtra: Omit<PassengerDetailExtrasType, "id" | "isDelete"> = {
       extrasDescription: String(formData.get("txtExtraDescription")),
-      boosterSeats: 0,
-      childSeats: 0,
+      boosterSeats: Number(formData.get("txtBoosterSeats")),
+      childSeats: Number(formData.get("txtBabySeats")),
       passengerId: props.passengerId,
     };
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
@@ -52,8 +56,7 @@ const ExtrasComponent: React.FC<{
           toast.success(restrcutredResponse.message, {
             position: "bottom-right",
           });
-          // props.setActiveStep(props.activeStep + 1);
-          // props.setPassengerId(restrcutredResponse.data.id);
+          props.setActiveStep(props.activeStep + 1);
         })
         .catch((error: any) => {
           const response: any = error.response.data;
@@ -103,9 +106,24 @@ const ExtrasComponent: React.FC<{
                   <BabySeats className="seating-icon-style" />
                   <FreeTag />
                   <span className="seats-text">Baby Seats</span>
-                  <Minus />
-                  <span className="seats-number">5</span>
-                  <Add />
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={() => setBabySeaters(babySeats - 1)}
+                  >
+                    <Minus />
+                  </IconButton>
+                  <input name="txtBabySeats" value={babySeats} type="hidden" />
+                  <span className="seats-number">{babySeats}</span>
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={() => setBabySeaters(babySeats + 1)}
+                  >
+                    <Add />
+                  </IconButton>
                 </Stack>
               </Box>
               <Box className="free-seats-styles">
@@ -118,9 +136,28 @@ const ExtrasComponent: React.FC<{
                   <Booster className="seating-icon-style" />
                   <FreeTag />
                   <span className="seats-text">Booster Seats</span>
-                  <Minus />
-                  <span className="seats-number">5</span>
-                  <Add />
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={() => setBoosterSeats(boosterSeats - 1)}
+                  >
+                    <Minus />
+                  </IconButton>
+                  <input
+                    name="txtBoosterSeats"
+                    value={boosterSeats}
+                    type="hidden"
+                  />
+                  <span className="seats-number">{boosterSeats}</span>
+                  <IconButton
+                    color="primary"
+                    aria-label="upload picture"
+                    component="label"
+                    onClick={() => setBoosterSeats(boosterSeats + 1)}
+                  >
+                    <Add />
+                  </IconButton>
                 </Stack>
               </Box>
             </Grid>

@@ -23,10 +23,14 @@ import "./index.css";
 import EditTripModal from "../edit-trp-modal";
 import AddReturnTripModal from "../return-trip-modal";
 
-const YourTransfer: React.FC = () => {
+const YourTransfer: React.FC<{
+  pickupLocation: string | null;
+  dropoffLocation: string | null;
+  date: string | null;
+  time: string | null;
+}> = (props) => {
   const [editModal, setEditModal] = useState(false);
   const [addReturn, setAddReturn] = useState(false);
-
 
   const handleClose = () => {
     setEditModal(false);
@@ -57,30 +61,25 @@ const YourTransfer: React.FC = () => {
               <Stepper orientation="vertical">
                 <Step key={1}>
                   <StepLabel StepIconComponent={StepA}>
-                    Paris Charles de Gaulle Airport (CDG),
-                    <br /> Paris Charles de Gaulle, France
+                    {props.pickupLocation}
                   </StepLabel>
                 </Step>
                 <Step key={1}>
                   <StepLabel StepIconComponent={StepB}>
-                    Disneyland Paris,
-                    <br />
-                    Boulevard de Parc, Coupvray, France
+                    {props.dropoffLocation}
                   </StepLabel>
                 </Step>
               </Stepper>
               <Stepper orientation="vertical">
                 <Step key={1}>
                   <StepLabel StepIconComponent={Calendar}>
-                    17 March 2023
+                    {props.date}
                   </StepLabel>
                 </Step>
               </Stepper>
               <Stepper orientation="vertical">
                 <Step key={1}>
-                  <StepLabel StepIconComponent={Clock}>
-                    12:00 (12.00 pm)
-                  </StepLabel>
+                  <StepLabel StepIconComponent={Clock}>{props.time}</StepLabel>
                 </Step>
               </Stepper>
             </Box>
@@ -112,7 +111,6 @@ const YourTransfer: React.FC = () => {
       <EditTripModal isModalVisible={editModal} onClose={handleClose} />
       <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} />
     </>
-
   );
 };
 export default YourTransfer;

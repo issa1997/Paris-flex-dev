@@ -17,6 +17,7 @@ import { toast, ToastContainer } from "react-toastify";
 import { ResponseType } from "../../utls/api-adapter";
 import { useSearchParams } from "react-router-dom";
 import _ from "lodash";
+import BookingSummaryComponent from "../../components/booking-summary";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -40,6 +41,8 @@ const RenderStepperComponents: React.FC<{
           passengerId={passengerId}
         />
       );
+    case 2:
+      return <BookingSummaryComponent />;
   }
   return <></>;
 };
@@ -104,7 +107,12 @@ const Home: React.FC = () => {
             />
           </Grid>
           <Grid item md={4} order={0}>
-            <YourTransfer />
+            <YourTransfer
+              date={pickupDate}
+              dropoffLocation={dropLocation}
+              pickupLocation={pickupLocation}
+              time={pickupTime}
+            />
           </Grid>
         </Grid>
       </div>
