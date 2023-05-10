@@ -92,7 +92,7 @@ const Home: React.FC = () => {
         <ProgressStepper activeStep={activeStep} />
 
         <Grid container spacing={2}>
-          <Grid item md={8}>
+          <Grid item md={8} xs={12}>
             <PassengerDetailSummary
               bookingPrice={bookingPrice}
               luggagePieces={luggagePieces}
@@ -103,7 +103,7 @@ const Home: React.FC = () => {
               setActiveStep={setActiveStep}
             />
           </Grid>
-          <Grid item md={4} order={0}>
+          <Grid item md={4} xs={12} order={0}>
             <YourTransfer />
           </Grid>
         </Grid>

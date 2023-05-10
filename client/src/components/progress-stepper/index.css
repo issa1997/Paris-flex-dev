@@ -1,11 +1,5 @@
 .stepper-class-style {
-  width: 500px !important;
-  margin: 0 auto;
-}
-
-@media (max-width: 768px) {
-  .stepper-class-style {
-    width: 380px !important;
-    margin: 0 auto;
-  }
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
 }

@@ -64,7 +64,7 @@ const ExtrasComponent: React.FC<{
   return (
     <>
       <ToastContainer />
-      <Card className="passenger-detail-card-style">
+      <Card className="passenger-detail-card-style-extras">
         <Typography gutterBottom variant="h5" className="heading-style">
           Extras
           <span>
