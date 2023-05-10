@@ -116,7 +116,7 @@ const Home: React.FC = () => {
               setActiveStep={setActiveStep}
             />
           </Grid>
-          <Grid item md={4} order={0}>
+          <Grid item md={4}>
             <YourTransfer
               date={pickupDate}
               dropoffLocation={dropLocation}

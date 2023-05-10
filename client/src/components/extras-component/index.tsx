@@ -49,9 +49,6 @@ const ExtrasComponent: React.FC<{
       childSeats: Number(formData.get("txtBabySeats")),
       passengerId: props.passengerId,
     };
-    console.log(passengerExtra)
-    props.setActiveStep(props.activeStep + 1);
-    // props.passengerExtra(passengerExtra);
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
       createPassengerExtra(passengerExtra)
         .then((response: AxiosResponse) => {

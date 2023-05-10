@@ -9,6 +9,8 @@ import { dataSourceOptions } from 'db/data-source';
 import { PassengersModule } from './passengers/passengers.module';
 import { BookingsModule } from './bookings/bookings.module';
 import { PassengerExtrasModule } from './passenger-extras/passenger-extras.module';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 /**
  * Usage and Description - This file will act as the main
  * app wrapper combining the controller functions and the
@@ -23,6 +25,9 @@ import { PassengerExtrasModule } from './passenger-extras/passenger-extras.modul
     PassengersModule,
     BookingsModule,
     PassengerExtrasModule,
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../..', 'client', 'build'),
+    }),
   ],
   controllers: [AppController],
   providers: [AppService],
