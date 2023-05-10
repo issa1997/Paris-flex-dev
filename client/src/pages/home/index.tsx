@@ -36,6 +36,7 @@ const RenderStepperComponents: React.FC<{
     case 1:
       return (
         <ExtrasComponent
+          
           setActiveStep={props.setActiveStep}
           activeStep={props.activeStep}
           passengerId={passengerId}
@@ -50,7 +51,7 @@ const RenderStepperComponents: React.FC<{
 const Home: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [bookingPrice, setBookingPrice] = useState<number>(0);
-
+ 
   const [searchParams] = useSearchParams();
   const luggagePieces = searchParams.get("luggagePieces");
   const pickupLocation = searchParams.get("pickupLocation");
@@ -91,9 +92,18 @@ const Home: React.FC = () => {
   return (
     <>
       <ToastContainer />
-      <div className="home-container">
+      <div
+        style={{
+          background: "#F5F6FF",
+          width: "100%",
+          textAlign: "center",
+          marginBottom: "2%",
+        }}
+      >
         <ProgressStepper activeStep={activeStep} />
+      </div>
 
+      <div className="home-container">
         <Grid container spacing={2}>
           <Grid item md={8}>
             <PassengerDetailSummary

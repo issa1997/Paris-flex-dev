@@ -1,5 +1,6 @@
 .booking-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
-  height: 420px;
+  height: auto;
+  width:570px ;
   background: #ffffff;
   box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
   border-radius: 20px;
@@ -14,6 +15,14 @@
   margin-right: 10px;
   height: 21px;
   width: 29px;
+}
+.free-seats-styles-summary {
+  width: 76%;
+  border: 1px solid #969696;
+  border-radius: 10px;
+  height: 60px;
+  vertical-align: center;
+  margin: 10px;
 }
 .heading-style {
   font-weight: 700 !important;
@@ -38,5 +47,17 @@
 }
 .data-heading-item {
   color: #686868;
+  font-size: 12px !important;
+}
+
+.button-submit{
+  background: #341ea0 !important;
+  border-radius: 12px !important;
+  color: white !important;
+  width: 97% !important;
+  margin: 0 -39px !important;
+  height: 45px !important;
+}
+.seats-text-styles{
   font-size: 12px !important;
 }

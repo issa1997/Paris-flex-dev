@@ -2,15 +2,15 @@
 * {
   font-family: "Rubik", sans-serif;
 }
-.passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
+.extras-card-style {
   width: 569px;
-  height: 320px;
+  height: auto !important;
   background: #ffffff;
-  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
-  border-radius: 20px;
+  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08) !important;
+  border-radius: 20px !important;
   display: flex;
   flex-direction: column;
-  padding: 34px 25px;
+  padding: 44px 34px 25px;
   gap: 17px;
 }
 .icon-styles {
@@ -49,4 +49,8 @@
   width: 260px !important;
   height: 140px;
   margin: 5% 0% !important;
+}
+.seats-text{
+  font-size: 10px !important;
+  margin: 0 5px;
 }

@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { ReactComponent as HealthIcon } from "../../assets/icons/healthicons_travel-alt-outline.svg";
 import "./index.css";
@@ -69,24 +69,58 @@ const BookingSummaryComponent: React.FC = () => {
           </span>
         </Typography>
         <Grid container spacing={2} className="grid-space">
-          <Grid item  xs={6}><Typography variant="h6" className="data-heading">
-            Notes for chauffeur
+          <Grid item xs={6}>
+            <Typography variant="h6" className="data-heading">
+              Notes for chauffeur
             </Typography>
-            <Typography className="data-heading-item">1 bottle of whiskey/ 1 cigarette pack please</Typography>
+            <Typography className="data-heading-item">
+              1 bottle of whiskey/ 1 cigarette pack please
+            </Typography>
           </Grid>
           <Grid item xs={6} container direction="column" spacing={2}>
-            
-            <Grid item >
-                <Box className="free-seats-styles">
-                  <BabySeats /><FreeTag className="free-tag-style"/><span>Baby Seats</span>
-                </Box>
-              </Grid>
-              <Grid item  >
-                <Box className="free-seats-styles">
-                  <Booster/><span><FreeTag/></span> <span>Booster Seats</span>
-                </Box>
-              </Grid>
+            <Box className="free-seats-styles-summary">
+              <Stack
+                direction="row"
+                spacing={2}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <BabySeats className="seating-icon-style" />
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <span className="seats-text-styles">Baby Seats</span>
+                  <FreeTag />
+                </Stack>
+
+                <span className="seats-number">8</span>
+              </Stack>
+            </Box>
+            <Box className="free-seats-styles-summary">
+              {" "}
+              <Stack
+                direction="row"
+                spacing={2}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Booster className="seating-icon-style-summary" />
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <span className="seats-text-styles">Booster Seats</span>
+                  <FreeTag />
+                </Stack>
+
+                <span className="seats-number">8</span>
+              </Stack>
+            </Box>
           </Grid>
+          <button type="submit" className="button-submit">Confirm Booking {"  "}</button>
         </Grid>
       </Card>
     </>

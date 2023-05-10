@@ -32,7 +32,7 @@ const ExtrasComponent: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
   passengerId: number;
-}> = (props) => {
+  }> = (props) => {
   const [boosterSeats, setBoosterSeats] = useState<number>(0);
   const [babySeats, setBabySeaters] = useState<number>(0);
 
@@ -49,6 +49,9 @@ const ExtrasComponent: React.FC<{
       childSeats: Number(formData.get("txtBabySeats")),
       passengerId: props.passengerId,
     };
+    console.log(passengerExtra)
+    props.setActiveStep(props.activeStep + 1);
+    // props.passengerExtra(passengerExtra);
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
       createPassengerExtra(passengerExtra)
         .then((response: AxiosResponse) => {
@@ -67,7 +70,7 @@ const ExtrasComponent: React.FC<{
   return (
     <>
       <ToastContainer />
-      <Card className="passenger-detail-card-style">
+      <Card className="extras-card-style">
         <Typography gutterBottom variant="h5" className="heading-style">
           Extras
           <span>
@@ -99,7 +102,7 @@ const ExtrasComponent: React.FC<{
               <Box className="free-seats-styles">
                 <Stack
                   direction="row"
-                  spacing={1}
+                  spacing={0}
                   justifyContent="center"
                   alignItems="center"
                 >
@@ -129,7 +132,7 @@ const ExtrasComponent: React.FC<{
               <Box className="free-seats-styles">
                 <Stack
                   direction="row"
-                  spacing={1}
+                  spacing={0}
                   justifyContent="center"
                   alignItems="center"
                 >
@@ -162,7 +165,7 @@ const ExtrasComponent: React.FC<{
               </Box>
             </Grid>
           </Grid>
-          <Button className="submit-styles" type="submit">
+          <Button className="submit-styles" type="submit" >
             Continue booking {"  "}
             <ArrowIcon className="submit-icon-style" />
           </Button>
