@@ -32,7 +32,12 @@ const ExtrasComponent: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
   passengerId: number;
-  }> = (props) => {
+  setPassengerExtrasDetails: React.Dispatch<
+    React.SetStateAction<
+      Omit<PassengerDetailExtrasType, "id" | "isDelete"> | undefined
+    >
+  >;
+}> = (props) => {
   const [boosterSeats, setBoosterSeats] = useState<number>(0);
   const [babySeats, setBabySeaters] = useState<number>(0);
 
@@ -56,6 +61,7 @@ const ExtrasComponent: React.FC<{
           toast.success(restrcutredResponse.message, {
             position: "bottom-right",
           });
+          props.setPassengerExtrasDetails(response.data.data);
           props.setActiveStep(props.activeStep + 1);
         })
         .catch((error: any) => {
@@ -162,7 +168,7 @@ const ExtrasComponent: React.FC<{
               </Box>
             </Grid>
           </Grid>
-          <Button className="submit-styles" type="submit" >
+          <Button className="submit-styles" type="submit">
             Continue booking {"  "}
             <ArrowIcon className="submit-icon-style" />
           </Button>
