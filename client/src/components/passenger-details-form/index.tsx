@@ -49,6 +49,7 @@ const PassengerDetails: React.FC<{
           props.setActiveStep(props.activeStep + 1);
           props.setPassengerId(restrcutredResponse.data.id);
           props.setPassengerDetails(restrcutredResponse.data);
+          console.log(restrcutredResponse.data);
         })
         .catch((error: any) => {
           const response: any = error.response.data;
@@ -89,7 +90,7 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input className="outlined-required" />
+              <input className="outlined-required" name="txtEmail" />
               <p className="warning-text" style={{ marginBottom: "6%" }}>
                 <TriangleIcon /> We will send you booking details here
               </p>
@@ -127,7 +128,11 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input className="outlined-required" id="outlined-required" />
+              <input
+                className="outlined-required"
+                name="txtContactNumber"
+                id="outlined-required"
+              />
               <div className="warning-text" style={{ marginBottom: "2%" }}>
                 <TriangleIcon />
                 Please provide us a working phone number in France. We will
@@ -153,10 +158,6 @@ const PassengerDetails: React.FC<{
                 <ArrowIcon className="submit-icon-style" />
               </Button>
             </Grid>
-            <Button className="submit-styles" type="submit">
-              Continue booking {"  "}
-              <ArrowIcon className="submit-icon-style" />
-            </Button>
           </Grid>
         </Box>
       </Card>

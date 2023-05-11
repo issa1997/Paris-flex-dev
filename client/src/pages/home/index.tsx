@@ -79,7 +79,7 @@ const Home: React.FC = () => {
     useState<Omit<PassengerDetailsType, "id" | "isDelete">>();
   const [passengerExtraDetails, setPassengerExtraDetails] =
     useState<Omit<PassengerDetailExtrasType, "id" | "isDelete">>();
-
+  console.log(passengerDetails);
   const [searchParams] = useSearchParams();
   const luggagePieces = searchParams.get("luggagePieces");
   const pickupLocation = searchParams.get("pickupLocation");
@@ -149,7 +149,7 @@ const Home: React.FC = () => {
               passengerExtrasDetails={passengerExtraDetails}
             />
           </Grid>
-          <Grid item md={4}>
+          <Grid item md={4} xs={12}>
             <YourTransfer
               date={pickupDate}
               dropoffLocation={dropLocation}
