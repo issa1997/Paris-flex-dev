@@ -12,7 +12,6 @@ const ConfirmationModal: React.FC<ConfirmationModalType> = (props) => {
   return (
     <Modal
       open={props.isModalVisible}
-      onClose={props.onClose}
       sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
     >
       <Box className="modal-styles">
@@ -20,7 +19,7 @@ const ConfirmationModal: React.FC<ConfirmationModalType> = (props) => {
           <Grid xs={12}>
             <div className="close-icon">
               {" "}
-              <Cross height={15} width={15} />
+              <Cross height={15} width={15} onClick={props.onClose} />
             </div>
           </Grid>
           <Grid item xs={4}></Grid>
