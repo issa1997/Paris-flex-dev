@@ -13,19 +13,21 @@
   flex-direction: row;
   margin-bottom: 3%;
 }
-.grid {
-  display: grid;
-  grid-template-columns: 75% 25%;
+.button-box-style {
+  height: auto !important;
 }
-
-.col-main {
-  display: grid;
-  grid-template-rows: 1fr 2fr;
+.stack-icon {
+  margin-right: 5% !important;
+  width: 18px !important;
+  height: 18px !important;
 }
-
-.row-2 {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+.list-button-style {
+  padding-right: 0 !important;
+  width: 120% !important;
+}
+.list-button-style-seats {
+  padding-right: 0 !important;
+  width: 150% !important;
 }
 .box-styles {
   height: 20px !important;
@@ -86,7 +88,7 @@
   height: 155px;
   background: #f4f5fe;
   border-radius: 18px;
-  margin: 29px 50px 0 -30px;
+  margin: 6px 50px 11px -30px;
   text-align: center;
   padding-top: 25px;
 }

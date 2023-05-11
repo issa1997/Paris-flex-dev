@@ -17,12 +17,15 @@
 .button-styles {
   position: absolute;
   margin: 5% 4% !important;
-  width: 200px;
+  width: 212px;
   height: 30px;
   font-size: 12px !important;
   background-color: #341ea0 !important;
   border-radius: 12px !important;
   color: #ffffff !important;
+}
+.edit-trip {
+  justify-content: center;
 }
 .header-style {
   font-size: 18px !important;
@@ -70,7 +73,7 @@
   /* vertical-align: middle; */
 }
 .button-container {
-  margin: 3% auto;
+  justify-content: center;
 }
 .change-mind-styles {
   font-size: 12px !important;
@@ -82,5 +85,5 @@
   width: 110px;
   background: #5b5b5b !important;
   color: white !important;
-  margin: 10px !important;
+  margin: 10px 0 10px 10px !important;
 }
