@@ -129,7 +129,8 @@ const PassengerDetails: React.FC<{
                 <TextField id="txtContactNumber" name="txtContactNumber" />
                 <p className="warning-text" style={{ marginBottom: "2%" }}>
                   <TriangleIcon /> Please provide us a working phone number in
-                  France. We will contact you using WhatsApp
+                  France. <br />
+                  We will contact you using WhatsApp
                 </p>
               </div>
               <div>
