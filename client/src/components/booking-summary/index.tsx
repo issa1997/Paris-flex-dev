@@ -1,4 +1,4 @@
-import { Box, Card, Grid, Typography } from "@mui/material";
+import { Box, Button, Card, Grid, Stack, Typography } from "@mui/material";
 import React from "react";
 import { ReactComponent as HealthIcon } from "../../assets/icons/healthicons_travel-alt-outline.svg";
 import "./index.css";
@@ -7,7 +7,15 @@ import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as BabySeats } from "../../assets/icons/toddler-1.svg";
 import { ReactComponent as Booster } from "../../assets/icons/seat.svg";
 import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
-const BookingSummaryComponent: React.FC = () => {
+import { PassengerDetailsType } from "../../services/passengers-details";
+import { PassengerDetailExtrasType } from "../../services/passengers-detail-extras";
+
+const BookingSummaryComponent: React.FC<{
+  passengerDetails: Omit<PassengerDetailsType, "id" | "isDelete"> | undefined;
+  passengerExtrasDetails:
+    | Omit<PassengerDetailExtrasType, "id" | "isDelete">
+    | undefined;
+}> = (props) => {
   return (
     <>
       <Card className="booking-detail-card-style">
@@ -29,7 +37,7 @@ const BookingSummaryComponent: React.FC = () => {
               Name
             </Typography>
             <Typography className="data-heading-item">
-              Malisha Ponweera
+              {props.passengerDetails?.name}
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -37,7 +45,7 @@ const BookingSummaryComponent: React.FC = () => {
               Email
             </Typography>
             <Typography className="data-heading-item">
-              malishaponweera@gmail.com
+              {props.passengerDetails?.email}
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -45,20 +53,24 @@ const BookingSummaryComponent: React.FC = () => {
               Contact Number
             </Typography>
             <Typography className="data-heading-item">
-              +33 715 125 148
+              {props.passengerDetails?.phone}
             </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography variant="h6" className="data-heading">
               Flight/Train Number
             </Typography>
-            <Typography className="data-heading-item">AF165</Typography>
+            <Typography className="data-heading-item">
+              {props.passengerDetails?.travelNumber}
+            </Typography>
           </Grid>
           <Grid item xs={4}>
             <Typography variant="h6" className="data-heading">
               Flight/Train from
             </Typography>
-            <Typography className="data-heading-item">Spain</Typography>
+            <Typography className="data-heading-item">
+              {props.passengerDetails?.travelFrom}
+            </Typography>
           </Grid>
           <Grid item xs={4}></Grid>
         </Grid>
@@ -69,24 +81,64 @@ const BookingSummaryComponent: React.FC = () => {
           </span>
         </Typography>
         <Grid container spacing={2} className="grid-space">
-          <Grid item  xs={6}><Typography variant="h6" className="data-heading">
-            Notes for chauffeur
+          <Grid item xs={6}>
+            <Typography variant="h6" className="data-heading">
+              Notes for chauffeur
             </Typography>
-            <Typography className="data-heading-item">1 bottle of whiskey/ 1 cigarette pack please</Typography>
+            <Typography className="data-heading-item">
+              {props.passengerExtrasDetails?.extrasDescription}
+            </Typography>
           </Grid>
           <Grid item xs={6} container direction="column" spacing={2}>
-            
-            <Grid item >
-                <Box className="free-seats-styles">
-                  <BabySeats /><FreeTag className="free-tag-style"/><span>Baby Seats</span>
-                </Box>
-              </Grid>
-              <Grid item  >
-                <Box className="free-seats-styles">
-                  <Booster/><span><FreeTag/></span> <span>Booster Seats</span>
-                </Box>
-              </Grid>
+            <Box className="free-seats-styles-summary">
+              <Stack
+                direction="row"
+                spacing={2}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <BabySeats className="seating-icon-style" />
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <span className="seats-text-styles">Baby Seats</span>
+                  <FreeTag />
+                </Stack>
+
+                <span className="seats-number">
+                  {props.passengerExtrasDetails?.childSeats}
+                </span>
+              </Stack>
+            </Box>
+            <Box className="free-seats-styles-summary">
+              {" "}
+              <Stack
+                direction="row"
+                spacing={2}
+                justifyContent="center"
+                alignItems="center"
+              >
+                <Booster className="seating-icon-style-summary" />
+                <Stack
+                  direction="column"
+                  justifyContent="center"
+                  alignItems="center"
+                >
+                  <span className="seats-text-styles">Booster Seats</span>
+                  <FreeTag />
+                </Stack>
+
+                <span className="seats-number">
+                  {props.passengerExtrasDetails?.boosterSeats}
+                </span>
+              </Stack>
+            </Box>
           </Grid>
+          <button type="submit" className="button-submit">
+            Confirm Booking {"  "}
+          </button>
         </Grid>
       </Card>
     </>

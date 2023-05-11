@@ -45,11 +45,11 @@ import {
                     <Select
                       labelId="select-label"
                       id="select"
-                      value={selectedOption}
-                      onChange={handleChange}
+                      value={"A"}
+                      // onChange={handleChange}
                       className="select-styles"
                     >
-                      <MenuItem value="A">A</MenuItem>
+                      <MenuItem value="A">CDG</MenuItem>
                       <MenuItem value="B">B</MenuItem>
                       <MenuItem value="C">C</MenuItem>
                       <MenuItem value="D">D</MenuItem>

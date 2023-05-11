@@ -3,6 +3,8 @@ import { AppModule } from './app.module';
 import { systemLogger } from './utls/logger';
 import { DocumentBuilder } from '@nestjs/swagger';
 import { SwaggerModule } from '@nestjs/swagger/dist';
+import { NestExpressApplication } from '@nestjs/platform-express';
+import { join } from 'path';
 
 /**
  * Usage and Description - This file will act as the main
@@ -11,10 +13,11 @@ import { SwaggerModule } from '@nestjs/swagger/dist';
  **/
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule, {
+  const app = await NestFactory.create<NestExpressApplication>(AppModule, {
     logger: systemLogger,
   });
   app.enableCors();
+  app.useStaticAssets(join(__dirname, '../../client/build/static'));
   const options = new DocumentBuilder()
     .setTitle('Craft E-commerce API')
     .setDescription(

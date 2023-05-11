@@ -18,6 +18,12 @@ const PassengerDetails: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
   setPassengerId: React.Dispatch<React.SetStateAction<number>>;
+  setPassengerDetails: React.Dispatch<
+    React.SetStateAction<
+      Omit<PassengerDetailsType, "id" | "isDelete"> | undefined
+    >
+  >;
+  pasengers: number;
 }> = (props) => {
   const handleAddPassenger = async (
     event: React.FormEvent<HTMLFormElement>
@@ -28,7 +34,7 @@ const PassengerDetails: React.FC<{
       name: String(formData.get("txtName")),
       lastName: String(formData.get("txtLastName")),
       email: String(formData.get("txtEmail")),
-      passengerCount: 0,
+      passengerCount: Number(props.pasengers),
       phone: String(formData.get("txtContactNumber")),
       travelFrom: String(formData.get("txtFlightNumber")),
       travelNumber: String(formData.get("txtFlightFrom")),
@@ -42,6 +48,7 @@ const PassengerDetails: React.FC<{
           });
           props.setActiveStep(props.activeStep + 1);
           props.setPassengerId(restrcutredResponse.data.id);
+          props.setPassengerDetails(restrcutredResponse.data);
         })
         .catch((error: any) => {
           const response: any = error.response.data;
@@ -146,6 +153,10 @@ const PassengerDetails: React.FC<{
                 <ArrowIcon className="submit-icon-style" />
               </Button>
             </Grid>
+            <Button className="submit-styles" type="submit">
+              Continue booking {"  "}
+              <ArrowIcon className="submit-icon-style" />
+            </Button>
           </Grid>
         </Box>
       </Card>

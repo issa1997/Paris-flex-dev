@@ -9,7 +9,7 @@
   border-radius: 20px;
   display: flex;
   flex-direction: column;
-  padding: 54px 25px;
+  padding: 54px 20px 10px 20px !important;
   gap: 17px;
   height: auto !important;
 }

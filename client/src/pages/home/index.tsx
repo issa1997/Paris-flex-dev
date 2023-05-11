@@ -17,10 +17,28 @@ import { toast, ToastContainer } from "react-toastify";
 import { ResponseType } from "../../utls/api-adapter";
 import { useSearchParams } from "react-router-dom";
 import _ from "lodash";
+import BookingSummaryComponent from "../../components/booking-summary";
+import { PassengerDetailsType } from "../../services/passengers-details";
+import { PassengerDetailExtrasType } from "../../services/passengers-detail-extras";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
   activeStep: number;
+  setPassengerDetails: React.Dispatch<
+    React.SetStateAction<
+      Omit<PassengerDetailsType, "id" | "isDelete"> | undefined
+    >
+  >;
+  passengers: any;
+  passengerDetails: Omit<PassengerDetailsType, "id" | "isDelete"> | undefined;
+  setPassengerExtrasDetails: React.Dispatch<
+    React.SetStateAction<
+      Omit<PassengerDetailExtrasType, "id" | "isDelete"> | undefined
+    >
+  >;
+  passengerExtrasDetails:
+    | Omit<PassengerDetailExtrasType, "id" | "isDelete">
+    | undefined;
 }> = (props) => {
   const [passengerId, setPassengerId] = useState<number>(0);
   switch (props.activeStep) {
@@ -30,6 +48,8 @@ const RenderStepperComponents: React.FC<{
           setActiveStep={props.setActiveStep}
           activeStep={props.activeStep}
           setPassengerId={setPassengerId}
+          setPassengerDetails={props.setPassengerDetails}
+          pasengers={props.passengers}
         />
       );
     case 1:
@@ -38,6 +58,14 @@ const RenderStepperComponents: React.FC<{
           setActiveStep={props.setActiveStep}
           activeStep={props.activeStep}
           passengerId={passengerId}
+          setPassengerExtrasDetails={props.setPassengerExtrasDetails}
+        />
+      );
+    case 2:
+      return (
+        <BookingSummaryComponent
+          passengerDetails={props.passengerDetails}
+          passengerExtrasDetails={props.passengerExtrasDetails}
         />
       );
   }
@@ -47,6 +75,10 @@ const RenderStepperComponents: React.FC<{
 const Home: React.FC = () => {
   const [activeStep, setActiveStep] = useState<number>(0);
   const [bookingPrice, setBookingPrice] = useState<number>(0);
+  const [passengerDetails, setPassengerDetails] =
+    useState<Omit<PassengerDetailsType, "id" | "isDelete">>();
+  const [passengerExtraDetails, setPassengerExtraDetails] =
+    useState<Omit<PassengerDetailExtrasType, "id" | "isDelete">>();
 
   const [searchParams] = useSearchParams();
   const luggagePieces = searchParams.get("luggagePieces");
@@ -88,9 +120,18 @@ const Home: React.FC = () => {
   return (
     <>
       <ToastContainer />
-      <div className="home-container">
+      <div
+        style={{
+          background: "#F5F6FF",
+          width: "100%",
+          textAlign: "center",
+          marginBottom: "2%",
+        }}
+      >
         <ProgressStepper activeStep={activeStep} />
+      </div>
 
+      <div className="home-container">
         <Grid container spacing={2}>
           <Grid item md={8} xs={12}>
             <PassengerDetailSummary
@@ -101,10 +142,20 @@ const Home: React.FC = () => {
             <RenderStepperComponents
               activeStep={activeStep}
               setActiveStep={setActiveStep}
+              setPassengerDetails={setPassengerDetails}
+              passengers={passengers}
+              passengerDetails={passengerDetails}
+              setPassengerExtrasDetails={setPassengerExtraDetails}
+              passengerExtrasDetails={passengerExtraDetails}
             />
           </Grid>
-          <Grid item md={4} xs={12} order={0}>
-            <YourTransfer />
+          <Grid item md={4}>
+            <YourTransfer
+              date={pickupDate}
+              dropoffLocation={dropLocation}
+              pickupLocation={pickupLocation}
+              time={pickupTime}
+            />
           </Grid>
         </Grid>
       </div>
