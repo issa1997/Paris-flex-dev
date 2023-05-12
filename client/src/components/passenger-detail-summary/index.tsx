@@ -29,7 +29,7 @@ const PassengerDetailSummary: React.FC<{
       <Grid container spacing={0}>
         <Grid item md={8} xs={12}>
           <Grid container spacing={0} direction="column">
-            <Box alignContent={"center"}>
+            <Box alignContent={"center"} className="summary-fixed-height-box">
               <Badge className="box-styles passengers">
                 <Passengers className="icon-styles" />{" "}
                 <span className="text-styles">{`${props.passengerCount} Passengers`}</span>
@@ -41,7 +41,7 @@ const PassengerDetailSummary: React.FC<{
               </Badge>
             </Box>
           </Grid>
-          <Grid container direction="row">
+          <Grid container direction="row" mt={{ md: 0, xs: 2 }}>
             {" "}
             <Grid item xs={12} md={9}>
               <Stack
@@ -53,7 +53,7 @@ const PassengerDetailSummary: React.FC<{
                     <MeetNGreet className="stack-icon" />
                     <ListItemText primary="Meet & Greet" />
                   </ListItemButton>
-                  <ListItemButton>
+                  <ListItemButton className="list-button-style">
                     <FreeWaiting className="stack-icon" />
                     <ListItemText primary="Free Waiting" />
                   </ListItemButton>

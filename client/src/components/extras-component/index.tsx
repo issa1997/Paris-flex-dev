@@ -54,20 +54,21 @@ const ExtrasComponent: React.FC<{
       childSeats: Number(formData.get("txtBabySeats")),
       passengerId: props.passengerId,
     };
+    props.setActiveStep(props.activeStep + 1);
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
-      createPassengerExtra(passengerExtra)
-        .then((response: AxiosResponse) => {
-          const restrcutredResponse: any = response.data;
-          toast.success(restrcutredResponse.message, {
-            position: "bottom-right",
-          });
-          props.setPassengerExtrasDetails(response.data.data);
-          props.setActiveStep(props.activeStep + 1);
-        })
-        .catch((error: any) => {
-          const response: any = error.response.data;
-          toast.error(response.message, { position: "bottom-right" });
-        });
+      // createPassengerExtra(passengerExtra)
+      //   .then((response: AxiosResponse) => {
+      //     const restrcutredResponse: any = response.data;
+      //     toast.success(restrcutredResponse.message, {
+      //       position: "bottom-right",
+      //     });
+      //     props.setPassengerExtrasDetails(response.data.data);
+      //     props.setActiveStep(props.activeStep + 1);
+      //   })
+      //   .catch((error: any) => {
+      //     const response: any = error.response.data;
+      //     toast.error(response.message, { position: "bottom-right" });
+      //   });
     }
   };
   return (
@@ -86,7 +87,7 @@ const ExtrasComponent: React.FC<{
           onSubmit={handleAddPassengerExtra}
         >
           <Grid container className="form-styles">
-            <Grid xs={6} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid xs={12} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
                 <InputLabel>
                   Note for chauffeur{" "}
@@ -101,8 +102,14 @@ const ExtrasComponent: React.FC<{
                 />
               </div>
             </Grid>
-            <Grid xs={6} className="row-style">
-              <Box className="free-seats-styles">
+            <Grid
+              xs={12}
+              md={6}
+              sm={6}
+              className="row-style"
+              mt={{ sm: 3, xs: 0 }}
+            >
+              <Box className="free-seats-styles" mb={1} ml={{ sm: 1.5, xs: 0 }}>
                 <Stack
                   direction="row"
                   spacing={0}
@@ -132,7 +139,7 @@ const ExtrasComponent: React.FC<{
                   </IconButton>
                 </Stack>
               </Box>
-              <Box className="free-seats-styles">
+              <Box className="free-seats-styles" ml={{ sm: 1.5, xs: 0 }} mb={{ sm: 0, xs: 1.5}}>
                 <Stack
                   direction="row"
                   spacing={0}
@@ -167,11 +174,11 @@ const ExtrasComponent: React.FC<{
                 </Stack>
               </Box>
             </Grid>
+            <Button className="submit-styles-extras" type="submit">
+              Continue booking {"  "}
+              <ArrowIcon className="submit-icon-style" />
+            </Button>
           </Grid>
-          <Button className="submit-styles" type="submit">
-            Continue booking {"  "}
-            <ArrowIcon className="submit-icon-style" />
-          </Button>
         </Box>
       </Card>
     </>

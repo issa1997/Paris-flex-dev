@@ -132,13 +132,15 @@ const Home: React.FC = () => {
       </div>
 
       <div className="home-container">
-        <Grid container spacing={2}>
-          <Grid item md={8} xs={12}>
+        <Grid container spacing={2} order={{ xs: 1, sm: 1 }}>
+          <Grid item sm={8} xs={12}>
             <PassengerDetailSummary
               bookingPrice={bookingPrice}
               luggagePieces={luggagePieces}
               passengerCount={passengers}
             />
+          </Grid>
+          <Grid item sm={8} xs={12} order={{ xs: 3, sm: 2 }}>
             <RenderStepperComponents
               activeStep={activeStep}
               setActiveStep={setActiveStep}
@@ -149,7 +151,7 @@ const Home: React.FC = () => {
               passengerExtrasDetails={passengerExtraDetails}
             />
           </Grid>
-          <Grid item md={4} xs={12}>
+          <Grid item sm={4} xs={12} order={{ xs: 2, sm: 3 }}>
             <YourTransfer
               date={pickupDate}
               dropoffLocation={dropLocation}

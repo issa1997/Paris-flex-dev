@@ -44,12 +44,12 @@
   vertical-align: middle;
 }
 .box-styles.passengers {
-  width: 31%;
+  width: 33%;
   align-items: center;
   font-weight: 700 !important;
 }
 .box-styles.suitcase {
-  width: 30%;
+  width: 33%;
   align-items: center;
   font-weight: 700 !important;
 }
@@ -110,4 +110,19 @@
   text-align: center;
   color: #676767;
   font-style: italic;
+}
+
+@media screen and (max-width: 900px) {
+  .box-styles.passengers {
+    width: 40%;
+    margin: 0 !important;
+    margin-right: 5px !important;
+  }
+  .box-styles.suitcase {
+    width: 40%;
+    margin: 0 !important;
+  }
+  .summary-fixed-height-box {
+    height: 40px;
+  }
 }
