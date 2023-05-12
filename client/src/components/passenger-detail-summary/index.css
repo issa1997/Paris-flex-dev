@@ -6,8 +6,8 @@
   width: auto;
   height: auto;
   background: #ffffff;
-  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
-  border-radius: 20px;
+  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08) !important;
+  border-radius: 20px !important;
   padding: 54px 20px 10px 20px !important;
   display: flex;
   flex-direction: row;
@@ -17,7 +17,7 @@
   height: auto !important;
 }
 .stack-icon {
-  margin-right: 5% !important;
+  margin-right: 8px !important;
   width: 18px !important;
   height: 18px !important;
 }
@@ -40,19 +40,17 @@
   font-size: 12px !important;
   line-height: 16px !important;
   color: #4b31ee;
-  margin: 0;
+  margin: 0 5px;
   vertical-align: middle;
 }
 .box-styles.passengers {
-  width: 125px;
+  width: 31%;
   align-items: center;
-  margin: 0 5% 0 8%;
   font-weight: 700 !important;
 }
 .box-styles.suitcase {
-  width: 119px;
+  width: 30%;
   align-items: center;
-  margin: 0 5%;
   font-weight: 700 !important;
 }
 
@@ -84,13 +82,10 @@
   color: #404040 !important;
 }
 .price-box {
-  width: 150px;
-  height: 155px;
   background: #f4f5fe;
   border-radius: 18px;
-  margin: 6px 50px 11px -30px;
+  padding: 18px;
   text-align: center;
-  padding-top: 25px;
 }
 
 .trip-detail-style {

@@ -72,7 +72,7 @@ const PassengerDetails: React.FC<{
           <Grid container className="form-styles">
             <Grid item md={6} xs={12}>
               <InputLabel>
-                Name x
+                Name
                 <span>
                   <RequiredSign />
                 </span>
@@ -81,31 +81,6 @@ const PassengerDetails: React.FC<{
                 id="txtName"
                 name="txtName"
                 className="outlined-required"
-              />
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <InputLabel>
-                Email{" "}
-                <span>
-                  <RequiredSign />
-                </span>
-              </InputLabel>
-              <input className="outlined-required" name="txtEmail" />
-              <p className="warning-text" style={{ marginBottom: "6%" }}>
-                <TriangleIcon /> We will send you booking details here
-              </p>
-            </Grid>
-            <Grid item md={6} xs={12}>
-              <InputLabel>
-                Flight/ train number{" "}
-                <span>
-                  <RequiredSign />
-                </span>
-              </InputLabel>
-              <input
-                className="outlined-required"
-                id="txtFlightNumber"
-                name="txtFlightNumber"
               />
             </Grid>
             <Grid item md={6} xs={12}>
@@ -123,6 +98,19 @@ const PassengerDetails: React.FC<{
             </Grid>
             <Grid item md={6} xs={12}>
               <InputLabel>
+                Email{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input className="outlined-required" name="txtEmail" />
+              <p className="warning-text" style={{ marginBottom: "6%" }}>
+                <TriangleIcon /> We will send you booking details here
+              </p>
+            </Grid>
+
+            <Grid item md={6} xs={12}>
+              <InputLabel>
                 Contact Number{" "}
                 <span>
                   <RequiredSign />
@@ -138,6 +126,19 @@ const PassengerDetails: React.FC<{
                 Please provide us a working phone number in France. We will
                 contact you using WhatsApp
               </div>
+            </Grid>
+            <Grid item md={6} xs={12}>
+              <InputLabel>
+                Flight/ train number{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input
+                className="outlined-required"
+                id="txtFlightNumber"
+                name="txtFlightNumber"
+              />
             </Grid>
             <Grid item md={6} xs={12}>
               <InputLabel>

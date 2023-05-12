@@ -26,22 +26,28 @@ const PassengerDetailSummary: React.FC<{
 }> = (props) => {
   return (
     <Card className="card-styles">
-      <Grid container spacing={1}>
-        <Grid item md={9}>
+      <Grid container spacing={0}>
+        <Grid item md={8} xs={12}>
           <Grid container spacing={0} direction="column">
-            <Grid item className="button-box-style">
-              {" "}
+            <Box alignContent={"center"}>
               <Badge className="box-styles passengers">
                 <Passengers className="icon-styles" />{" "}
                 <span className="text-styles">{`${props.passengerCount} Passengers`}</span>
               </Badge>
+
               <Badge className="box-styles suitcase">
                 <Suitcase className="icon-styles" />{" "}
                 <span className="text-styles">{`${props.luggagePieces} Suitcases`}</span>
               </Badge>
-            </Grid>
-            <Grid item xs={12} md={6}>
-              <Stack direction={{ xs: "column", md: "row" }} spacing={2}>
+            </Box>
+          </Grid>
+          <Grid container direction="row">
+            {" "}
+            <Grid item xs={12} md={9}>
+              <Stack
+                direction={{ xs: "column", md: "row" }}
+                spacing={{ xs: 0, md: 2 }}
+              >
                 <Stack direction={{ xs: "column" }} spacing={0}>
                   <ListItemButton className="list-button-style">
                     <MeetNGreet className="stack-icon" />
@@ -82,7 +88,7 @@ const PassengerDetailSummary: React.FC<{
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={3}>
+        <Grid item md={4} xs={12}>
           {" "}
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>
