@@ -79,7 +79,7 @@ const Home: React.FC = () => {
     useState<Omit<PassengerDetailsType, "id" | "isDelete">>();
   const [passengerExtraDetails, setPassengerExtraDetails] =
     useState<Omit<PassengerDetailExtrasType, "id" | "isDelete">>();
-
+  console.log(passengerDetails);
   const [searchParams] = useSearchParams();
   const luggagePieces = searchParams.get("luggagePieces");
   const pickupLocation = searchParams.get("pickupLocation");
@@ -132,13 +132,47 @@ const Home: React.FC = () => {
       </div>
 
       <div className="home-container">
-        <Grid container spacing={2}>
-          <Grid item md={8}>
+        <Grid container spacing={3}>
+          <Grid item xs={12} sm={8}>
+            <Grid container spacing={3} direction="column">
+              <Grid item sm={8} xs={12}>
+                <PassengerDetailSummary
+                  bookingPrice={bookingPrice}
+                  luggagePieces={luggagePieces}
+                  passengerCount={passengers}
+                />
+              </Grid>
+              <Grid item sm={8} xs={12} order={{ xs: 2, sm: 2 }}>
+                <RenderStepperComponents
+                  activeStep={activeStep}
+                  setActiveStep={setActiveStep}
+                  setPassengerDetails={setPassengerDetails}
+                  passengers={passengers}
+                  passengerDetails={passengerDetails}
+                  setPassengerExtrasDetails={setPassengerExtraDetails}
+                  passengerExtrasDetails={passengerExtraDetails}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+          <Grid item sm={4} xs={12} order={{ xs: 3, sm: 3 }}>
+            <YourTransfer
+              date={pickupDate}
+              dropoffLocation={dropLocation}
+              pickupLocation={pickupLocation}
+              time={pickupTime}
+            />
+          </Grid>
+        </Grid>
+        {/* <Grid container spacing={2} order={{ xs: 1, sm: 1 }}>
+          <Grid item sm={8} xs={12}>
             <PassengerDetailSummary
               bookingPrice={bookingPrice}
               luggagePieces={luggagePieces}
               passengerCount={passengers}
             />
+          </Grid>
+          <Grid item sm={8} xs={12} order={{ xs: 3, sm: 2 }}>
             <RenderStepperComponents
               activeStep={activeStep}
               setActiveStep={setActiveStep}
@@ -149,7 +183,7 @@ const Home: React.FC = () => {
               passengerExtrasDetails={passengerExtraDetails}
             />
           </Grid>
-          <Grid item md={4}>
+          <Grid item sm={4} xs={12} order={{ xs: 2, sm: 3 }}>
             <YourTransfer
               date={pickupDate}
               dropoffLocation={dropLocation}
@@ -157,7 +191,7 @@ const Home: React.FC = () => {
               time={pickupTime}
             />
           </Grid>
-        </Grid>
+        </Grid> */}
       </div>
     </>
   );

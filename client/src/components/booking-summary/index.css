@@ -1,6 +1,6 @@
 .booking-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
   height: auto;
-  width:570px ;
+  width: auto ;
   background: #ffffff;
   box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
   border-radius: 20px;
@@ -50,7 +50,7 @@
   font-size: 12px !important;
 }
 
-.button-submit{
+.button-submit {
   background: #341ea0 !important;
   border-radius: 12px !important;
   color: white !important;
@@ -58,6 +58,6 @@
   margin: 0 -39px !important;
   height: 45px !important;
 }
-.seats-text-styles{
+.seats-text-styles {
   font-size: 12px !important;
 }
