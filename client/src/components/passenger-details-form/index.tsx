@@ -1,13 +1,5 @@
 import React from "react";
-import {
-  Box,
-  Button,
-  Card,
-  Grid,
-  InputLabel,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Button, Card, Grid, InputLabel, Typography } from "@mui/material";
 import { ReactComponent as PassengersDetails } from "../../assets/icons/carbon_passenger-plus.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
 import { ReactComponent as TriangleIcon } from "../../assets/icons/triangle-icon.svg";
@@ -57,6 +49,7 @@ const PassengerDetails: React.FC<{
           props.setActiveStep(props.activeStep + 1);
           props.setPassengerId(restrcutredResponse.data.id);
           props.setPassengerDetails(restrcutredResponse.data);
+          console.log(restrcutredResponse.data);
         })
         .catch((error: any) => {
           const response: any = error.response.data;
@@ -68,7 +61,7 @@ const PassengerDetails: React.FC<{
   return (
     <>
       <ToastContainer />
-      <Card className="passenger-detail-card-style">
+      <Card className="passenger-detail-card-style-form">
         <Typography gutterBottom variant="h5" className="heading-style">
           Passenger Details
           <span>
@@ -77,75 +70,95 @@ const PassengerDetails: React.FC<{
         </Typography>
         <Box component="form" autoComplete="off" onSubmit={handleAddPassenger}>
           <Grid container className="form-styles">
-            <Grid xs={12} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
-              <div>
-                <InputLabel>
-                  Name{" "}
-                  <span>
-                    <RequiredSign />
-                  </span>
-                </InputLabel>
-                <TextField id="txtName" name="txtName" className="input-box" />
-              </div>
-              <div>
-                <InputLabel>
-                  Email{" "}
-                  <span>
-                    <RequiredSign />
-                  </span>
-                </InputLabel>
-                <TextField id="txtEmail" name="txtEmail" />
-                <p className="warning-text" style={{ marginBottom: "6%" }}>
-                  <TriangleIcon /> We will send you booking details here
-                </p>
-              </div>
-              <div>
-                <InputLabel>
-                  Flight/ train number{" "}
-                  <span>
-                    <RequiredSign />
-                  </span>
-                </InputLabel>
-                <TextField id="txtFlightNumber" name="txtFlightNumber" />
+            <Grid item sm={6} xs={12}>
+              <InputLabel>
+                Name
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input
+                id="txtName"
+                name="txtName"
+                className="outlined-required"
+              />
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <InputLabel>
+                Last Name{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input
+                className="outlined-required"
+                id="txtLastName"
+                name="txtLastName"
+              />
+            </Grid>
+            <Grid item sm={6} xs={12}>
+              <InputLabel>
+                Email{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input className="outlined-required" name="txtEmail" />
+              <p className="warning-text" style={{ marginBottom: "6%" }}>
+                <TriangleIcon /> We will send you booking details here
+              </p>
+            </Grid>
+
+            <Grid item sm={6} xs={12}>
+              <InputLabel>
+                Contact Number{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input
+                className="outlined-required"
+                name="txtContactNumber"
+                id="outlined-required"
+              />
+              <div className="warning-text" style={{ marginBottom: "2%" }}>
+                <TriangleIcon />
+                Please provide us a working phone number in France. <br />
+                We will contact you using WhatsApp
               </div>
             </Grid>
-            <Grid xs={6}>
-              <div>
-                <InputLabel>
-                  Last Name{" "}
-                  <span>
-                    <RequiredSign />
-                  </span>
-                </InputLabel>
-                <TextField id="txtLastName" name="txtLastName" />
-              </div>
-              <div>
-                <InputLabel>
-                  Contact Number{" "}
-                  <span>
-                    <RequiredSign />
-                  </span>
-                </InputLabel>
-                <TextField id="txtContactNumber" name="txtContactNumber" />
-                <p className="warning-text" style={{ marginBottom: "2%" }}>
-                  <TriangleIcon /> Please provide us a working phone number in
-                  France. We will contact you using WhatsApp
-                </p>
-              </div>
-              <div>
-                <InputLabel>
-                  Flight/ train from{"  "}
-                  <span>
-                    <RequiredSign />
-                  </span>
-                </InputLabel>
-                <TextField id="txtFlightFrom" name="txtFlightFrom" />
-              </div>
+            <Grid item sm={6} xs={12}>
+              <InputLabel>
+                Flight/ train number{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input
+                className="outlined-required"
+                id="txtFlightNumber"
+                name="txtFlightNumber"
+              />
             </Grid>
-            <Button className="submit-styles" type="submit">
-              Continue booking {"  "}
-              <ArrowIcon className="submit-icon-style" />
-            </Button>
+            <Grid item sm={6} xs={12}>
+              <InputLabel>
+                Flight/ train from{"  "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <input
+                className="outlined-required"
+                id="txtFlightFrom"
+                name="txtFlightFrom"
+              />
+            </Grid>
+            <Grid item sm={12} xs={12}>
+              <Button className="submit-styles-button" type="submit">
+                Continue booking {"  "}
+                <ArrowIcon className="submit-icon-style" />
+              </Button>
+            </Grid>
           </Grid>
         </Box>
       </Card>

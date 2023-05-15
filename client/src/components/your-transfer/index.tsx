@@ -102,10 +102,13 @@ const YourTransfer: React.FC<{
             <Button className="box-styles onewayy">
               <OneWay /> <p className="text-style">One way</p>
             </Button>
+            <Button
+              className="button-styles"
+              onClick={() => setAddReturn(true)}
+            >
+              ADD RETURN <Repeat className="svg-icon" />
+            </Button>
           </Grid>
-          <Button className="button-styles" onClick={() => setAddReturn(true)}>
-            ADD RETURN <Repeat className="svg-icon" />
-          </Button>
         </CardContent>
       </Card>
       <EditTripModal isModalVisible={editModal} onClose={handleClose} />

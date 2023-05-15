@@ -1,5 +1,5 @@
 import { Box, Button, Card, Grid, Stack, Typography } from "@mui/material";
-import React from "react";
+import React, { useState } from "react";
 import { ReactComponent as HealthIcon } from "../../assets/icons/healthicons_travel-alt-outline.svg";
 import "./index.css";
 import { ReactComponent as PassengersDetails } from "../../assets/icons/passenger.svg";
@@ -9,6 +9,7 @@ import { ReactComponent as Booster } from "../../assets/icons/seat.svg";
 import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
 import { PassengerDetailsType } from "../../services/passengers-details";
 import { PassengerDetailExtrasType } from "../../services/passengers-detail-extras";
+import ConfirmationModal from "../confirmation-modal";
 
 const BookingSummaryComponent: React.FC<{
   passengerDetails: Omit<PassengerDetailsType, "id" | "isDelete"> | undefined;
@@ -16,6 +17,11 @@ const BookingSummaryComponent: React.FC<{
     | Omit<PassengerDetailExtrasType, "id" | "isDelete">
     | undefined;
 }> = (props) => {
+  const [confirmationModalOpen, setConfirmationModalOpen] =
+    useState<boolean>(false);
+  const handleClose = () => {
+    setConfirmationModalOpen(false);
+  };
   return (
     <>
       <Card className="booking-detail-card-style">
@@ -136,11 +142,21 @@ const BookingSummaryComponent: React.FC<{
               </Stack>
             </Box>
           </Grid>
-          <button type="submit" className="button-submit">
+          <button
+            type="submit"
+            className="button-submit"
+            onClick={() => {
+              setConfirmationModalOpen(true);
+            }}
+          >
             Confirm Booking {"  "}
           </button>
         </Grid>
       </Card>
+      <ConfirmationModal
+        isModalVisible={confirmationModalOpen}
+        onClose={handleClose}
+      />
     </>
   );
 };

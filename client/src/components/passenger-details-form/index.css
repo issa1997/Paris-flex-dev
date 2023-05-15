@@ -2,17 +2,15 @@
 * {
   font-family: "Rubik", sans-serif;
 }
-
-.passenger-detail-card-style.css-bhp9pd-MuiPaper-root-MuiCard-root {
-  width: 589px !important;
-  height: auto !important;
-  background: #ffffff;
-  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08);
-  border-radius: 20px;
+.passenger-detail-card-style-form {
+  width: auto;
+  box-shadow: 0px 4px 70px rgba(62, 62, 185, 0.08) !important;
+  border-radius: 20px !important;
   display: flex;
   flex-direction: column;
-  padding: 54px 20px 10px 20px !important;
+  padding: 54px 20px 20px 20px !important;
   gap: 17px;
+  height: auto !important;
 }
 .icon-styles {
   margin: 0px 5px;
@@ -24,14 +22,15 @@
   color: #000000;
 }
 
-.css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
+.outlined-required {
   background: #ffffff;
   border: 1px solid #4b31ee;
   border-radius: 10px !important;
-  width: 260px !important;
   height: 35px;
   margin: 5% 0% !important;
+  width: 85%;
 }
+
 .warning-text {
   font-size: 10px;
   margin: 0;
@@ -39,14 +38,11 @@
 .form-styles {
   padding: 10px auto;
 }
-.submit-styles {
-  position: relative !important;
-  width: 200px;
-  height: 30px;
-  font-size: 12px !important;
-  background-color: #341ea0 !important;
-  border-radius: 12px !important;
+.submit-styles-button {
   color: #ffffff !important;
+  width: 93% !important;
+  background: #341ea0 !important;
+  border-radius: 12px !important;
 }
 .css-9npbnl-MuiFormLabel-root-MuiInputLabel-root {
   font-weight: 400 !important;

@@ -2,11 +2,10 @@ import {
   Badge,
   Card,
   Grid,
-  List,
-  ListItem,
   ListItemButton,
   ListItemIcon,
   ListItemText,
+  Stack,
 } from "@mui/material";
 import React from "react";
 import "./index.css";
@@ -27,89 +26,77 @@ const PassengerDetailSummary: React.FC<{
 }> = (props) => {
   return (
     <Card className="card-styles">
-      <div className="grid">
-        <div className="col-main">
-          <div className="row-1">
-            <div className="passenger-div-styles">
+      <Grid container spacing={0}>
+        <Grid item sm={8} xs={12}>
+          <Grid container spacing={0} direction="column">
+            <Box alignContent={"center"} className="summary-fixed-height-box">
               <Badge className="box-styles passengers">
                 <Passengers className="icon-styles" />{" "}
                 <span className="text-styles">{`${props.passengerCount} Passengers`}</span>
               </Badge>
+
               <Badge className="box-styles suitcase">
                 <Suitcase className="icon-styles" />{" "}
                 <span className="text-styles">{`${props.luggagePieces} Suitcases`}</span>
               </Badge>
-            </div>
-          </div>
-          <div className="row-2">
-            <div className="col-sub-1">
-              <List>
-                <ListItem className="list-spacing">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <MeetNGreet />
-                    </ListItemIcon>
+            </Box>
+          </Grid>
+          <Grid container direction="row" mt={{ md: 0, xs: 2 }}>
+            {" "}
+            <Grid item xs={12} sm={9}>
+              <Stack
+                direction={{ xs: "column", md: "row" }}
+                spacing={{ xs: 0, md: 2 }}
+              >
+                <Stack direction={{ xs: "column" }} spacing={0}>
+                  <ListItemButton className="list-button-style">
+                    <MeetNGreet className="stack-icon" />
                     <ListItemText primary="Meet & Greet" />
                   </ListItemButton>
-                </ListItem>
-                <ListItem className="list-spacing">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <FreeWaiting />
-                    </ListItemIcon>
+                  <ListItemButton className="list-button-style">
+                    <FreeWaiting className="stack-icon" />
                     <ListItemText primary="Free Waiting" />
                   </ListItemButton>
-                </ListItem>
-                <ListItem className="list-spacing">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <HiddenCosts />
-                    </ListItemIcon>
+                  <ListItemButton className="list-button-style">
+                    <HiddenCosts className="stack-icon" />
                     <ListItemText primary="No Hidden Costs" />
                   </ListItemButton>
-                </ListItem>
-              </List>
-            </div>
-            <div className="col-sub-2">
-              <List>
-                <ListItem className="list-spacing-style">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <FreePorter />
-                    </ListItemIcon>
+                </Stack>
+                <Stack direction={{ xs: "column" }} spacing={0}>
+                  {" "}
+                  <ListItemButton className="list-button-style">
+                    <FreePorter className="stack-icon" />
                     <ListItemText primary="Free Porter" />
-                  </ListItemButton>
-                </ListItem>
-                <ListItem className="list-spacing-style">
-                  <ListItemButton>
-                    <ListItemIcon>
-                      <Seats />
-                    </ListItemIcon>
+                  </ListItemButton>{" "}
+                  <ListItemButton className="list-button-style-seats">
+                    <Seats className="stack-icon" />
                     <ListItemText primary="Free Baby Seats & Booster Seats" />
                   </ListItemButton>
-                </ListItem>
-                <ListItem className="list-spacing-style">
-                  <ListItemButton sx={{ paddingTop: "0px" }}>
-                    <ListItemIcon>
-                      <FreeCancel />
-                    </ListItemIcon>
+                  <ListItemButton
+                    sx={{ paddingTop: "0px" }}
+                    className="list-button-style"
+                  >
+                    <FreeCancel className="stack-icon" />
                     <ListItemText>
-                      <p style={{ color: "#4aab3d" }}>Free Cancellation</p>
+                      <span style={{ color: "#4aab3d" }}>
+                        Free Cancellation
+                      </span>
                     </ListItemText>
                   </ListItemButton>
-                </ListItem>
-              </List>
-            </div>
-          </div>
-        </div>
-        <div className="col-side">
+                </Stack>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Grid>
+        <Grid item sm={4} xs={12}>
+          {" "}
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>
             <h4 className="trip-price-style">{`€ ${props.bookingPrice}`}</h4>
             <p className="trip-tax-style">All prices include VAT & Fees</p>
           </Box>
-        </div>
-      </div>
+        </Grid>
+      </Grid>
     </Card>
   );
 };
