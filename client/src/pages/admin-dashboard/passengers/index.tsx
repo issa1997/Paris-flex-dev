@@ -6,7 +6,8 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Box, Typography } from "@mui/material";
+import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { Link } from "react-router-dom";
 
 const PassengersTable: React.FC = () => {
   const passengers = [
@@ -40,6 +41,23 @@ const PassengersTable: React.FC = () => {
   ];
 
   return (
+    <div style={{ flexGrow: 1 }}>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" style={{ flexGrow: 1 }}>
+          Paris Flex
+        </Typography>
+        <Button color="inherit" component={Link} to="/admin/rates">
+          Rates
+        </Button>
+        <Button color="inherit" component={Link} to="/admin/bookings">
+          Bookings
+        </Button>
+        <Button color="inherit" component={Link} to="/admin/passengers">
+          Passengers
+        </Button>
+      </Toolbar>
+    </AppBar>
     <Box sx={{ maxWidth: "100%", margin: "8%" }}>
       <Typography variant="h3" style={{ flexGrow: 1, textAlign: "center" }}>
         Passengers
@@ -74,7 +92,8 @@ const PassengersTable: React.FC = () => {
           </TableBody>
         </Table>
       </TableContainer>
-    </Box>
+      </Box>
+      </div>
   );
 };
 export default PassengersTable;
