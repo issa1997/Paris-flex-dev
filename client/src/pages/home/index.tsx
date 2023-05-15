@@ -73,13 +73,14 @@ const RenderStepperComponents: React.FC<{
 };
 
 const Home: React.FC = () => {
+  
+  
   const [activeStep, setActiveStep] = useState<number>(0);
   const [bookingPrice, setBookingPrice] = useState<number>(0);
   const [passengerDetails, setPassengerDetails] =
     useState<Omit<PassengerDetailsType, "id" | "isDelete">>();
   const [passengerExtraDetails, setPassengerExtraDetails] =
     useState<Omit<PassengerDetailExtrasType, "id" | "isDelete">>();
-  console.log(passengerDetails);
   const [searchParams] = useSearchParams();
   const luggagePieces = searchParams.get("luggagePieces");
   const pickupLocation = searchParams.get("pickupLocation");

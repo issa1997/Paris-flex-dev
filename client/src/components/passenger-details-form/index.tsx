@@ -1,5 +1,13 @@
 import React from "react";
-import { Box, Button, Card, Grid, InputLabel, Typography } from "@mui/material";
+import {
+  Box,
+  Button,
+  Card,
+  Grid,
+  InputLabel,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { ReactComponent as PassengersDetails } from "../../assets/icons/carbon_passenger-plus.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
 import { ReactComponent as TriangleIcon } from "../../assets/icons/triangle-icon.svg";
@@ -77,11 +85,7 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input
-                id="txtName"
-                name="txtName"
-                className="outlined-required"
-              />
+              <TextField id="txtName" name="txtName" size="medium" />
             </Grid>
             <Grid item sm={6} xs={12}>
               <InputLabel>
@@ -90,11 +94,7 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input
-                className="outlined-required"
-                id="txtLastName"
-                name="txtLastName"
-              />
+              <TextField id="txtLastName" name="txtLastName" size="medium" />
             </Grid>
             <Grid item sm={6} xs={12}>
               <InputLabel>
@@ -103,7 +103,7 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input className="outlined-required" name="txtEmail" />
+              <TextField id="txtEmail" name="txtEmail" size="medium" />
               <p className="warning-text" style={{ marginBottom: "6%" }}>
                 <TriangleIcon /> We will send you booking details here
               </p>
@@ -116,10 +116,10 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input
-                className="outlined-required"
+              <TextField
+                id="txtContactNumber"
                 name="txtContactNumber"
-                id="outlined-required"
+                size="medium"
               />
               <div className="warning-text" style={{ marginBottom: "2%" }}>
                 <TriangleIcon />
@@ -134,10 +134,10 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input
-                className="outlined-required"
+              <TextField
                 id="txtFlightNumber"
                 name="txtFlightNumber"
+                size="medium"
               />
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -147,10 +147,10 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <input
-                className="outlined-required"
+              <TextField
                 id="txtFlightFrom"
                 name="txtFlightFrom"
+                size="medium"
               />
             </Grid>
             <Grid item sm={12} xs={12}>
