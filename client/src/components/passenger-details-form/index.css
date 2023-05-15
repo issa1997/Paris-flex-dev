@@ -30,19 +30,7 @@
   margin: 5% 0% !important;
   width: 85%;
 }
-.css-1e6y48t-MuiButtonBase-root-MuiButton-root {
-  border: 1px solid #341ea0;
-  width: 200px;
-  background: #341ea0;
-  border-radius: 12px;
-}
-/* .css-9ddj71-MuiInputBase-root-MuiOutlinedInput-root {
-  background: #ffffff;
-  border: 1px solid #4b31ee;
-  border-radius: 10px !important;
-  height: 35px;
-  margin: 5% 0% !important;
-} */
+
 .warning-text {
   font-size: 10px;
   margin: 0;

@@ -27,7 +27,7 @@ const PassengerDetailSummary: React.FC<{
   return (
     <Card className="card-styles">
       <Grid container spacing={0}>
-        <Grid item md={8} xs={12}>
+        <Grid item sm={8} xs={12}>
           <Grid container spacing={0} direction="column">
             <Box alignContent={"center"} className="summary-fixed-height-box">
               <Badge className="box-styles passengers">
@@ -43,7 +43,7 @@ const PassengerDetailSummary: React.FC<{
           </Grid>
           <Grid container direction="row" mt={{ md: 0, xs: 2 }}>
             {" "}
-            <Grid item xs={12} md={9}>
+            <Grid item xs={12} sm={9}>
               <Stack
                 direction={{ xs: "column", md: "row" }}
                 spacing={{ xs: 0, md: 2 }}
@@ -88,7 +88,7 @@ const PassengerDetailSummary: React.FC<{
             </Grid>
           </Grid>
         </Grid>
-        <Grid item md={4} xs={12}>
+        <Grid item sm={4} xs={12}>
           {" "}
           <Box className="price-box">
             <p className="trip-detail-style">Total One-way Price</p>

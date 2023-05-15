@@ -70,7 +70,7 @@ const PassengerDetails: React.FC<{
         </Typography>
         <Box component="form" autoComplete="off" onSubmit={handleAddPassenger}>
           <Grid container className="form-styles">
-            <Grid item md={6} xs={12}>
+            <Grid item sm={6} xs={12}>
               <InputLabel>
                 Name
                 <span>
@@ -83,7 +83,7 @@ const PassengerDetails: React.FC<{
                 className="outlined-required"
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item sm={6} xs={12}>
               <InputLabel>
                 Last Name{" "}
                 <span>
@@ -96,7 +96,7 @@ const PassengerDetails: React.FC<{
                 name="txtLastName"
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item sm={6} xs={12}>
               <InputLabel>
                 Email{" "}
                 <span>
@@ -109,7 +109,7 @@ const PassengerDetails: React.FC<{
               </p>
             </Grid>
 
-            <Grid item md={6} xs={12}>
+            <Grid item sm={6} xs={12}>
               <InputLabel>
                 Contact Number{" "}
                 <span>
@@ -123,11 +123,11 @@ const PassengerDetails: React.FC<{
               />
               <div className="warning-text" style={{ marginBottom: "2%" }}>
                 <TriangleIcon />
-                Please provide us a working phone number in France. We will
-                contact you using WhatsApp
+                Please provide us a working phone number in France. <br />
+                We will contact you using WhatsApp
               </div>
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item sm={6} xs={12}>
               <InputLabel>
                 Flight/ train number{" "}
                 <span>
@@ -140,7 +140,7 @@ const PassengerDetails: React.FC<{
                 name="txtFlightNumber"
               />
             </Grid>
-            <Grid item md={6} xs={12}>
+            <Grid item sm={6} xs={12}>
               <InputLabel>
                 Flight/ train from{"  "}
                 <span>
@@ -153,7 +153,7 @@ const PassengerDetails: React.FC<{
                 name="txtFlightFrom"
               />
             </Grid>
-            <Grid item md={12} xs={12}>
+            <Grid item sm={12} xs={12}>
               <Button className="submit-styles-button" type="submit">
                 Continue booking {"  "}
                 <ArrowIcon className="submit-icon-style" />

@@ -87,7 +87,7 @@ const ExtrasComponent: React.FC<{
           onSubmit={handleAddPassengerExtra}
         >
           <Grid container className="form-styles">
-            <Grid xs={12} md={6} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
+            <Grid xs={12} sm={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
                 <InputLabel>
                   Note for chauffeur{" "}
@@ -102,13 +102,7 @@ const ExtrasComponent: React.FC<{
                 />
               </div>
             </Grid>
-            <Grid
-              xs={12}
-              md={6}
-              sm={6}
-              className="row-style"
-              mt={{ sm: 3, xs: 0 }}
-            >
+            <Grid xs={12} sm={6} className="row-style" mt={{ sm: 3, xs: 0 }}>
               <Box className="free-seats-styles" mb={1} ml={{ sm: 1.5, xs: 0 }}>
                 <Stack
                   direction="row"
@@ -139,7 +133,11 @@ const ExtrasComponent: React.FC<{
                   </IconButton>
                 </Stack>
               </Box>
-              <Box className="free-seats-styles" ml={{ sm: 1.5, xs: 0 }} mb={{ sm: 0, xs: 1.5}}>
+              <Box
+                className="free-seats-styles"
+                ml={{ sm: 1.5, xs: 0 }}
+                mb={{ sm: 0, xs: 1.5 }}
+              >
                 <Stack
                   direction="row"
                   spacing={0}
