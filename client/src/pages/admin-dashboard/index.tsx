@@ -12,6 +12,7 @@ import RatesComponent from "./rates/index";
 import BookingsComponent from "./bookings/index";
 import Passengers from "./passengers/index";
 import PassengersTable from "./passengers/index";
+import { Link, Route, Router, Routes } from "react-router-dom";
 
 const AdminDashboard = () => {
   const [activeComponent, setActiveComponent] = useState(null);
@@ -29,25 +30,24 @@ const AdminDashboard = () => {
           </Typography>
           <Button
             color="inherit"
-            onClick={() => handleMenuItemClick(<RatesComponent />)}
+            component={Link} to="/admin/rates"
           >
             Rates
           </Button>
           <Button
             color="inherit"
-            onClick={() => handleMenuItemClick(<BookingsComponent />)}
+            component={Link} to="/admin/bookings"
           >
             Bookings
           </Button>
           <Button
             color="inherit"
-            onClick={() => handleMenuItemClick(<PassengersTable />)}
+            component={Link} to="/admin/passengers"
           >
             Passengers
           </Button>
         </Toolbar>
       </AppBar>
-      <div style={{ padding: "20px" }}>{activeComponent}</div>
     </div>
   );
 };
