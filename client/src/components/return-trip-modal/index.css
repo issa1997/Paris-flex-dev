@@ -2,13 +2,27 @@
 * {
   font-family: "Rubik", sans-serif;
 }
-.return-modal-styles{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 3%;
-    width: 600px;
-    height: fit-content;
-    border-radius: 15px !important;
-    background: white;
+.return-modal-styles {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3%;
+  width: 600px;
+  height: fit-content;
+  border-radius: 15px !important;
+  background: white;
+}
+.date-picker {
+  width: 58%;
+  margin: 0 2%;
+  height: 35px;
+}
+.time-picker {
+  width: 67%;
+  margin: 0 2%;
+  height: 35px;
+}
+.react-datetime-picker__wrapper {
+  border-radius: 4px !important;
+  border-color: #bdbdbd !important;
 }
