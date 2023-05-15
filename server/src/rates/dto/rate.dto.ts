@@ -43,4 +43,8 @@ export class RatesFromLocationParamsDto {
   @IsNumber()
   @IsNotEmpty()
   passengerCount: number;
+
+  @IsNumber()
+  @IsNotEmpty()
+  pickUpTime: string;
 }

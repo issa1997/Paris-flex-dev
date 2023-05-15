@@ -98,6 +98,7 @@ const Home: React.FC = () => {
         fromLocation: pickupLocation,
         toLocation: dropLocation,
         passengerCount: Number(passengers),
+        pickUpTime: pickupTime,
       };
       getRateFromLocation(getRatesFromLocationParams)
         .then((response: AxiosResponse) => {
