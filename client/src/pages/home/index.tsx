@@ -120,14 +120,7 @@ const Home: React.FC = () => {
   return (
     <>
       <ToastContainer />
-      <div
-        style={{
-          background: "#F5F6FF",
-          width: "100%",
-          textAlign: "center",
-          marginBottom: "2%",
-        }}
-      >
+      <div>
         <ProgressStepper activeStep={activeStep} />
       </div>
 
