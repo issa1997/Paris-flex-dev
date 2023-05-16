@@ -11,18 +11,34 @@
   height: fit-content;
   border-radius: 15px !important;
   background: white;
-}
-.date-picker {
-  width: 58%;
-  margin: 0 2%;
-  height: 35px;
+  margin: 8% !important;
 }
 .time-picker {
-  width: 67%;
-  margin: 0 2%;
-  height: 35px;
+  width: 65%;
+  background: #ffffff;
+  border: 1px solid #4b31ee !important;
+  border-radius: 10px !important;
+  height: 40px !important;
+  margin-left: 10px !important;
+}
+.date-picker {
+  width: 69%;
+  background: #ffffff;
+  border: 1px solid #4b31ee !important;
+  border-radius: 10px !important;
+  height: 40px !important;
+  margin-left: 10px !important;
 }
 .react-datetime-picker__wrapper {
   border-radius: 4px !important;
-  border-color: #bdbdbd !important;
+  border: none !important;
+}
+
+.return-location-container {
+  display: flex;
+  align-items: center;
+}
+.return-trip-select {
+  width: 68% !important;
+  margin-left: 10px;
 }

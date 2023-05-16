@@ -7,10 +7,11 @@
   align-items: center;
   justify-content: center;
   padding: 3%;
-  width: 699px;
-  height: fit-content;
+  width: auto !important;
+  height: auto !important;
   border-radius: 15px !important;
   background-color: white !important;
+  margin: 8%;
 }
 .select-styles {
   width: 130px !important;
@@ -27,7 +28,7 @@
 .save-trip {
   position: absolute;
   margin: 5% 4% !important;
-  width: 200px;
+  width: 44%;
   height: 40px;
   font-size: 12px !important;
   background-color: #341ea0 !important;
@@ -42,11 +43,22 @@
   margin: 10px !important;
 }
 .date-picker {
-  width: 58%;
-  margin: 0 2%;
-  height: 35px;
+  width: 61%;
+  background: #ffffff;
+  border: 1px solid #4b31ee !important;
+  border-radius: 10px !important;
+  height: 40px !important;
+  margin-left: 10px !important;
 }
 .react-datetime-picker__wrapper {
   border-radius: 4px !important;
-  border-color: #bdbdbd !important;
+  border: none !important;
+}
+.edit-trip-select {
+  width: 64% !important;
+  margin-left: 10px;
+}
+.location-container {
+  display: flex;
+  align-items: center;
 }
