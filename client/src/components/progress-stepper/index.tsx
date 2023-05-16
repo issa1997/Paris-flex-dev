@@ -7,10 +7,23 @@ import { ReactComponent as ExtrasWhite } from "../../assets/icons/extra-white.sv
 import { ReactComponent as ConfirmWhite } from "../../assets/icons/confirm-white.svg";
 import { ReactComponent as Confirm } from "../../assets/icons/confirm.svg";
 import "./index.css";
-const ProgressStepper: React.FC<{ activeStep: number }> = (props) => {
+import { Grid } from "@mui/material";
+const ProgressStepper: React.FC<{ activeStep: number }> = (props: any) => {
   return (
-    <div className="stepper-class-style">
-      <Stepper activeStep={props.activeStep} variant="outlined">
+    <Grid
+      xs={12}
+      sm={12}
+      style={{
+        background: "#F5F6FF",
+        textAlign: "center",
+        marginBottom: "2%",
+      }}
+    >
+      <Stepper
+        activeStep={props.activeStep}
+        variant="outlined"
+        className="stepper-class-style"
+      >
         <Step>
           <StepLabel StepIconComponent={Details}>Details</StepLabel>
         </Step>
@@ -29,7 +42,7 @@ const ProgressStepper: React.FC<{ activeStep: number }> = (props) => {
           </StepLabel>
         </Step>
       </Stepper>
-    </div>
+    </Grid>
   );
 };
 
