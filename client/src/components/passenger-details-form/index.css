@@ -53,3 +53,12 @@
 .submit-icon-style {
   margin: 0 7px;
 }
+
+.MuiOutlinedInput-root {
+  background: #ffffff;
+  border: 1px solid #4b31ee;
+  border-radius: 10px !important;
+  height: 40px;
+  margin: 5% 0% !important;
+  width: 100%;
+}

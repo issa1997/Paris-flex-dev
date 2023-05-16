@@ -14,6 +14,7 @@ export interface RatesFromLocationType {
   toLocation: string;
   fromLocation: string;
   passengerCount: number;
+  pickUpTime: string | null;
 }
 
 export async function getAllRates() {

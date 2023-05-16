@@ -85,7 +85,7 @@ export class RatesController {
     return this.ratesService.remove(parseInt(params.id));
   }
 
-  @Get('from-location/:toLocation/:fromLocaiton/:passengerCount')
+  @Get('from-location/:toLocation/:fromLocaiton/:passengerCount/:pickUpTime')
   async getRatesFromLocation(@Param() params: RatesFromLocationParamsDto) {
     try {
       const rates = await this.ratesService.getRateFromLocation(params);
