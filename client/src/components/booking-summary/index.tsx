@@ -31,16 +31,26 @@ const BookingSummaryComponent: React.FC<{
           </span>
           BOOKING SUMMARY
         </Typography>
-        <Grid container spacing={{md: 3}} rowGap={{xs: 2, md: 0}} className="grid-space">
+        <Grid
+          container
+          spacing={{ md: 3 }}
+          rowGap={{ xs: 2, md: 0 }}
+          className="grid-space"
+        >
           <Grid item xs={12}>
-            <Typography gutterBottom variant="h5" mt={3} className="sub-heading-style">
+            <Typography
+              gutterBottom
+              variant="h5"
+              mt={3}
+              className="sub-heading-style"
+            >
               Passenger Details
               <span>
                 <PassengersDetails className="icon-styles" />
               </span>
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h6" className="data-heading">
               Name
             </Typography>
@@ -48,7 +58,7 @@ const BookingSummaryComponent: React.FC<{
               {props.passengerDetails?.name}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h6" className="data-heading">
               Email
             </Typography>
@@ -56,7 +66,7 @@ const BookingSummaryComponent: React.FC<{
               {props.passengerDetails?.email}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h6" className="data-heading">
               Contact Number
             </Typography>
@@ -64,7 +74,7 @@ const BookingSummaryComponent: React.FC<{
               {props.passengerDetails?.phone}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h6" className="data-heading">
               Flight/Train Number
             </Typography>
@@ -72,7 +82,7 @@ const BookingSummaryComponent: React.FC<{
               {props.passengerDetails?.travelNumber}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h6" className="data-heading">
               Flight/Train from
             </Typography>
@@ -80,10 +90,15 @@ const BookingSummaryComponent: React.FC<{
               {props.passengerDetails?.travelFrom}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} md={4}></Grid>
+          <Grid item xs={12} md={6}></Grid>
         </Grid>
 
-        <Grid container spacing={{md: 3}} rowGap={{xs: 2, md: 0}} className="grid-space">
+        <Grid
+          container
+          spacing={{ md: 3 }}
+          rowGap={{ xs: 2, md: 0 }}
+          className="grid-space"
+        >
           <Grid item xs={12} mt={3}>
             <Typography gutterBottom variant="h5" className="sub-heading-style">
               Extras
@@ -92,7 +107,7 @@ const BookingSummaryComponent: React.FC<{
               </span>
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6}>
+          <Grid item xs={12} md={6}>
             <Typography variant="h6" className="data-heading">
               Notes for chauffeur
             </Typography>
@@ -100,7 +115,7 @@ const BookingSummaryComponent: React.FC<{
               {props.passengerExtrasDetails?.extrasDescription}
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={6} container direction="column" spacing={2}>
+          <Grid item xs={12} md={6} container direction="column" spacing={2}>
             <Box className="free-seats-styles-summary">
               <Stack
                 direction="row"
