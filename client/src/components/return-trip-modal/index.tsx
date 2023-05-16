@@ -1,4 +1,5 @@
 import {
+  Autocomplete,
   Box,
   Button,
   Grid,
@@ -6,6 +7,7 @@ import {
   MenuItem,
   Modal,
   Select,
+  TextField,
 } from "@mui/material";
 import React, { useState } from "react";
 import "./index.css";
@@ -34,6 +36,12 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
   const handleDateChange = (date: any) => {
     setSelectedDate(date);
   };
+  const options = [
+    { value: "A", label: "A" },
+    { value: "B", label: "B" },
+    { value: "C", label: "C" },
+    { value: "D", label: "D" },
+  ];
   return (
     <>
       <Modal
@@ -47,19 +55,16 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Return Location</InputLabel>
-                  <Location />
-                  <Select
-                    labelId="select-label"
-                    id="select"
-                    value={selectedOption}
-                    onChange={handleChange}
-                    className="select-styles"
-                  >
-                    <MenuItem value="A">A</MenuItem>
-                    <MenuItem value="B">B</MenuItem>
-                    <MenuItem value="C">C</MenuItem>
-                    <MenuItem value="D">D</MenuItem>
-                  </Select>
+
+                  <div className="return-location-container">
+                    <Location />
+                    <Autocomplete
+                      disablePortal
+                      className="return-trip-select"
+                      options={options}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </div>
                 </Grid>
                 <Grid item xs={12}>
                   <input
@@ -75,19 +80,15 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
                   <InputLabel id="select-label">
                     Return Drop Location
                   </InputLabel>
-                  <Location />
-                  <Select
-                    labelId="select-label"
-                    id="select"
-                    value={selectedOption}
-                    onChange={handleChange}
-                    className="select-styles"
-                  >
-                    <MenuItem value="A">A</MenuItem>
-                    <MenuItem value="B">B</MenuItem>
-                    <MenuItem value="C">C</MenuItem>
-                    <MenuItem value="D">D</MenuItem>
-                  </Select>
+                  <div className="return-location-container">
+                    <Location />
+                    <Autocomplete
+                      disablePortal
+                      className="return-trip-select"
+                      options={options}
+                      renderInput={(params) => <TextField {...params} />}
+                    />
+                  </div>
                 </Grid>
                 <Grid item xs={12}>
                   <input
