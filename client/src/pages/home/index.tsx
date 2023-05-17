@@ -154,37 +154,10 @@ const Home: React.FC = () => {
               dropoffLocation={dropLocation}
               pickupLocation={pickupLocation}
               time={pickupTime}
+              passengers={passengers}
             />
           </Grid>
         </Grid>
-        {/* <Grid container spacing={2} order={{ xs: 1, sm: 1 }}>
-          <Grid item md={8} xs={12}>
-            <PassengerDetailSummary
-              bookingPrice={bookingPrice}
-              luggagePieces={luggagePieces}
-              passengerCount={passengers}
-            />
-          </Grid>
-          <Grid item md={8} xs={12} order={{ xs: 3, sm: 2 }}>
-            <RenderStepperComponents
-              activeStep={activeStep}
-              setActiveStep={setActiveStep}
-              setPassengerDetails={setPassengerDetails}
-              passengers={passengers}
-              passengerDetails={passengerDetails}
-              setPassengerExtrasDetails={setPassengerExtraDetails}
-              passengerExtrasDetails={passengerExtraDetails}
-            />
-          </Grid>
-          <Grid item md={4} xs={12} order={{ xs: 2, sm: 3 }}>
-            <YourTransfer
-              date={pickupDate}
-              dropoffLocation={dropLocation}
-              pickupLocation={pickupLocation}
-              time={pickupTime}
-            />
-          </Grid>
-        </Grid> */}
       </div>
     </>
   );

@@ -11,6 +11,7 @@ import { BookingsModule } from './bookings/bookings.module';
 import { PassengerExtrasModule } from './passenger-extras/passenger-extras.module';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { LocationsModule } from './locations/locations.module';
 /**
  * Usage and Description - This file will act as the main
  * app wrapper combining the controller functions and the
@@ -28,6 +29,7 @@ import { join } from 'path';
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'build'),
     }),
+    LocationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],

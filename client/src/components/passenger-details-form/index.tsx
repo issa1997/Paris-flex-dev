@@ -33,6 +33,7 @@ const PassengerDetails: React.FC<{
   >;
   pasengers: number;
 }> = (props) => {
+  
   const handleAddPassenger = async (
     event: React.FormEvent<HTMLFormElement>
   ) => {
