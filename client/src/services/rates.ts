@@ -44,7 +44,7 @@ export async function getRate(id: string) {
 
 export async function getRateFromLocation(params: RatesFromLocationType) {
   return invoke(
-    `api/rates/from-location/${params.toLocation}/${params.fromLocation}/${params.passengerCount}`,
+    `api/rates/from-location/${params.toLocation}/${params.fromLocation}/${params.passengerCount}/${params.pickUpTime}`,
     "get",
     {}
   );

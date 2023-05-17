@@ -91,7 +91,8 @@ const Home: React.FC = () => {
     if (
       !_.isNull(pickupLocation) &&
       !_.isNull(dropLocation) &&
-      !_.isNull(passengers)
+      !_.isNull(passengers) &&
+      !_.isNull(pickupTime)
     ) {
       const getRatesFromLocationParams: RatesFromLocationType = {
         fromLocation: pickupLocation,
@@ -102,6 +103,7 @@ const Home: React.FC = () => {
       getRateFromLocation(getRatesFromLocationParams)
         .then((response: AxiosResponse) => {
           const restrcutredResponse: any = response.data;
+          console.log(response.data);
           if (!_.isEmpty(restrcutredResponse.data)) {
             setBookingPrice(restrcutredResponse.data.price);
           }

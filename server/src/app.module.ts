@@ -26,10 +26,10 @@ import { LocationsModule } from './locations/locations.module';
     PassengersModule,
     BookingsModule,
     PassengerExtrasModule,
+    LocationsModule,
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'build'),
     }),
-    LocationsModule,
   ],
   controllers: [AppController],
   providers: [AppService],
