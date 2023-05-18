@@ -28,6 +28,7 @@ const YourTransfer: React.FC<{
   dropoffLocation: string | null;
   date: string | null;
   time: string | null;
+  passengers: string | null;
 }> = (props) => {
   const [editModal, setEditModal] = useState(false);
   const [addReturn, setAddReturn] = useState(false);
@@ -111,7 +112,17 @@ const YourTransfer: React.FC<{
           </Grid>
         </CardContent>
       </Card>
-      <EditTripModal isModalVisible={editModal} onClose={handleClose} />
+      <EditTripModal
+        editData={{
+          dropoffLocation: props.dropoffLocation,
+          passengers: Number(props.passengers),
+          pickupDate: props.date,
+          pickupLocation: props.pickupLocation,
+          pickupTime: props.time,
+        }}
+        isModalVisible={editModal}
+        onClose={handleClose}
+      />
       <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} />
     </>
   );
