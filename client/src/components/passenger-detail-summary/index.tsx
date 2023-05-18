@@ -43,7 +43,7 @@ const PassengerDetailSummary: React.FC<{
           </Grid>
           <Grid container direction="row" mt={{ md: 0, xs: 2 }}>
             {" "}
-            <Grid item xs={12} m={9}>
+            <Grid item xs={12} m={9} className="grid-style-comp">
               <Stack
                 direction={{ xs: "column", md: "row" }}
                 spacing={{ xs: 0, md: 2 }}

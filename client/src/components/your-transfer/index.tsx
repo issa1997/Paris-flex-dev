@@ -64,21 +64,21 @@ const YourTransfer: React.FC<{
                     {props.pickupLocation}
                   </StepLabel>
                 </Step>
-                <Step key={1}>
+                <Step key={2}>
                   <StepLabel StepIconComponent={StepB}>
                     {props.dropoffLocation}
                   </StepLabel>
                 </Step>
               </Stepper>
               <Stepper orientation="vertical">
-                <Step key={1}>
+                <Step key={3}>
                   <StepLabel StepIconComponent={Calendar}>
                     {props.date}
                   </StepLabel>
                 </Step>
               </Stepper>
               <Stepper orientation="vertical">
-                <Step key={1}>
+                <Step key={4}>
                   <StepLabel StepIconComponent={Clock}>{props.time}</StepLabel>
                 </Step>
               </Stepper>
