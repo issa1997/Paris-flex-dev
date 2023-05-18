@@ -18,6 +18,7 @@ import { ReactComponent as Location } from "../../assets/icons/location.svg";
 import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
+import { ReactComponent as Cross } from "../../assets/icons/cross-black.svg";
 interface AddReturnTripModalType {
   isModalVisible: boolean;
   onClose: any;
@@ -51,7 +52,13 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
       >
         <Box className="return-modal-styles">
           <Grid container spacing={2}>
-            <Grid item xs={6} md={4}>
+            <Grid xs={12}>
+              <div className="close-icon">
+                {" "}
+                <Cross height={15} width={15} onClick={props.onClose} />
+              </div>
+            </Grid>
+            <Grid item xs={12} md={6}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Return Location</InputLabel>
@@ -74,7 +81,7 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={6}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">
@@ -98,10 +105,7 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={0} md={4}>
-              {/* Content for row 3, column 3 */}
-            </Grid>
-            <Grid item xs={12} md={4}>
+            <Grid item xs={12} md={6}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Return Time</InputLabel>
@@ -116,15 +120,9 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
                     amPmAriaLabel="Select AM/PM"
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <input
-                    className="location-input"
-                    placeholder="Enter your destinations"
-                  />
-                </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={6}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Return Date</InputLabel>
@@ -147,15 +145,9 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
                     }
                   />
                 </Grid>
-                <Grid item xs={12}>
-                  <input
-                    className="location-input"
-                    placeholder="Enter your destinations"
-                  />
-                </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={6}>
               <Button className="save-trip">Save Trip</Button>
             </Grid>
           </Grid>

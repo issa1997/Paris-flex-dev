@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import "./index.css";
 import { Box, Grid, Modal, Typography } from "@mui/material";
 import { ReactComponent as Cross } from "../../assets/icons/Union.svg";
