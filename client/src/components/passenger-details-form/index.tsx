@@ -23,27 +23,22 @@ import _ from "lodash";
 import { AxiosResponse } from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
-
+import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
+const phoneRegExp =
+  /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
 const validationSchema = yup.object({
-  first_name: yup
-    .string()
-    .required( "First Name is required" ),
-  last_name: yup
-    .string()
-    .required( "Last Name is required" ),
+  first_name: yup.string().required("First Name is required"),
+  last_name: yup.string().required("Last Name is required"),
   email: yup
     .string()
     .email("Enter a valid email")
     .required("Email is required"),
   contact_no: yup
     .string()
-    .required( "Contact number is required" ),
-  flight_train_no: yup
-    .string()
-    .required( "Flight/train number is required" ),
-  flight_train_from: yup
-    .string()
-    .required( "Flight/train from is required" ),
+    .matches(phoneRegExp, "Invalid phone number")
+    .required("Contact number is required"),
+  flight_train_no: yup.string().required("Flight/train number is required"),
+  flight_train_from: yup.string().required("Flight/train from is required"),
 });
 
 const PassengerDetails: React.FC<{
@@ -56,43 +51,8 @@ const PassengerDetails: React.FC<{
     >
   >;
   pasengers: number;
-}> = ( props ) =>
-{
-
-  // const handleAddPassenger = async (
-  //   event: React.FormEvent<HTMLFormElement>
-  // ) => {
-  //   event.preventDefault();
-  //   const formData = new FormData(event.currentTarget);
-  //   const passenger: Omit<PassengerDetailsType, "id" | "isDelete"> = {
-  //     name: String(formData.get("first_name")),
-  //     lastName: String(formData.get("last_name")),
-  //     email: String(formData.get("email")),
-  //     passengerCount: Number(props.pasengers),
-  //     phone: String(formData.get("contact_no")),
-  //     travelFrom: String(formData.get("flight_train_no")),
-  //     travelNumber: String(formData.get("flight_train_from")),
-  //   };
-  //   if (!_.isEmpty(passenger) || !_.isUndefined(passenger)) {
-  //     createPassenger(passenger)
-  //       .then((response: AxiosResponse) => {
-  //         const restrcutredResponse: any = response.data;
-  //         toast.success(restrcutredResponse.message, {
-  //           position: "bottom-right",
-  //         });
-  //         props.setActiveStep(props.activeStep + 1);
-  //         props.setPassengerId(restrcutredResponse.data.id);
-  //         props.setPassengerDetails(restrcutredResponse.data);
-  //         console.log(restrcutredResponse.data);
-  //       })
-  //       .catch((error: any) => {
-  //         const response: any = error.response.data;
-  //         toast.error(response.message, { position: "bottom-right" });
-  //       });
-  //   }
-  // };
-
-  const formik = useFormik( {
+}> = (props) => {
+  const formik = useFormik({
     initialValues: {
       first_name: "",
       last_name: "",
@@ -117,6 +77,7 @@ const PassengerDetails: React.FC<{
         createPassenger(passenger)
           .then((response: AxiosResponse) => {
             const restrcutredResponse: any = response.data;
+            console.log(response.data);
             toast.success(restrcutredResponse.message, {
               position: "bottom-right",
             });
@@ -182,9 +143,7 @@ const PassengerDetails: React.FC<{
                 error={
                   formik.touched.last_name && Boolean(formik.errors.last_name)
                 }
-                helperText={
-                  formik.touched.last_name && formik.errors.last_name
-                }
+                helperText={formik.touched.last_name && formik.errors.last_name}
               />
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -197,7 +156,7 @@ const PassengerDetails: React.FC<{
               <TextField
                 id="email"
                 name="email"
-                size="medium"
+                size="small"
                 value={formik.values.email}
                 onChange={formik.handleChange}
                 error={formik.touched.email && Boolean(formik.errors.email)}
@@ -215,7 +174,25 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField
+
+              <MuiTelInput
+                id="contact_no"
+                name="contact_no"
+                size="medium"
+                value={formik.values.contact_no}
+                defaultCountry="FR"
+                onChange={(value: any) => {
+                  matchIsValidTel(value);
+                  formik.setFieldValue("contact_no", value);
+                }}
+                error={
+                  formik.touched.contact_no && Boolean(formik.errors.contact_no)
+                }
+                helperText={
+                  formik.touched.contact_no && formik.errors.contact_no
+                }
+              />
+              {/* <TextField
                 id="contact_no"
                 name="contact_no"
                 size="medium"
@@ -227,7 +204,7 @@ const PassengerDetails: React.FC<{
                 helperText={
                   formik.touched.contact_no && formik.errors.contact_no
                 }
-              />
+              /> */}
               <div className="warning-text" style={{ marginBottom: "2%" }}>
                 <TriangleIcon />
                 Please provide us a working phone number in France. <br />
@@ -248,10 +225,12 @@ const PassengerDetails: React.FC<{
                 value={formik.values.flight_train_no}
                 onChange={formik.handleChange}
                 error={
-                  formik.touched.flight_train_no && Boolean(formik.errors.flight_train_no)
+                  formik.touched.flight_train_no &&
+                  Boolean(formik.errors.flight_train_no)
                 }
                 helperText={
-                  formik.touched.flight_train_no && formik.errors.flight_train_no
+                  formik.touched.flight_train_no &&
+                  formik.errors.flight_train_no
                 }
               />
             </Grid>
@@ -269,10 +248,12 @@ const PassengerDetails: React.FC<{
                 value={formik.values.flight_train_from}
                 onChange={formik.handleChange}
                 error={
-                  formik.touched.flight_train_from && Boolean(formik.errors.flight_train_from)
+                  formik.touched.flight_train_from &&
+                  Boolean(formik.errors.flight_train_from)
                 }
                 helperText={
-                  formik.touched.flight_train_from && formik.errors.flight_train_from
+                  formik.touched.flight_train_from &&
+                  formik.errors.flight_train_from
                 }
               />
             </Grid>

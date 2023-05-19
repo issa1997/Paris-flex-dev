@@ -62,6 +62,18 @@
   margin: 5% 0% !important;
   width: 100%;
 }
+.css-1wc848c-MuiFormHelperText-root.Mui-error {
+  color: red !important;
+  font-weight: 700 !important;
+  margin-top: -3px !important;
+}
+.css-k4qjio-MuiFormHelperText-root.Mui-error {
+  color: red !important;
+  font-weight: 700 !important;
+}
+.css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 84% !important;
+}
 @media screen and (max-width: 600px) {
   .submit-styles-button {
     width: 78% !important;

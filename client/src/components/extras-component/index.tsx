@@ -56,19 +56,19 @@ const ExtrasComponent: React.FC<{
     };
     props.setActiveStep(props.activeStep + 1);
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
-      // createPassengerExtra(passengerExtra)
-      //   .then((response: AxiosResponse) => {
-      //     const restrcutredResponse: any = response.data;
-      //     toast.success(restrcutredResponse.message, {
-      //       position: "bottom-right",
-      //     });
-      //     props.setPassengerExtrasDetails(response.data.data);
-      //     props.setActiveStep(props.activeStep + 1);
-      //   })
-      //   .catch((error: any) => {
-      //     const response: any = error.response.data;
-      //     toast.error(response.message, { position: "bottom-right" });
-      //   });
+      createPassengerExtra(passengerExtra)
+        .then((response: AxiosResponse) => {
+          const restrcutredResponse: any = response.data;
+          toast.success(restrcutredResponse.message, {
+            position: "bottom-right",
+          });
+          props.setPassengerExtrasDetails(response.data.data);
+          props.setActiveStep(props.activeStep + 1);
+        })
+        .catch((error: any) => {
+          const response: any = error.response.data;
+          toast.error(response.message, { position: "bottom-right" });
+        });
     }
   };
   return (
@@ -117,7 +117,11 @@ const ExtrasComponent: React.FC<{
                     color="primary"
                     aria-label="upload picture"
                     component="label"
-                    onClick={() => setBabySeaters(babySeats - 1)}
+                    onClick={() => {
+                      if (babySeats > 0) {
+                        setBabySeaters(babySeats - 1);
+                      }
+                    }}
                   >
                     <Minus />
                   </IconButton>

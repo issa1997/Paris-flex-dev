@@ -248,6 +248,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                     className="date-picker"
                     disableClock={true}
                     calendarIcon={null}
+                    minDate={new Date()}
                     formatDay={(locale: any, date: any) =>
                       date.toLocaleDateString(locale, { day: "numeric" })
                     }
@@ -354,6 +355,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                         className="date-picker"
                         disableClock={true}
                         calendarIcon={null}
+                        minDate={new Date()}
                         formatDay={(locale: any, date: any) =>
                           date.toLocaleDateString(locale, { day: "numeric" })
                         }

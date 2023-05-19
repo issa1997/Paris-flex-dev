@@ -128,6 +128,7 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
                   <InputLabel id="select-label">Return Date</InputLabel>
                   <Calendar />
                   <DateTimePicker
+                    minDate={new Date()}
                     onChange={handleDateChange}
                     value={selectedDate}
                     format="dd-MM-y"
