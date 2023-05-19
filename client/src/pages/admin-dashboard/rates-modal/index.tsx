@@ -1,15 +1,21 @@
-import { Button, Modal, TextField } from "@mui/material";
+import { Button, Grid, Modal, TextField } from "@mui/material";
 import React from "react";
 interface AddBookingModalType {
   isModalVisible: boolean;
   onClose: any;
 }
-const AddBookingModal: React.FC<AddBookingModalType> = (props) => {
+const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
   return (
     <Modal
       open={props.isModalVisible}
       onClose={props.onClose}
-      sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+      sx={{
+        display: "flex",
+        width: "auto",
+        alignItems: "center",
+        justifyContent: "center",
+        margin: "8%",
+      }}
     >
       <div
         style={{
@@ -19,16 +25,24 @@ const AddBookingModal: React.FC<AddBookingModalType> = (props) => {
           outline: "none",
         }}
       >
-        <h2>Add Booking</h2>
-        <TextField label="Pickup Location" />
-        <TextField label="DropOff Location" />
-        <TextField label="Passenger ID" />
-        <TextField label="Pickup Date" />
-        <TextField label="Pickup Time" />
-        <TextField label="Rate ID" />
-        <TextField label="Trip Type" />
-        <TextField label="Luggage Pieces" />
-        <TextField label="Booking Ref ID" />
+        <h2>Add Rates</h2>
+        <Grid container spacing={2}>
+          <Grid item xs={12} sm={6} md={6}>
+            <TextField label="From Location" sx={{ width: "64%" }} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <TextField label="To Location" sx={{ width: "64%" }} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <TextField label="Passenger Count" sx={{ width: "64%" }} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <TextField label="Package Name" sx={{ width: "64%" }} />
+          </Grid>
+          <Grid item xs={12} sm={6} md={6}>
+            <TextField label="Rate" sx={{ width: "64%" }} />
+          </Grid>
+        </Grid>
         <Button
           variant="contained"
           color="primary"
@@ -41,4 +55,4 @@ const AddBookingModal: React.FC<AddBookingModalType> = (props) => {
     </Modal>
   );
 };
-export default AddBookingModal;
+export default AddRatesModal;

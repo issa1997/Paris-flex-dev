@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -10,13 +10,21 @@ import { ReactComponent as Edit } from "../../../assets/icons/edit.svg";
 import { ReactComponent as Delete } from "../../../assets/icons/delete.svg";
 import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
+import AddRatesModal from "../rates-modal";
+import NavigationBar from "../navigation-bar";
 
 const RatesTable: React.FC = () => {
+  const [editModal, setEditModal] = useState(false);
+  const handleClose = () => {
+    setEditModal(false);
+  };
+
   const rates = [
     {
       id: 1,
       fromLocation: "New York City",
       toLocation: "Los Angeles",
+      packageName: "Los Angeles",
       passengerCount: 2,
       ratePrice: 500.0,
     },
@@ -24,6 +32,7 @@ const RatesTable: React.FC = () => {
       id: 2,
       fromLocation: "San Francisco",
       toLocation: "Seattle",
+      packageName: "Los Angeles",
       passengerCount: 1,
       ratePrice: 350.0,
     },
@@ -32,62 +41,61 @@ const RatesTable: React.FC = () => {
       fromLocation: "Chicago",
       toLocation: "Houston",
       passengerCount: 4,
+      packageName: "Los Angeles",
       ratePrice: 750.0,
     },
   ];
   return (
     <div style={{ flexGrow: 1 }}>
-    <AppBar position="static">
-      <Toolbar>
-        <Typography variant="h6" style={{ flexGrow: 1 }}>
-          Paris Flex
-        </Typography>
-        <Button color="inherit" component={Link} to="/admin/rates">
+      <NavigationBar />
+      <Box sx={{ maxWidth: "100%", margin: "8%" }}>
+        <Typography variant="h3" style={{ flexGrow: 1, textAlign: "center" }}>
           Rates
+        </Typography>
+        <Button
+          style={{ float: "right", background: "#341EA0", color: "white" }}
+          onClick={() => setEditModal(true)}
+        >
+          Add Rates
         </Button>
-        <Button color="inherit" component={Link} to="/admin/bookings">
-          Bookings
+        <Button color="inherit" component={Link} to="/admin/booking-summary">
+          Booking Summary
         </Button>
-        <Button color="inherit" component={Link} to="/admin/passengers">
-          Passengers
-        </Button>
-      </Toolbar>
-    </AppBar>
-    <Box sx={{ maxWidth: "100%", margin: "8%" }}>
-      <Typography variant="h3" style={{ flexGrow: 1, textAlign: "center" }}>
-        Rates
-      </Typography>
-      <TableContainer component={Paper}>
-        <Table className={""} aria-label="rates table">
-          <TableHead>
-            <TableRow>
-              <TableCell>From Location</TableCell>
-              <TableCell>To Location</TableCell>
-              <TableCell>Passenger Count</TableCell>
-              <TableCell>Rate Price</TableCell>
-              <TableCell>Actions</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            {rates.map((rate) => (
-              <TableRow key={rate.id}>
-                <TableCell component="th" scope="row">
-                  {rate.fromLocation}
-                </TableCell>
-                <TableCell>{rate.toLocation}</TableCell>
-                <TableCell>{rate.passengerCount}</TableCell>
-                <TableCell>{rate.ratePrice}</TableCell>
-                <TableCell>
-                  <Delete />
-                  <Edit />
-                </TableCell>
+        <TableContainer component={Paper}>
+          <Table className={""} aria-label="rates table">
+            <TableHead>
+              <TableRow>
+                <TableCell>From Location</TableCell>
+                <TableCell>To Location</TableCell>
+                <TableCell>Passenger Count</TableCell>
+                <TableCell>Package Name</TableCell>
+                <TableCell>Rate Price</TableCell>
+                <TableCell>Actions</TableCell>
               </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </TableContainer>
+            </TableHead>
+            <TableBody>
+              {rates.map((rate) => (
+                <TableRow key={rate.id}>
+                  <TableCell component="th" scope="row">
+                    {rate.fromLocation}
+                  </TableCell>
+                  <TableCell>{rate.toLocation}</TableCell>
+
+                  <TableCell>{rate.passengerCount}</TableCell>
+                  <TableCell>{rate.packageName}</TableCell>
+                  <TableCell>{rate.ratePrice}</TableCell>
+                  <TableCell>
+                    <Delete />
+                    <Edit />
+                  </TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <AddRatesModal isModalVisible={editModal} onClose={handleClose} />
       </Box>
-      </div>
+    </div>
   );
 };
 export default RatesTable;
