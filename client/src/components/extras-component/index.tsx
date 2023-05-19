@@ -100,7 +100,7 @@ const ExtrasComponent: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField style={{width: "100%"}} />
+              <TextField style={{width: "100%", marginTop: "-10px"}} />
             </Grid>
             <Grid xs={12} md={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
@@ -111,6 +111,7 @@ const ExtrasComponent: React.FC<{
                   </span>
                 </InputLabel>
                 <textarea
+                style={{padding: "10px"}}
                   id="txtExtraDescription"
                   name="txtExtraDescription"
                   className="input-bx"
