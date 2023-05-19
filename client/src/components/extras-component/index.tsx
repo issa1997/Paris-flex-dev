@@ -100,7 +100,7 @@ const ExtrasComponent: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField style={{width: "100%"}} />
+              <TextField style={{width: "100%", marginTop: "-10px"}} />
             </Grid>
             <Grid xs={12} md={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
@@ -111,6 +111,7 @@ const ExtrasComponent: React.FC<{
                   </span>
                 </InputLabel>
                 <textarea
+                style={{padding: "10px"}}
                   id="txtExtraDescription"
                   name="txtExtraDescription"
                   className="input-bx"
@@ -118,12 +119,13 @@ const ExtrasComponent: React.FC<{
               </div>
             </Grid>
             <Grid xs={12} md={6} className="row-style" mt={{ sm: 3, xs: 0 }}>
-              <Box className="free-seats-styles" mb={1} ml={{ sm: 1.5, xs: 0 }}>
+              <Box className="free-seats-styles" mb={1} ml={{ sm: 1.5, xs: 0, md: 1.5 }}>
                 <Stack
                   direction="row"
                   spacing={0}
                   justifyContent="center"
                   alignItems="center"
+                  mt={1}
                 >
                   <BabySeats className="seating-icon-style" />
                   <FreeTag />
@@ -154,7 +156,7 @@ const ExtrasComponent: React.FC<{
               </Box>
               <Box
                 className="free-seats-styles"
-                ml={{ sm: 1.5, xs: 0 }}
+                ml={{ sm: 1.5, xs: 0 ,md: 1.5}}
                 mb={{ sm: 0, xs: 1.5 }}
               >
                 <Stack
@@ -162,6 +164,7 @@ const ExtrasComponent: React.FC<{
                   spacing={0}
                   justifyContent="center"
                   alignItems="center"
+                  mt={1}
                 >
                   <Booster className="seating-icon-style" />
                   <FreeTag />

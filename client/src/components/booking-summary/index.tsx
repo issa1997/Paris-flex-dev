@@ -122,6 +122,7 @@ const BookingSummaryComponent: React.FC<{
                 spacing={2}
                 justifyContent="center"
                 alignItems="center"
+                mt={1}
               >
                 <BabySeats className="seating-icon-style" />
                 <Stack
@@ -145,6 +146,7 @@ const BookingSummaryComponent: React.FC<{
                 spacing={2}
                 justifyContent="center"
                 alignItems="center"
+                mt={1}
               >
                 <Booster className="seating-icon-style-summary" />
                 <Stack

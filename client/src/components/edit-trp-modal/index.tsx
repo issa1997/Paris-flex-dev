@@ -20,6 +20,7 @@ import { ReactComponent as Clock } from "../../assets/icons/clock.svg";
 import { getAllLocations } from "../../services/locations";
 import _ from "lodash";
 import { ReactComponent as Cross } from "../../assets/icons/cross-black.svg";
+import AddReturnTripModal from "../return-trip-modal";
 
 export type EditTripData = {
   pickupLocation: string | null;
@@ -68,7 +69,9 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
     setSelectedOption(event.target.value);
   };
 
-  console.log(formData);
+ const handleReturnClose = ()=>{
+setAddReturn(false);  
+ }
 
   let passengerCount: any[] = [
     {
@@ -271,116 +274,15 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
               </Button>
               <Button
                 className="save-button-styles"
-                disabled={addReturn ? true : false}
               >
                 Save Trip
               </Button>
             </Grid>
-            {addReturn ? (
-              <>
-                <Grid item xs={6} md={4}>
-                  <Grid>
-                    <Grid>
-                      <InputLabel id="select-label">Return Location</InputLabel>
-                      <div className="location-container">
-                        <Passengers />
-                        <Autocomplete
-                          disablePortal
-                          className="edit-trip-select"
-                          options={pickUpLocations}
-                          renderInput={(params) => <TextField {...params} />}
-                        />
-                      </div>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <input
-                        className="location-input"
-                        placeholder="Enter your return location."
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} md={4}>
-                  <Grid>
-                    <Grid>
-                      <InputLabel id="select-label">
-                        Return Drop Location
-                      </InputLabel>
 
-                      <div className="location-container">
-                        <Location />
-                        <Autocomplete
-                          disablePortal
-                          className="edit-trip-select"
-                          options={dropOffLocations}
-                          renderInput={(params) => <TextField {...params} />}
-                        />
-                      </div>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <input
-                        className="location-input"
-                        placeholder="Enter your drop location"
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-
-                <Grid item xs={6} md={4}>
-                  <Grid>
-                    <Grid>
-                      <InputLabel id="select-label">Return Time</InputLabel>
-                      <Clock />
-                      <DateTimePicker
-                        onChange={handleTimeChange}
-                        value={selectedTime}
-                        format="HH:mm a"
-                        calendarIcon={null}
-                        clearIcon={null}
-                        className="date-picker"
-                        amPmAriaLabel="Select AM/PM"
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} md={4}>
-                  <Grid>
-                    <Grid>
-                      <InputLabel id="select-label">Return Date</InputLabel>
-                      <Calendar />
-                      <DateTimePicker
-                        onChange={handleDateChange}
-                        value={selectedDate}
-                        format="dd-MM-y"
-                        className="date-picker"
-                        disableClock={true}
-                        calendarIcon={null}
-                        minDate={new Date()}
-                        formatDay={(locale: any, date: any) =>
-                          date.toLocaleDateString(locale, { day: "numeric" })
-                        }
-                        formatMonth={(locale: any, date: any) =>
-                          date.toLocaleDateString(locale, { month: "short" })
-                        }
-                        formatYear={(locale: any, date: any) =>
-                          date.toLocaleDateString(locale, { year: "numeric" })
-                        }
-                      />
-                    </Grid>
-                  </Grid>
-                </Grid>
-                <Grid item xs={6} md={4}>
-                  <Button className="save-trip" type="submit">
-                    Save Trip
-                  </Button>
-                </Grid>
-              </>
-            ) : (
-              <></>
-            )}
           </Grid>
         </Box>
       </Modal>
+      <AddReturnTripModal isModalVisible={addReturn} onClose={handleReturnClose} />
     </>
   );
 };
