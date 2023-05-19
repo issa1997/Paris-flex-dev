@@ -141,3 +141,11 @@
     border-top-right-radius: 0;
   }
 }
+@media screen and (max-width: 415px) {
+  .box-styles.passengers {
+    width: 40% !important;
+  }
+  .box-styles.suitcase{
+    width: 40% !important;
+  }
+}
