@@ -10,6 +10,7 @@ import {
   Fab,
   Stack,
   IconButton,
+  TextField,
 } from "@mui/material";
 import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
@@ -87,6 +88,20 @@ const ExtrasComponent: React.FC<{
           onSubmit={handleAddPassengerExtra}
         >
           <Grid container className="form-styles">
+            <Grid
+              xs={12}
+              md={12}
+              sm={12}
+              columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+            >
+              <InputLabel>
+                Pickup Land Mark{" "}
+                <span>
+                  <RequiredSign />
+                </span>
+              </InputLabel>
+              <TextField style={{width: "100%"}} />
+            </Grid>
             <Grid xs={12} md={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
                 <InputLabel>
