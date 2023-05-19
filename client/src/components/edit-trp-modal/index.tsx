@@ -4,12 +4,8 @@ import {
   Button,
   Grid,
   InputLabel,
-  MenuItem,
   Modal,
-  OutlinedInput,
-  Select,
   TextField,
-  Typography,
 } from "@mui/material";
 import React, { useEffect, useRef, useState } from "react";
 import DateTimePicker from "react-datetime-picker";
@@ -23,6 +19,7 @@ import { ReactComponent as Calendar } from "../../assets/icons/calendar.svg";
 import { ReactComponent as Clock } from "../../assets/icons/clock.svg";
 import { getAllLocations } from "../../services/locations";
 import _ from "lodash";
+import { ReactComponent as Cross } from "../../assets/icons/cross-black.svg";
 
 export type EditTripData = {
   pickupLocation: string | null;
@@ -120,11 +117,21 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
       <Modal
         open={props.isModalVisible}
         onClose={props.onClose}
-        sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+        }}
       >
         <Box className="edit-modal-styles" component="form">
           <Grid container spacing={2}>
-            <Grid item xs={6} md={4}>
+            <Grid xs={12}>
+              <div className="close-icon">
+                {" "}
+                <Cross height={15} width={15} onClick={props.onClose} />
+              </div>
+            </Grid>
+            <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Pickup Location</InputLabel>
@@ -151,7 +158,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Dropoff Location</InputLabel>
@@ -178,7 +185,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Passengers</InputLabel>
@@ -206,7 +213,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Pickup Time</InputLabel>
@@ -223,7 +230,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
                   <InputLabel id="select-label">Pickup date</InputLabel>
@@ -241,6 +248,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                     className="date-picker"
                     disableClock={true}
                     calendarIcon={null}
+                    minDate={new Date()}
                     formatDay={(locale: any, date: any) =>
                       date.toLocaleDateString(locale, { day: "numeric" })
                     }
@@ -254,12 +262,18 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                 </Grid>
               </Grid>
             </Grid>
-            <Grid item xs={6} md={4}>
+            <Grid item xs={12} md={4}>
               <Button
                 className="return-button-styles"
                 onClick={() => setAddReturn(true)}
               >
                 ADD RETURN
+              </Button>
+              <Button
+                className="save-button-styles"
+                disabled={addReturn ? true : false}
+              >
+                Save Trip
               </Button>
             </Grid>
             {addReturn ? (
@@ -311,9 +325,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                     </Grid>
                   </Grid>
                 </Grid>
-                <Grid item xs={6} md={4}>
-                  {/* Content for row 3, column 3 */}
-                </Grid>
+
                 <Grid item xs={6} md={4}>
                   <Grid>
                     <Grid>
@@ -343,6 +355,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
                         className="date-picker"
                         disableClock={true}
                         calendarIcon={null}
+                        minDate={new Date()}
                         formatDay={(locale: any, date: any) =>
                           date.toLocaleDateString(locale, { day: "numeric" })
                         }

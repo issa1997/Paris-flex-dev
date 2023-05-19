@@ -26,7 +26,6 @@
   border: none !important;
 }
 .save-trip {
-  position: absolute;
   margin: 5% 4% !important;
   width: 44%;
   height: 40px;
@@ -42,13 +41,19 @@
   color: white !important;
   margin: 10px !important;
 }
+.save-button-styles {
+  width: 110px;
+  background: #341ea0 !important;
+  color: white !important;
+  margin: 10px !important;
+}
 .date-picker {
   width: 61%;
   background: #ffffff;
   border: 1px solid #4b31ee !important;
   border-radius: 10px !important;
   height: 40px !important;
-  margin-left: 10px !important;
+  margin-left: 5% !important;
 }
 .react-datetime-picker__wrapper {
   border-radius: 4px !important;
@@ -61,4 +66,8 @@
 .location-container {
   display: flex;
   align-items: center;
+}
+.css-l3ln04-MuiAutocomplete-root .MuiOutlinedInput-root .MuiAutocomplete-input {
+  margin: 0px 4px 7.5px 6px !important ;
+  padding: 0px 4px 7.5px 6px !important ;
 }

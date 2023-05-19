@@ -21,6 +21,25 @@ import {
 import "react-toastify/dist/ReactToastify.min.css";
 import _ from "lodash";
 import { AxiosResponse } from "axios";
+import { useFormik } from "formik";
+import * as yup from "yup";
+import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
+const phoneRegExp =
+  /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+const validationSchema = yup.object({
+  first_name: yup.string().required("First Name is required"),
+  last_name: yup.string().required("Last Name is required"),
+  email: yup
+    .string()
+    .email("Enter a valid email")
+    .required("Email is required"),
+  contact_no: yup
+    .string()
+    .matches(phoneRegExp, "Invalid phone number")
+    .required("Contact number is required"),
+  flight_train_no: yup.string().required("Flight/train number is required"),
+  flight_train_from: yup.string().required("Flight/train from is required"),
+});
 
 const PassengerDetails: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -33,39 +52,47 @@ const PassengerDetails: React.FC<{
   >;
   pasengers: number;
 }> = (props) => {
-  
-  const handleAddPassenger = async (
-    event: React.FormEvent<HTMLFormElement>
-  ) => {
-    event.preventDefault();
-    const formData = new FormData(event.currentTarget);
-    const passenger: Omit<PassengerDetailsType, "id" | "isDelete"> = {
-      name: String(formData.get("txtName")),
-      lastName: String(formData.get("txtLastName")),
-      email: String(formData.get("txtEmail")),
-      passengerCount: Number(props.pasengers),
-      phone: String(formData.get("txtContactNumber")),
-      travelFrom: String(formData.get("txtFlightNumber")),
-      travelNumber: String(formData.get("txtFlightFrom")),
-    };
-    if (!_.isEmpty(passenger) || !_.isUndefined(passenger)) {
-      createPassenger(passenger)
-        .then((response: AxiosResponse) => {
-          const restrcutredResponse: any = response.data;
-          toast.success(restrcutredResponse.message, {
-            position: "bottom-right",
+  const formik = useFormik({
+    initialValues: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      contact_no: "",
+      flight_train_no: "",
+      flight_train_from: "",
+    },
+    validationSchema: validationSchema,
+    onSubmit: (values) => {
+      const passenger: Omit<PassengerDetailsType, "id" | "isDelete"> = {
+        name: values.first_name,
+        lastName: values.last_name,
+        email: values.email,
+        passengerCount: Number(props.pasengers),
+        phone: values.contact_no,
+        travelFrom: values.flight_train_no,
+        travelNumber: values.flight_train_from,
+      };
+
+      if (!_.isEmpty(passenger) || !_.isUndefined(passenger)) {
+        createPassenger(passenger)
+          .then((response: AxiosResponse) => {
+            const restrcutredResponse: any = response.data;
+            console.log(response.data);
+            toast.success(restrcutredResponse.message, {
+              position: "bottom-right",
+            });
+            props.setActiveStep(props.activeStep + 1);
+            props.setPassengerId(restrcutredResponse.data.id);
+            props.setPassengerDetails(restrcutredResponse.data);
+            console.log(restrcutredResponse.data);
+          })
+          .catch((error: any) => {
+            const response: any = error.response.data;
+            toast.error(response.message, { position: "bottom-right" });
           });
-          props.setActiveStep(props.activeStep + 1);
-          props.setPassengerId(restrcutredResponse.data.id);
-          props.setPassengerDetails(restrcutredResponse.data);
-          console.log(restrcutredResponse.data);
-        })
-        .catch((error: any) => {
-          const response: any = error.response.data;
-          toast.error(response.message, { position: "bottom-right" });
-        });
-    }
-  };
+      }
+    },
+  });
 
   return (
     <>
@@ -77,7 +104,7 @@ const PassengerDetails: React.FC<{
             <PassengersDetails className="icon-styles" />
           </span>
         </Typography>
-        <Box component="form" autoComplete="off" onSubmit={handleAddPassenger}>
+        <Box component="form" autoComplete="off" onSubmit={formik.handleSubmit}>
           <Grid container className="form-styles">
             <Grid item sm={6} xs={12}>
               <InputLabel>
@@ -86,7 +113,19 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField id="txtName" name="txtName" size="medium" />
+              <TextField
+                id="first_name"
+                name="first_name"
+                size="medium"
+                value={formik.values.first_name}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.first_name && Boolean(formik.errors.first_name)
+                }
+                helperText={
+                  formik.touched.first_name && formik.errors.first_name
+                }
+              />
             </Grid>
             <Grid item sm={6} xs={12}>
               <InputLabel>
@@ -95,7 +134,17 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField id="txtLastName" name="txtLastName" size="medium" />
+              <TextField
+                id="last_name"
+                name="last_name"
+                size="medium"
+                value={formik.values.last_name}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.last_name && Boolean(formik.errors.last_name)
+                }
+                helperText={formik.touched.last_name && formik.errors.last_name}
+              />
             </Grid>
             <Grid item sm={6} xs={12}>
               <InputLabel>
@@ -104,7 +153,15 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField id="txtEmail" name="txtEmail" size="medium" />
+              <TextField
+                id="email"
+                name="email"
+                size="small"
+                value={formik.values.email}
+                onChange={formik.handleChange}
+                error={formik.touched.email && Boolean(formik.errors.email)}
+                helperText={formik.touched.email && formik.errors.email}
+              />
               <p className="warning-text" style={{ marginBottom: "6%" }}>
                 <TriangleIcon /> We will send you booking details here
               </p>
@@ -117,11 +174,37 @@ const PassengerDetails: React.FC<{
                   <RequiredSign />
                 </span>
               </InputLabel>
-              <TextField
-                id="txtContactNumber"
-                name="txtContactNumber"
+
+              <MuiTelInput
+                id="contact_no"
+                name="contact_no"
                 size="medium"
+                value={formik.values.contact_no}
+                defaultCountry="FR"
+                onChange={(value: any) => {
+                  matchIsValidTel(value);
+                  formik.setFieldValue("contact_no", value);
+                }}
+                error={
+                  formik.touched.contact_no && Boolean(formik.errors.contact_no)
+                }
+                helperText={
+                  formik.touched.contact_no && formik.errors.contact_no
+                }
               />
+              {/* <TextField
+                id="contact_no"
+                name="contact_no"
+                size="medium"
+                value={formik.values.contact_no}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.contact_no && Boolean(formik.errors.contact_no)
+                }
+                helperText={
+                  formik.touched.contact_no && formik.errors.contact_no
+                }
+              /> */}
               <div className="warning-text" style={{ marginBottom: "2%" }}>
                 <TriangleIcon />
                 Please provide us a working phone number in France. <br />
@@ -136,9 +219,19 @@ const PassengerDetails: React.FC<{
                 </span>
               </InputLabel>
               <TextField
-                id="txtFlightNumber"
-                name="txtFlightNumber"
+                id="flight_train_no"
+                name="flight_train_no"
                 size="medium"
+                value={formik.values.flight_train_no}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.flight_train_no &&
+                  Boolean(formik.errors.flight_train_no)
+                }
+                helperText={
+                  formik.touched.flight_train_no &&
+                  formik.errors.flight_train_no
+                }
               />
             </Grid>
             <Grid item sm={6} xs={12}>
@@ -149,9 +242,19 @@ const PassengerDetails: React.FC<{
                 </span>
               </InputLabel>
               <TextField
-                id="txtFlightFrom"
-                name="txtFlightFrom"
+                id="flight_train_from"
+                name="flight_train_from"
                 size="medium"
+                value={formik.values.flight_train_from}
+                onChange={formik.handleChange}
+                error={
+                  formik.touched.flight_train_from &&
+                  Boolean(formik.errors.flight_train_from)
+                }
+                helperText={
+                  formik.touched.flight_train_from &&
+                  formik.errors.flight_train_from
+                }
               />
             </Grid>
             <Grid item sm={12} xs={12}>

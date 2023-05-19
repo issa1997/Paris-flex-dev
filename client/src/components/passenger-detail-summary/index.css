@@ -21,6 +21,9 @@
   width: 18px !important;
   height: 18px !important;
 }
+.summary-fixed-height-box {
+  justify-content: space-evenly;
+}
 .list-button-style {
   padding-right: 0 !important;
   width: 120% !important;
@@ -112,6 +115,10 @@
   font-style: italic;
 }
 
+.grid-style-comp {
+  margin: 0 !important;
+}
+
 @media screen and (max-width: 900px) {
   .box-styles.passengers {
     width: 40%;
@@ -124,5 +131,13 @@
   }
   .summary-fixed-height-box {
     height: 40px;
+  }
+  .grid-style-comp {
+    background: #f4f5fe;
+    margin: 10px;
+  }
+  .price-box {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
   }
 }

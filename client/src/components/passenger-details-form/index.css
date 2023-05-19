@@ -8,7 +8,7 @@
   border-radius: 20px !important;
   display: flex;
   flex-direction: column;
-  padding: 54px 20px 20px 20px !important;
+  padding: 54px 20px 20px 42px !important;
   gap: 17px;
   height: auto !important;
 }
@@ -40,7 +40,7 @@
 }
 .submit-styles-button {
   color: #ffffff !important;
-  width: 93% !important;
+  width: 85% !important;
   background: #341ea0 !important;
   border-radius: 12px !important;
 }
@@ -61,4 +61,21 @@
   height: 40px;
   margin: 5% 0% !important;
   width: 100%;
+}
+.css-1wc848c-MuiFormHelperText-root.Mui-error {
+  color: red !important;
+  font-weight: 700 !important;
+  margin-top: -3px !important;
+}
+.css-k4qjio-MuiFormHelperText-root.Mui-error {
+  color: red !important;
+  font-weight: 700 !important;
+}
+.css-1q6at85-MuiInputBase-root-MuiOutlinedInput-root {
+  width: 84% !important;
+}
+@media screen and (max-width: 600px) {
+  .submit-styles-button {
+    width: 78% !important;
+  }
 }
