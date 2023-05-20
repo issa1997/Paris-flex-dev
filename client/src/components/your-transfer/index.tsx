@@ -29,6 +29,7 @@ const YourTransfer: React.FC<{
   date: string | null;
   time: string | null;
   passengers: string | null;
+  passengerId: number;
 }> = (props) => {
   const [editModal, setEditModal] = useState(false);
   const [addReturn, setAddReturn] = useState(false);
@@ -119,6 +120,7 @@ const YourTransfer: React.FC<{
           pickupDate: props.date,
           pickupLocation: props.pickupLocation,
           pickupTime: props.time,
+          passengerId: props.passengerId,
         }}
         isModalVisible={editModal}
         onClose={handleClose}

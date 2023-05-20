@@ -1,4 +1,12 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { PassengersEntity } from 'src/passengers/entities/passenger.entity';
+import {
+  Entity,
+  Column,
+  PrimaryGeneratedColumn,
+  OneToOne,
+  JoinTable,
+  JoinColumn,
+} from 'typeorm';
 
 export enum TripType {
   ROUND_TRIP = 'round_trip',
@@ -58,4 +66,8 @@ export class BookingsEntity {
 
   @Column()
   returnDate: string;
+
+  @OneToOne(() => PassengersEntity)
+  @JoinColumn({ name: 'id' })
+  passengers: PassengersEntity;
 }

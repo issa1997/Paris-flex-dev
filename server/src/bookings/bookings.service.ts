@@ -43,4 +43,22 @@ export class BookingsService {
   async remove(id: number) {
     return await this.bookingRepositoy.delete({ id });
   }
+
+  async getBookingsAndPassengers() {
+    const query =
+      'SELECT ' +
+      'passengers.name, passengers.lastName,' +
+      'passengers.phone, passengers.email,' +
+      'passengers.passengerCount, passengers.travelNumber,' +
+      'passengers.travelFrom, bookings.pickUpDate,' +
+      'bookings.PickUpTime,bookings.luggagePieces,' +
+      'bookings.bookingRefId,bookings.returnLocation,' +
+      'bookings.returnDropLocation,bookings.returnTime,' +
+      'bookings.returnDate,passengerExtras.extrasDescription,' +
+      'passengerExtras.childSeats,passengerExtras.boosterSeats ' +
+      'FROM bookings ' +
+      'LEFT JOIN passengers ON bookings.passengerId = passengers.id ' +
+      'LEFT JOIN passengerExtras ON passengerExtras.passengerId = passengers.id;';
+    return await this.bookingRepositoy.query(query);
+  }
 }

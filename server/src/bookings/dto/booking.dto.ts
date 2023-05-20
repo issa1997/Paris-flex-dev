@@ -30,7 +30,6 @@ export class BookingDto {
 
   @IsString()
   @IsNotEmpty()
-  @MaxLength(100)
   PickUpTime: string;
 
   @IsNumber()

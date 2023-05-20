@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell from "@mui/material/TableCell";
@@ -8,16 +8,29 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { ReactComponent as Edit } from "../../../assets/icons/edit.svg";
 import { ReactComponent as Delete } from "../../../assets/icons/delete.svg";
-import { AppBar, Box, Button, Toolbar, Typography } from "@mui/material";
+import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import AddRatesModal from "../rates-modal";
 import NavigationBar from "../navigation-bar";
+import { getAllRates } from "../../../services/rates";
+import _ from "lodash";
 
 const RatesTable: React.FC = () => {
   const [editModal, setEditModal] = useState(false);
+  const [tableData, setTableData] = useState<any[]>([]);
+
   const handleClose = () => {
     setEditModal(false);
   };
+
+  useEffect(() => {
+    getAllRates().then((response) => {
+      const tableData = response.data.data;
+      if (!_.isEmpty(tableData)) {
+        setTableData(tableData);
+      }
+    });
+  }, []);
 
   const rates = [
     {
@@ -62,36 +75,39 @@ const RatesTable: React.FC = () => {
           Booking Summary
         </Button>
         <TableContainer component={Paper}>
-          <Table className={""} aria-label="rates table">
-            <TableHead>
-              <TableRow>
-                <TableCell>From Location</TableCell>
-                <TableCell>To Location</TableCell>
-                <TableCell>Passenger Count</TableCell>
-                <TableCell>Package Name</TableCell>
-                <TableCell>Rate Price</TableCell>
-                <TableCell>Actions</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {rates.map((rate) => (
-                <TableRow key={rate.id}>
-                  <TableCell component="th" scope="row">
-                    {rate.fromLocation}
-                  </TableCell>
-                  <TableCell>{rate.toLocation}</TableCell>
-
-                  <TableCell>{rate.passengerCount}</TableCell>
-                  <TableCell>{rate.packageName}</TableCell>
-                  <TableCell>{rate.ratePrice}</TableCell>
-                  <TableCell>
-                    <Delete />
-                    <Edit />
-                  </TableCell>
+          {_.isEmpty(tableData) ? (
+            <CircularProgress color="success" />
+          ) : (
+            <Table className={""} aria-label="rates table">
+              <TableHead>
+                <TableRow>
+                  <TableCell>From Location</TableCell>
+                  <TableCell>To Location</TableCell>
+                  <TableCell>Passenger Count</TableCell>
+                  <TableCell>Package Name</TableCell>
+                  <TableCell>Rate Price</TableCell>
+                  <TableCell>Actions</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {tableData.map((rate) => (
+                  <TableRow key={rate.id}>
+                    <TableCell component="th" scope="row">
+                      {rate.fromLocation}
+                    </TableCell>
+                    <TableCell>{rate.toLocation}</TableCell>
+                    <TableCell>{rate.passengerCount}</TableCell>
+                    <TableCell>{rate.packageName}</TableCell>
+                    <TableCell>{rate.price}</TableCell>
+                    <TableCell>
+                      <Delete />
+                      <Edit />
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
         <AddRatesModal isModalVisible={editModal} onClose={handleClose} />
       </Box>

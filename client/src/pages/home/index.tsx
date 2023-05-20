@@ -36,18 +36,19 @@ const RenderStepperComponents: React.FC<{
       Omit<PassengerDetailExtrasType, "id" | "isDelete"> | undefined
     >
   >;
+  setPassengerId: React.Dispatch<React.SetStateAction<number>>;
   passengerExtrasDetails:
     | Omit<PassengerDetailExtrasType, "id" | "isDelete">
     | undefined;
+  passengerId: number;
 }> = (props) => {
-  const [passengerId, setPassengerId] = useState<number>(0);
   switch (props.activeStep) {
     case 0:
       return (
         <PassengerDetails
           setActiveStep={props.setActiveStep}
           activeStep={props.activeStep}
-          setPassengerId={setPassengerId}
+          setPassengerId={props.setPassengerId}
           setPassengerDetails={props.setPassengerDetails}
           pasengers={props.passengers}
         />
@@ -57,7 +58,7 @@ const RenderStepperComponents: React.FC<{
         <ExtrasComponent
           setActiveStep={props.setActiveStep}
           activeStep={props.activeStep}
-          passengerId={passengerId}
+          passengerId={props.passengerId}
           setPassengerExtrasDetails={props.setPassengerExtrasDetails}
         />
       );
@@ -86,6 +87,7 @@ const Home: React.FC = () => {
   const passengers = searchParams.get("passengers");
   const pickupDate = searchParams.get("pickupDate");
   const pickupTime = searchParams.get("pickupTime");
+  const [passengerId, setPassengerId] = useState<number>(0);
 
   const getRatesForLocation = async () => {
     if (
@@ -146,6 +148,8 @@ const Home: React.FC = () => {
                   passengerDetails={passengerDetails}
                   setPassengerExtrasDetails={setPassengerExtraDetails}
                   passengerExtrasDetails={passengerExtraDetails}
+                  passengerId={passengerId}
+                  setPassengerId={setPassengerId}
                 />
               </Grid>
             </Grid>
@@ -157,6 +161,7 @@ const Home: React.FC = () => {
               pickupLocation={pickupLocation}
               time={pickupTime}
               passengers={passengers}
+              passengerId={passengerId}
             />
           </Grid>
         </Grid>

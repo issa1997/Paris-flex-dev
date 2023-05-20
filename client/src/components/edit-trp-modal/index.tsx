@@ -21,6 +21,9 @@ import { getAllLocations } from "../../services/locations";
 import _ from "lodash";
 import { ReactComponent as Cross } from "../../assets/icons/cross-black.svg";
 import AddReturnTripModal from "../return-trip-modal";
+import { BookingType, createBooking } from "../../services/bookings";
+import { AxiosResponse } from "axios";
+import { toast, ToastContainer } from "react-toastify";
 
 export type EditTripData = {
   pickupLocation: string | null;
@@ -28,6 +31,7 @@ export type EditTripData = {
   passengers: number | null;
   pickupTime: any;
   pickupDate: any;
+  passengerId: number;
 };
 
 interface EditTripModalType {
@@ -36,18 +40,20 @@ interface EditTripModalType {
   editData: EditTripData;
 }
 
-interface formDataType {
-  dropOffLocation: string | null;
-  pickUpLocation: string | null;
+export interface formDataType {
+  dropOffLocation: any;
+  pickUpLocation: any;
   passengers: number | null;
   pickUpTime: any;
   pickUpDate: any;
+  returnLocation: any;
+  returnDropLocation: any;
+  returnTime: any;
+  returnDate: any;
 }
 
 const EditTripModal: React.FC<EditTripModalType> = (props) => {
-  const [selectedOption, setSelectedOption] = useState("");
   const [addReturn, setAddReturn] = useState(false);
-  const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(new Date());
   const [pickUpLocations, setPickUpLocations] = useState<any[]>([]);
   const [dropOffLocations, setDropOffLocations] = useState<any[]>([]);
@@ -57,21 +63,19 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
     pickUpDate: new Date(props.editData.pickupDate),
     pickUpLocation: props.editData.pickupLocation,
     pickUpTime: new Date(props.editData.pickupTime),
+    returnDate: "",
+    returnDropLocation: "",
+    returnLocation: "",
+    returnTime: "",
   });
 
   const handleTimeChange = (time: any) => {
     setSelectedTime(time);
   };
-  const handleDateChange = (date: any) => {
-    setSelectedDate(date);
-  };
-  const handleChange = (event: any) => {
-    setSelectedOption(event.target.value);
-  };
 
- const handleReturnClose = ()=>{
-setAddReturn(false);  
- }
+  const handleReturnClose = () => {
+    setAddReturn(false);
+  };
 
   let passengerCount: any[] = [
     {
@@ -115,8 +119,43 @@ setAddReturn(false);
   }, []);
 
   useEffect(() => {}, [props.editData]);
+
+  const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const booking: BookingType = {
+      pickUpLocation: formData.pickUpLocation.value,
+      dropOffLocation: formData.dropOffLocation.value,
+      passengerId: props.editData.passengerId,
+      pickUpDate: "sd",
+      PickUpTime: "sdddddd",
+      rateId: 0,
+      tripType: "one_way",
+      luggagePieces: 0,
+      bookingRefId: "sdx",
+      price: 0,
+      returnLocation: "",
+      returnDropLocation: "",
+      returnDate: "",
+      returnTime: "",
+    };
+    if (!_.isEmpty(booking) || !_.isUndefined(booking)) {
+      createBooking(booking)
+        .then((response: AxiosResponse) => {
+          const restrcutredResponse: any = response.data;
+          toast.success(restrcutredResponse.message, {
+            position: "bottom-right",
+          });
+        })
+        .catch((error: any) => {
+          const response: any = error.response.data;
+          toast.error(response.message, { position: "bottom-right" });
+        });
+    }
+  };
+
   return (
     <>
+      <ToastContainer />
       <Modal
         open={props.isModalVisible}
         onClose={props.onClose}
@@ -126,7 +165,7 @@ setAddReturn(false);
           justifyContent: "center",
         }}
       >
-        <Box className="edit-modal-styles" component="form">
+        <Box className="edit-modal-styles" component="form" onSubmit={onSubmit}>
           <Grid container spacing={2}>
             <Grid xs={12}>
               <div className="close-icon">
@@ -272,17 +311,17 @@ setAddReturn(false);
               >
                 ADD RETURN
               </Button>
-              <Button
-                className="save-button-styles"
-              >
+              <Button className="save-button-styles" type="submit">
                 Save Trip
               </Button>
             </Grid>
-
           </Grid>
         </Box>
       </Modal>
-      <AddReturnTripModal isModalVisible={addReturn} onClose={handleReturnClose} />
+      <AddReturnTripModal
+        isModalVisible={addReturn}
+        onClose={handleReturnClose}
+      />
     </>
   );
 };

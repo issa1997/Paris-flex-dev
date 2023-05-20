@@ -19,15 +19,13 @@ import "react-datetime-picker/dist/DateTimePicker.css";
 import "react-calendar/dist/Calendar.css";
 import "react-clock/dist/Clock.css";
 import { ReactComponent as Cross } from "../../assets/icons/cross-black.svg";
+import { formDataType } from "../edit-trp-modal";
+
 interface AddReturnTripModalType {
   isModalVisible: boolean;
   onClose: any;
 }
 const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
-  const [selectedOption, setSelectedOption] = useState("");
-  const handleChange = (event: any) => {
-    setSelectedOption(event.target.value);
-  };
   const [selectedDate, setSelectedDate] = useState(new Date());
   const [selectedTime, setSelectedTime] = useState(new Date());
 

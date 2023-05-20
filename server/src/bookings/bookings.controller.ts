@@ -48,7 +48,7 @@ export class BookingsController {
     }
   }
 
-  @Get(':id')
+  @Get('get/:id')
   async findOne(@Param() params: BookingsParamsDto) {
     try {
       const rates = await this.bookingsService.findOne(parseInt(params.id));
@@ -82,5 +82,20 @@ export class BookingsController {
   @Delete(':id')
   async remove(@Param() params: BookingsParamsDto) {
     return this.bookingsService.remove(parseInt(params.id));
+  }
+
+  @Get('get-bookings-and-passengers')
+  async getBookingsAndPassengers() {
+    try {
+      const passengersAndBookings =
+        await this.bookingsService.getBookingsAndPassengers();
+      return successRes(
+        'Bookings and Passengers fetched successfully',
+        passengersAndBookings,
+      );
+    } catch (error) {
+      this.logger.error((error as Error).message);
+      return errorRes((error as Error).message);
+    }
   }
 }

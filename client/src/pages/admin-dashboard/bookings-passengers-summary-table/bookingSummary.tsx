@@ -1,4 +1,3 @@
-import React from "react";
 import {
   Table,
   TableHead,
@@ -6,79 +5,91 @@ import {
   TableRow,
   TableCell,
   TableContainer,
-  AppBar,
   Typography,
-  Button,
-  Toolbar,
   Paper,
+  CircularProgress,
 } from "@mui/material";
-import { Link } from "react-router-dom";
 import { Box } from "@mui/system";
 import NavigationBar from "../navigation-bar";
-const BookingSPassengrsSummary = () => {
-  const data = [
-    {
-      id: 1,
-      name: "John Doe",
-      pickupLocation: "ABC Street",
-      dropLocation: "XYZ Street",
-      passengerCount: 2,
-      pickupDate: "2023-05-20",
-      pickupTime: "10:00 AM",
-      luggage: "2 bags",
-      babySeats: 1,
-      boosterSeats: 0,
-      notesForChauffeur: "No special instructions",
-      pickupLandmark: "Near City Park",
-    },
-  ];
+import _ from "lodash";
+import { useEffect, useState } from "react";
+import { getAllBookingsPassengersAndPassengerExtras } from "../../../services/bookings";
+
+const BookingsPassengrsSummary: React.FC = () => {
+  const [tableData, setTableData] = useState<any[]>([]);
+
+  useEffect(() => {
+    getAllBookingsPassengersAndPassengerExtras().then((response) => {
+      const tableData = response.data.data;
+      if (!_.isEmpty(tableData)) {
+        setTableData(tableData);
+      }
+    });
+  }, []);
 
   return (
     <div style={{ flexGrow: 1 }}>
       <NavigationBar />
       <Box sx={{ maxWidth: "100%", margin: "8%" }}>
         <Typography variant="h3" style={{ flexGrow: 1, textAlign: "center" }}>
-          Booking/ Passengers Summary
+          Booking / Passengers Summary
         </Typography>
         <TableContainer component={Paper}>
-          <Table>
-            <TableHead>
-              <TableRow>
-                <TableCell>Name</TableCell>
-                <TableCell>Pickup Location</TableCell>
-                <TableCell>Drop Location</TableCell>
-                <TableCell>Passenger Count</TableCell>
-                <TableCell>Pickup Date</TableCell>
-                <TableCell>Pickup Time</TableCell>
-                <TableCell>Luggage</TableCell>
-                <TableCell>Baby Seats</TableCell>
-                <TableCell>Booster Seats</TableCell>
-                <TableCell>Notes for Chauffeur</TableCell>
-                <TableCell>Pickup Landmark</TableCell>
-              </TableRow>
-            </TableHead>
-            <TableBody>
-              {data.map((row) => (
-                <TableRow key={row.id}>
-                  <TableCell>{row.name}</TableCell>
-                  <TableCell>{row.pickupLocation}</TableCell>
-                  <TableCell>{row.dropLocation}</TableCell>
-                  <TableCell>{row.passengerCount}</TableCell>
-                  <TableCell>{row.pickupDate}</TableCell>
-                  <TableCell>{row.pickupTime}</TableCell>
-                  <TableCell>{row.luggage}</TableCell>
-                  <TableCell>{row.babySeats}</TableCell>
-                  <TableCell>{row.boosterSeats}</TableCell>
-                  <TableCell>{row.notesForChauffeur}</TableCell>
-                  <TableCell>{row.pickupLandmark}</TableCell>
+          {_.isEmpty(tableData) ? (
+            <CircularProgress color="success" />
+          ) : (
+            <Table>
+              <TableHead>
+                <TableRow>
+                  <TableCell>Name</TableCell>
+                  <TableCell>Last Name</TableCell>
+                  <TableCell>Phone</TableCell>
+                  <TableCell>Email</TableCell>
+                  <TableCell>Passenger Count</TableCell>
+                  <TableCell>Travel Number</TableCell>
+                  <TableCell>Travel From</TableCell>
+                  <TableCell>Pickup Date</TableCell>
+                  <TableCell>Pickup Time</TableCell>
+                  <TableCell>Luggage Pieces</TableCell>
+                  <TableCell>Booking Ref Id</TableCell>
+                  <TableCell>Return Location</TableCell>
+                  <TableCell>Return Drop Location</TableCell>
+                  <TableCell>Return Time</TableCell>
+                  <TableCell>Return Date</TableCell>
+                  <TableCell>Extras Description</TableCell>
+                  <TableCell>Child Seats</TableCell>
+                  <TableCell>Booster Seats</TableCell>
                 </TableRow>
-              ))}
-            </TableBody>
-          </Table>
+              </TableHead>
+              <TableBody>
+                {tableData.map((row) => (
+                  <TableRow key={row.id}>
+                    <TableCell>{row.name}</TableCell>
+                    <TableCell>{row.lastName}</TableCell>
+                    <TableCell>{row.phone}</TableCell>
+                    <TableCell>{row.email}</TableCell>
+                    <TableCell>{row.passengerCount}</TableCell>
+                    <TableCell>{row.travelNumber}</TableCell>
+                    <TableCell>{row.travelFrom}</TableCell>
+                    <TableCell>{row.pickUpDate}</TableCell>
+                    <TableCell>{row.PickUpTime}</TableCell>
+                    <TableCell>{row.luggagePieces}</TableCell>
+                    <TableCell>{row.bookingRefId}</TableCell>
+                    <TableCell>{row.returnDropLocation}</TableCell>
+                    <TableCell>{row.returnTime}</TableCell>
+                    <TableCell>{row.returnDate}</TableCell>
+                    <TableCell>{row.extrasDescription}</TableCell>
+                    <TableCell>{row.childSeats}</TableCell>
+                    <TableCell>{row.boosterSeats}</ TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+          )}
         </TableContainer>
       </Box>
     </div>
   );
 };
 
-export default BookingSPassengrsSummary;
+export default BookingsPassengrsSummary;
