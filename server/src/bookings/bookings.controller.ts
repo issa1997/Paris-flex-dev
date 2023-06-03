@@ -23,7 +23,7 @@ export class BookingsController {
   ) {}
 
   @Post()
-  @UsePipes(new ValidationPipe())
+  // @UsePipes(new ValidationPipe())
   async create(@Body() booking: BookingDto) {
     try {
       const createdBooking = await this.bookingsService.create(booking);

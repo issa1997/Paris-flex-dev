@@ -12,6 +12,9 @@ import { PassengerExtrasModule } from './passenger-extras/passenger-extras.modul
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { LocationsModule } from './locations/locations.module';
+import { MailerModule } from '@nestjs-modules/mailer';
+import { smtpConfig } from './utls/smtp.config';
+
 /**
  * Usage and Description - This file will act as the main
  * app wrapper combining the controller functions and the
@@ -20,13 +23,14 @@ import { LocationsModule } from './locations/locations.module';
  **/
 @Module({
   imports: [
-    TypeOrmModule.forRoot(dataSourceOptions),
     CommandModule,
     RatesModule,
     PassengersModule,
     BookingsModule,
     PassengerExtrasModule,
     LocationsModule,
+    TypeOrmModule.forRoot(dataSourceOptions),
+    MailerModule.forRootAsync(smtpConfig),
     ServeStaticModule.forRoot({
       rootPath: join(__dirname, '../..', 'client', 'build'),
     }),

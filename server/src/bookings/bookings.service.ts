@@ -2,22 +2,33 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { BookingsEntity } from './entities/booking.entity';
 import { Repository } from 'typeorm';
+import { MailerService } from '@nestjs-modules/mailer';
 
 @Injectable()
 export class BookingsService {
   constructor(
     @InjectRepository(BookingsEntity)
     private readonly bookingRepositoy: Repository<BookingsEntity>,
+    private readonly smtpService: MailerService,
   ) {}
 
   async create(createPassengerDto: any) {
-    const passenger: BookingsEntity = {
-      isDelete: false,
-      ...createPassengerDto,
-    };
-    const bookings = this.bookingRepositoy.create(passenger);
-    await this.bookingRepositoy.save(passenger);
-    return bookings;
+    const email = await this.smtpService.sendMail({
+      to: 'yohanperera27@gmail.com',
+      subject: 'Greetings from IdK',
+      template: './email',
+      context: {
+        name: 'Test',
+      },
+    });
+    console.log(email);
+    // const passenger: BookingsEntity = {
+    //   isDelete: false,
+    //   ...createPassengerDto,
+    // };
+    // const bookings = this.bookingRepositoy.create(passenger);
+    // await this.bookingRepositoy.save(passenger);
+    // return bookings;
   }
 
   async findAll() {
