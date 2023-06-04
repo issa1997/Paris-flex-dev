@@ -24,8 +24,7 @@ import { AxiosResponse } from "axios";
 import { useFormik } from "formik";
 import * as yup from "yup";
 import { MuiTelInput, matchIsValidTel } from "mui-tel-input";
-const phoneRegExp =
-  /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+
 const validationSchema = yup.object({
   first_name: yup.string().required("First Name is required"),
   last_name: yup.string().required("Last Name is required"),
@@ -35,7 +34,6 @@ const validationSchema = yup.object({
     .required("Email is required"),
   contact_no: yup
     .string()
-    .matches(phoneRegExp, "Invalid phone number")
     .required("Contact number is required"),
   flight_train_no: yup.string().required("Flight/train number is required"),
   flight_train_from: yup.string().required("Flight/train from is required"),
@@ -71,8 +69,7 @@ const PassengerDetails: React.FC<{
         phone: values.contact_no,
         travelFrom: values.flight_train_no,
         travelNumber: values.flight_train_from,
-      };
-
+      }; 
       if (!_.isEmpty(passenger) || !_.isUndefined(passenger)) {
         createPassenger(passenger)
           .then((response: AxiosResponse) => {
@@ -106,11 +103,11 @@ const PassengerDetails: React.FC<{
         </Typography>
         <Box component="form" autoComplete="off" onSubmit={formik.handleSubmit}>
           <Grid container className="form-styles">
-            <Grid item sm={6} xs={12}>
+            <Grid item sm={6} xs={12} style={{verticalAlign: "center"}}>
               <InputLabel>
                 Name
-                <span>
-                  <RequiredSign />
+                <span >
+                  <RequiredSign style={{marginBottom: "-1%", marginLeft:"1%"}}/>
                 </span>
               </InputLabel>
               <TextField
@@ -131,7 +128,7 @@ const PassengerDetails: React.FC<{
               <InputLabel>
                 Last Name{" "}
                 <span>
-                  <RequiredSign />
+                  <RequiredSign style={{marginBottom: "-1%"}}/>
                 </span>
               </InputLabel>
               <TextField
@@ -150,7 +147,7 @@ const PassengerDetails: React.FC<{
               <InputLabel>
                 Email{" "}
                 <span>
-                  <RequiredSign />
+                  <RequiredSign style={{marginBottom: "-1%"}}/>
                 </span>
               </InputLabel>
               <TextField
@@ -163,7 +160,7 @@ const PassengerDetails: React.FC<{
                 helperText={formik.touched.email && formik.errors.email}
               />
               <p className="warning-text" style={{ marginBottom: "6%" }}>
-                <TriangleIcon /> We will send you booking details here
+                <TriangleIcon style={{ marginRight: "1%" }}/> We will send you booking details here
               </p>
             </Grid>
 
@@ -171,7 +168,7 @@ const PassengerDetails: React.FC<{
               <InputLabel>
                 Contact Number{" "}
                 <span>
-                  <RequiredSign />
+                  <RequiredSign style={{marginBottom: "-1%"}}/>
                 </span>
               </InputLabel>
 
@@ -206,7 +203,7 @@ const PassengerDetails: React.FC<{
                 }
               /> */}
               <div className="warning-text" style={{ marginBottom: "2%" }}>
-                <TriangleIcon />
+                <TriangleIcon  style={{ marginRight: "1%" }}/>
                 Please provide us a working phone number in France. <br />
                 We will contact you using WhatsApp
               </div>
@@ -215,7 +212,7 @@ const PassengerDetails: React.FC<{
               <InputLabel>
                 Flight/ train number{" "}
                 <span>
-                  <RequiredSign />
+                  <RequiredSign style={{marginBottom: "-1%"}}/>
                 </span>
               </InputLabel>
               <TextField
@@ -238,7 +235,7 @@ const PassengerDetails: React.FC<{
               <InputLabel>
                 Flight/ train from{"  "}
                 <span>
-                  <RequiredSign />
+                  <RequiredSign style={{marginBottom: "-1%"}}/>
                 </span>
               </InputLabel>
               <TextField

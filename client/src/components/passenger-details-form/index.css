@@ -24,7 +24,7 @@
 
 .outlined-required {
   background: #ffffff;
-  border: 1px solid #4b31ee;
+border: none !important;
   border-radius: 10px !important;
   height: 35px;
   margin: 5% 0% !important;
@@ -39,6 +39,7 @@
   padding: 10px auto;
 }
 .submit-styles-button {
+  margin-top: 3% !important;
   color: #ffffff !important;
   width: 85% !important;
   background: #341ea0 !important;
@@ -53,10 +54,11 @@
 .submit-icon-style {
   margin: 0 7px;
 }
-
+.css-1d3z3hw-MuiOutlinedInput-notchedOutline{
+  border: 2px solid #4b31ee !important; 
+}
 .MuiOutlinedInput-root {
   background: #ffffff;
-  border: 1px solid #4b31ee;
   border-radius: 10px !important;
   height: 40px;
   margin: 5% 0% !important;

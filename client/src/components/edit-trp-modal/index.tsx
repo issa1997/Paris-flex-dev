@@ -258,7 +258,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
             <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
-                  <InputLabel id="select-label">Pickup Time</InputLabel>
+                  <InputLabel id="select-label" style={{marginBottom:"2%"}}>Pickup Time</InputLabel>
                   <Clock />
                   <DateTimePicker
                     onChange={handleTimeChange}
@@ -275,7 +275,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
             <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
-                  <InputLabel id="select-label">Pickup date</InputLabel>
+                  <InputLabel id="select-label" style={{marginBottom:"2%"}}>Pickup date</InputLabel>
                   <Calendar />
 
                   <DateTimePicker
