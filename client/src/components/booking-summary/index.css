@@ -12,7 +12,7 @@
   width: 29px;
 }
 .free-seats-styles-summary {
-  width: 100%;
+  width: 96%;
   border: 1px solid #969696;
   border-radius: 10px;
   height: 60px;
@@ -48,6 +48,7 @@
   color: white !important;
   height: 45px !important;
   width: 100%;
+  border: none !important;
 }
 .seats-text-styles {
   font-size: 12px !important;

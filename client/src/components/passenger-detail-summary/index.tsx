@@ -49,30 +49,31 @@ const PassengerDetailSummary: React.FC<{
                 spacing={{ xs: 0, md: 2 }}
               >
                 <Stack direction={{ xs: "column" }} spacing={0}>
-                  <ListItemButton className="list-button-style">
+                  <ListItemButton  disableTouchRipple className="list-button-style">
                     <MeetNGreet className="stack-icon" />
                     <ListItemText primary="Meet & Greet" />
                   </ListItemButton>
-                  <ListItemButton className="list-button-style">
+                  <ListItemButton disableTouchRipple className="list-button-style">
                     <FreeWaiting className="stack-icon" />
                     <ListItemText primary="Free Waiting" />
                   </ListItemButton>
-                  <ListItemButton className="list-button-style">
+                  <ListItemButton disableTouchRipple className="list-button-style">
                     <HiddenCosts className="stack-icon" />
                     <ListItemText primary="No Hidden Costs" />
                   </ListItemButton>
                 </Stack>
                 <Stack direction={{ xs: "column" }} spacing={0}>
                   {" "}
-                  <ListItemButton className="list-button-style">
+                  <ListItemButton disableTouchRipple className="list-button-style">
                     <FreePorter className="stack-icon" />
                     <ListItemText primary="Free Porter" />
                   </ListItemButton>{" "}
-                  <ListItemButton className="list-button-style-seats">
+                  <ListItemButton disableTouchRipple className="list-button-style-seats">
                     <Seats className="stack-icon" />
                     <ListItemText primary="Free Baby Seats & Booster Seats" />
                   </ListItemButton>
                   <ListItemButton
+                    disableTouchRipple
                     sx={{ paddingTop: "0px" }}
                     className="list-button-style"
                   >
