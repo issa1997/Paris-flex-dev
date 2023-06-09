@@ -32,6 +32,13 @@
   padding-right: 0 !important;
   width: 150% !important;
 }
+.list-button-style-seats:hover {
+  background-color: transparent !important;
+  cursor: pointer;
+}
+.list-button-style:hover {
+  background-color: transparent !important;
+}
 .box-styles {
   height: 20px !important;
   background: #f4f5fe;

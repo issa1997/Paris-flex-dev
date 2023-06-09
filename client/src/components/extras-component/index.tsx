@@ -55,7 +55,6 @@ const ExtrasComponent: React.FC<{
       childSeats: Number(formData.get("txtBabySeats")),
       passengerId: props.passengerId,
     };
-    props.setActiveStep(props.activeStep + 1);
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
       createPassengerExtra(passengerExtra)
         .then((response: AxiosResponse) => {
@@ -97,7 +96,7 @@ const ExtrasComponent: React.FC<{
               <InputLabel>
                 Pickup Land Mark{" "}
                 <span>
-                  <RequiredSign />
+                  <RequiredSign style={{marginBottom: "-0.2%", marginLeft:"1%"}}/>
                 </span>
               </InputLabel>
               <TextField style={{width: "100%", marginTop: "-10px"}} />
@@ -107,7 +106,7 @@ const ExtrasComponent: React.FC<{
                 <InputLabel>
                   Note for chauffeur{" "}
                   <span>
-                    <RequiredSign />
+                    <RequiredSign style={{marginBottom: "-1%",marginLeft:"1%"}}/>
                   </span>
                 </InputLabel>
                 <textarea

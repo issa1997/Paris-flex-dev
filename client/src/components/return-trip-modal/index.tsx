@@ -106,7 +106,7 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
             <Grid item xs={12} md={6}>
               <Grid>
                 <Grid>
-                  <InputLabel id="select-label">Return Time</InputLabel>
+                  <InputLabel id="select-label" style={{marginBottom:"2%"}}>Return Time</InputLabel>
                   <Clock />
                   <DateTimePicker
                     onChange={handleTimeChange}
@@ -123,7 +123,7 @@ const AddReturnTripModal: React.FC<AddReturnTripModalType> = (props) => {
             <Grid item xs={12} md={6}>
               <Grid>
                 <Grid>
-                  <InputLabel id="select-label">Return Date</InputLabel>
+                  <InputLabel id="select-label" style={{marginBottom:"2%"}}>Return Date</InputLabel>
                   <Calendar />
                   <DateTimePicker
                     minDate={new Date()}
