@@ -6,7 +6,7 @@ import RatesTable from "./pages/admin-dashboard/rates";
 import BookingsTable from "./pages/admin-dashboard/bookings";
 import PassengersTable from "./pages/admin-dashboard/passengers";
 import BookingSPassengrsSummary from "./pages/admin-dashboard/bookings-passengers-summary-table/bookingSummary";
-
+import Login from "./pages/login/index";
 function App() {
   return (
     <>
@@ -20,6 +20,7 @@ function App() {
           path="/admin/booking-summary"
           element={<BookingSPassengrsSummary />}
         />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </>
   );

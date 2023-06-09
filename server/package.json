@@ -23,7 +23,8 @@
     "migration:generate": "npm run typeorm -- migration:generate",
     "migration:run": "npm run typeorm -- migration:run",
     "migration:revert": "npm run typeorm -- migration:revert",
-    "migration:create": "npm run typeorm2 -- migration:create"
+    "migration:create": "npm run typeorm2 -- migration:create",
+    "seed:users": "node ./dist/src/cli.js seed:users"
   },
   "dependencies": {
     "@nestjs-modules/mailer": "^1.8.1",

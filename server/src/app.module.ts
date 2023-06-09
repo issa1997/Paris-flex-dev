@@ -14,6 +14,8 @@ import { join } from 'path';
 import { LocationsModule } from './locations/locations.module';
 import { MailerModule } from '@nestjs-modules/mailer';
 import { smtpConfig } from './utls/smtp.config';
+import { UsersCommand } from './utls/seed-commands/users.command';
+import { UsersModule } from './users/users.module';
 
 /**
  * Usage and Description - This file will act as the main
@@ -29,6 +31,7 @@ import { smtpConfig } from './utls/smtp.config';
     BookingsModule,
     PassengerExtrasModule,
     LocationsModule,
+    UsersModule,
     TypeOrmModule.forRoot(dataSourceOptions),
     MailerModule.forRootAsync(smtpConfig),
     ServeStaticModule.forRoot({
@@ -36,6 +39,6 @@ import { smtpConfig } from './utls/smtp.config';
     }),
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService, UsersCommand],
 })
 export class AppModule {}
