@@ -12,16 +12,29 @@ export class BookingsService {
     private readonly smtpService: MailerService,
   ) {}
 
-  async create(createPassengerDto: any) {
-    const email = await this.smtpService.sendMail({
-      to: 'yohanperera27@gmail.com',
-      subject: 'Greetings from IdK',
-      template: './email',
-      context: {
-        name: 'Test',
-      },
-    });
-    console.log(email);
+  async create(createBookingDto: any) {
+    // const email = await this.smtpService.sendMail({
+    //   to: 'yohanperera27@gmail.com',
+    //   subject: 'Greetings from IdK',
+    //   template: './email',
+    //   context: {
+    //     bookingRef: 'WTH34LTL',
+    //     dateAndTime: '2023/12/03 - 14:25',
+    //     pickUpLocation: 'CDGF',
+    //     dropOffLocation: 'PARISS',
+    //     passengers: 14,
+    //     suitCases: 30,
+    //     name: 'JhonN',
+    //     email: 'Jhonn@gmail.com',
+    //     contactNumber: '+33345865221123',
+    //     flightNumber: '1jghtk444',
+    //     flightFrom: 'PARISSS',
+    //     childSeats: 10,
+    //     boosterSeats: 10,
+    //     extras: 'Bring a wineeee bottle',
+    //   },
+    // });
+    console.log(createBookingDto);
     // const passenger: BookingsEntity = {
     //   isDelete: false,
     //   ...createPassengerDto,
