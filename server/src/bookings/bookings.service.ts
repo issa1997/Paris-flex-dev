@@ -3,6 +3,9 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { BookingsEntity } from './entities/booking.entity';
 import { Repository } from 'typeorm';
 import { MailerService } from '@nestjs-modules/mailer';
+import { PassengersService } from '../passengers/passengers.service';
+import _ = require('lodash');
+import { UsersService } from 'src/users/users.service';
 
 @Injectable()
 export class BookingsService {
@@ -10,38 +13,81 @@ export class BookingsService {
     @InjectRepository(BookingsEntity)
     private readonly bookingRepositoy: Repository<BookingsEntity>,
     private readonly smtpService: MailerService,
+    private readonly passengerService: PassengersService,
+    private readonly userService: UsersService,
   ) {}
 
   async create(createBookingDto: any) {
-    // const email = await this.smtpService.sendMail({
-    //   to: 'yohanperera27@gmail.com',
-    //   subject: 'Greetings from IdK',
-    //   template: './email',
-    //   context: {
-    //     bookingRef: 'WTH34LTL',
-    //     dateAndTime: '2023/12/03 - 14:25',
-    //     pickUpLocation: 'CDGF',
-    //     dropOffLocation: 'PARISS',
-    //     passengers: 14,
-    //     suitCases: 30,
-    //     name: 'JhonN',
-    //     email: 'Jhonn@gmail.com',
-    //     contactNumber: '+33345865221123',
-    //     flightNumber: '1jghtk444',
-    //     flightFrom: 'PARISSS',
-    //     childSeats: 10,
-    //     boosterSeats: 10,
-    //     extras: 'Bring a wineeee bottle',
-    //   },
-    // });
-    console.log(createBookingDto);
-    // const passenger: BookingsEntity = {
-    //   isDelete: false,
-    //   ...createPassengerDto,
-    // };
-    // const bookings = this.bookingRepositoy.create(passenger);
-    // await this.bookingRepositoy.save(passenger);
-    // return bookings;
+    try {
+      if (
+        !_.isEmpty(createBookingDto) &&
+        _.has(createBookingDto, 'passengerId')
+      ) {
+        const passenger =
+          await this.passengerService.getPassengerAndExtrasDetailsById(
+            createBookingDto.passengerId,
+          );
+
+        const bookings = this.bookingRepositoy.create(createBookingDto);
+        await this.bookingRepositoy.save(createBookingDto);
+
+        const user = await this.userService.findOneByRole('ADMIN');
+
+        if (!_.isEmpty(bookings)) {
+          const customerEmail = await this.smtpService.sendMail({
+            to: passenger[0].email,
+            subject: 'Booking Summary',
+            template: './customer-booking-summery',
+            context: {
+              bookingRef: createBookingDto.bookingRefId,
+              dateAndTime: `${createBookingDto.pickUpDate} - ${createBookingDto.PickUpTime}`,
+              pickUpLocation: createBookingDto.pickUpLocation,
+              dropOffLocation: createBookingDto.dropOffLocation,
+              passengers: passenger[0].passengerCount,
+              suitCases: createBookingDto.luggagePieces,
+              name: passenger[0].name,
+              email: passenger[0].email,
+              contactNumber: passenger[0].phone,
+              flightNumber: passenger[0].travelNumber,
+              flightFrom: passenger[0].travelFrom,
+              childSeats: passenger[0].childSeats,
+              boosterSeats: passenger[0].boosterSeats,
+              extras: passenger[0].extrasDescription,
+              tripType: 'one-way',
+              price: `€ ${createBookingDto.price}`,
+            },
+          });
+
+          if (!_.isEmpty(user) && !_.isEmpty(customerEmail)) {
+            return await this.smtpService.sendMail({
+              to: user.email,
+              subject: 'New Booking',
+              template: './admin-booking-summery',
+              context: {
+                bookingRef: createBookingDto.bookingRefId,
+                dateAndTime: `${createBookingDto.pickUpDate} - ${createBookingDto.PickUpTime}`,
+                pickUpLocation: createBookingDto.pickUpLocation,
+                dropOffLocation: createBookingDto.dropOffLocation,
+                passengers: passenger[0].passengerCount,
+                suitCases: createBookingDto.luggagePieces,
+                name: passenger[0].name,
+                email: passenger[0].email,
+                contactNumber: passenger[0].phone,
+                flightNumber: passenger[0].travelNumber,
+                flightFrom: passenger[0].travelFrom,
+                childSeats: passenger[0].childSeats,
+                boosterSeats: passenger[0].boosterSeats,
+                extras: passenger[0].extrasDescription,
+                tripType: 'one-way',
+                price: `€ ${createBookingDto.price}`,
+              },
+            });
+          }
+        }
+      }
+    } catch (error) {
+      return error;
+    }
   }
 
   async findAll() {

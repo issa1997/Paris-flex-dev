@@ -20,6 +20,8 @@ import _ from "lodash";
 import BookingSummaryComponent from "../../components/booking-summary";
 import { PassengerDetailsType } from "../../services/passengers-details";
 import { PassengerDetailExtrasType } from "../../services/passengers-detail-extras";
+import { convertToValidTimeString } from "../../utls/time-formater";
+import { BookingType } from "../../services/bookings";
 
 const RenderStepperComponents: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -41,6 +43,7 @@ const RenderStepperComponents: React.FC<{
     | Omit<PassengerDetailExtrasType, "id" | "isDelete">
     | undefined;
   passengerId: number;
+  bookingDetails: BookingType;
 }> = (props) => {
   switch (props.activeStep) {
     case 0:
@@ -65,6 +68,7 @@ const RenderStepperComponents: React.FC<{
     case 2:
       return (
         <BookingSummaryComponent
+          bookingDetails={props.bookingDetails}
           passengerDetails={props.passengerDetails}
           passengerExtrasDetails={props.passengerExtrasDetails}
         />
@@ -74,20 +78,51 @@ const RenderStepperComponents: React.FC<{
 };
 
 const Home: React.FC = () => {
+  let orderIdCounter: number = 1;
+
+  const bookingInitalType: BookingType = {
+    pickUpLocation: "",
+    dropOffLocation: "",
+    passengerId: 0,
+    pickUpDate: "",
+    PickUpTime: "",
+    rateId: 0,
+    tripType: "one_way",
+    luggagePieces: 0,
+    bookingRefId: "",
+    price: 0,
+    returnLocation: "",
+    returnDropLocation: "",
+    returnTime: "",
+    returnDate: "",
+  };
+
   const [activeStep, setActiveStep] = useState<number>(0);
   const [bookingPrice, setBookingPrice] = useState<number>(0);
   const [passengerDetails, setPassengerDetails] =
     useState<Omit<PassengerDetailsType, "id" | "isDelete">>();
   const [passengerExtraDetails, setPassengerExtraDetails] =
     useState<Omit<PassengerDetailExtrasType, "id" | "isDelete">>();
+  const [passengerId, setPassengerId] = useState<number>(0);
+  const [bookingDetails, setBookingDetails] =
+    useState<BookingType>(bookingInitalType);
   const [searchParams] = useSearchParams();
+
   const luggagePieces = searchParams.get("luggagePieces");
   const pickupLocation = searchParams.get("pickupLocation");
   const dropLocation = searchParams.get("dropLocation");
   const passengers = searchParams.get("passengers");
   const pickupDate = searchParams.get("pickupDate");
   const pickupTime = searchParams.get("pickupTime");
-  const [passengerId, setPassengerId] = useState<number>(0);
+
+  const generateBookingRefId = () => {
+    const orderPrefix: string = "BK";
+    const orderID: string = `${orderPrefix}${orderIdCounter
+      .toString()
+      .padStart(4, "0")}`;
+    orderIdCounter++;
+    return orderID;
+  };
 
   const getRatesForLocation = async () => {
     if (
@@ -100,12 +135,28 @@ const Home: React.FC = () => {
         fromLocation: pickupLocation,
         toLocation: dropLocation,
         passengerCount: Number(passengers),
-        pickUpTime: pickupTime,
+        pickUpTime: convertToValidTimeString(pickupTime),
       };
       getRateFromLocation(getRatesFromLocationParams)
         .then((response: AxiosResponse) => {
           const restrcutredResponse: any = response.data;
-          console.log(response.data);
+          setBookingDetails({
+            ...bookingDetails,
+            rateId: restrcutredResponse.data.id,
+            passengerId: passengerId,
+            pickUpLocation: pickupLocation,
+            dropOffLocation: dropLocation,
+            luggagePieces: Number(luggagePieces),
+            pickUpDate: String(pickupDate),
+            PickUpTime: String(pickupTime),
+            price: restrcutredResponse.data.price,
+            tripType: "one_way",
+            returnDate: "",
+            returnLocation: "",
+            returnDropLocation: "",
+            returnTime: "",
+            bookingRefId: generateBookingRefId(),
+          });
           if (!_.isEmpty(restrcutredResponse.data)) {
             setBookingPrice(restrcutredResponse.data.price);
           }
@@ -119,7 +170,7 @@ const Home: React.FC = () => {
 
   useEffect(() => {
     getRatesForLocation();
-  }, [pickupLocation, dropLocation, passengers]);
+  }, [pickupLocation, dropLocation, passengers, passengerId]);
 
   return (
     <>
@@ -150,6 +201,7 @@ const Home: React.FC = () => {
                   passengerExtrasDetails={passengerExtraDetails}
                   passengerId={passengerId}
                   setPassengerId={setPassengerId}
+                  bookingDetails={bookingDetails}
                 />
               </Grid>
             </Grid>

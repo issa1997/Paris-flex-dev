@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { PassengerExtrasEntity } from 'src/passenger-extras/entities/passenger-extra.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToOne } from 'typeorm';
 
 @Entity('passengers')
 export class PassengersEntity {

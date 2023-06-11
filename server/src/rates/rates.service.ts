@@ -57,7 +57,7 @@ export class RatesService {
         passengerCount: locationParams.passengerCount,
       },
     });
-    const now = moment(locationParams.pickUpTime); // Get the current time
+    const now = moment(locationParams.pickUpTime, 'HH:mm'); // Get the current time
     const toTime = moment(process.env.RATE_TO_TIME, 'hh:mm:ss a'); // Set the start time to 11pm
     const fromTime = moment(process.env.RATE_FROM_TIME, 'hh:mm:ss a').add(
       1,

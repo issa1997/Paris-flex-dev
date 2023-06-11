@@ -74,7 +74,6 @@ const PassengerDetails: React.FC<{
         createPassenger(passenger)
           .then((response: AxiosResponse) => {
             const restrcutredResponse: any = response.data;
-            console.log(response.data);
             toast.success(restrcutredResponse.message, {
               position: "bottom-right",
             });

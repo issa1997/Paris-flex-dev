@@ -1,7 +1,6 @@
-import { Box, Button, Card, Grid, Stack, Typography } from "@mui/material";
+import { Box, Card, Grid, Stack, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { ReactComponent as HealthIcon } from "../../assets/icons/healthicons_travel-alt-outline.svg";
-import "./index.css";
 import { ReactComponent as PassengersDetails } from "../../assets/icons/passenger.svg";
 import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as BabySeats } from "../../assets/icons/toddler-1.svg";
@@ -10,20 +9,39 @@ import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
 import { PassengerDetailsType } from "../../services/passengers-details";
 import { PassengerDetailExtrasType } from "../../services/passengers-detail-extras";
 import ConfirmationModal from "../confirmation-modal";
+import { BookingType, createBooking } from "../../services/bookings";
+import { toast, ToastContainer } from "react-toastify";
+import "./index.css";
+import { AxiosResponse } from "axios";
 
 const BookingSummaryComponent: React.FC<{
   passengerDetails: Omit<PassengerDetailsType, "id" | "isDelete"> | undefined;
   passengerExtrasDetails:
     | Omit<PassengerDetailExtrasType, "id" | "isDelete">
     | undefined;
+  bookingDetails: BookingType;
 }> = (props) => {
   const [confirmationModalOpen, setConfirmationModalOpen] =
     useState<boolean>(false);
-  const handleClose = () => {
-    setConfirmationModalOpen(false);
+
+  const handleConfirmBooking = () => {
+    createBooking(props.bookingDetails)
+      .then((response: AxiosResponse) => {
+        const restrcutredResponse: any = response.data;
+        toast.success(restrcutredResponse.message, {
+          position: "bottom-right",
+        });
+        setConfirmationModalOpen(true);
+      })
+      .catch((error: any) => {
+        const response: any = error.response.data;
+        toast.error(response.message, { position: "bottom-right" });
+      });
   };
+
   return (
     <>
+      <ToastContainer />
       <Card className="booking-detail-card-style">
         <Typography gutterBottom variant="h5" className="heading-style">
           <span>
@@ -168,9 +186,7 @@ const BookingSummaryComponent: React.FC<{
             <button
               type="submit"
               className="summary-button-submit"
-              onClick={() => {
-                setConfirmationModalOpen(true);
-              }}
+              onClick={handleConfirmBooking}
             >
               Confirm Booking {"  "}
             </button>
@@ -179,7 +195,7 @@ const BookingSummaryComponent: React.FC<{
       </Card>
       <ConfirmationModal
         isModalVisible={confirmationModalOpen}
-        onClose={handleClose}
+        onClose={() => setConfirmationModalOpen(false)}
       />
     </>
   );

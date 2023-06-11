@@ -57,4 +57,12 @@ export class UsersService {
       },
     });
   }
+
+  async findOneByRole(role: any) {
+    return await this.userRepositoy.findOne({
+      where: {
+        userRole: role,
+      },
+    });
+  }
 }

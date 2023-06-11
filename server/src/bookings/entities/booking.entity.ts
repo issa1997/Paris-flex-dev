@@ -4,7 +4,6 @@ import {
   Column,
   PrimaryGeneratedColumn,
   OneToOne,
-  JoinTable,
   JoinColumn,
 } from 'typeorm';
 
@@ -52,7 +51,7 @@ export class BookingsEntity {
   @Column()
   price: number;
 
-  @Column()
+  @Column({ default: false })
   isDelete: boolean;
 
   @Column()

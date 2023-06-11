@@ -1,3 +1,4 @@
+import { TripType } from 'src/bookings/entities/booking.entity';
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity('rates')
@@ -22,4 +23,11 @@ export class RatesEntity {
 
   @Column()
   isDelete: boolean;
+
+  @Column({
+    type: 'enum',
+    enum: TripType,
+    default: TripType.ONE_WAY,
+  })
+  tripType: TripType;
 }

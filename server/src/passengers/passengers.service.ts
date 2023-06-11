@@ -43,4 +43,16 @@ export class PassengersService {
   async remove(id: number) {
     return await this.passengerRepositoy.delete({ id });
   }
+
+  async getPassengerAndExtrasDetailsById(passengerId: number) {
+    const query =
+      'SELECT ' +
+      'passengers.* ,' +
+      ' passengerExtras.extrasDescription, passengerExtras.childSeats, passengerExtras.boosterSeats ' +
+      'FROM passengers ' +
+      'LEFT JOIN passengerExtras ON passengers.id = passengerExtras.passengerId ' +
+      'WHERE passengers.id = ' +
+      passengerId;
+    return this.passengerRepositoy.query(query);
+  }
 }
