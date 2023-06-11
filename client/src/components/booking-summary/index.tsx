@@ -5,7 +5,7 @@ import "./index.css";
 import { ReactComponent as PassengersDetails } from "../../assets/icons/passenger.svg";
 import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as BabySeats } from "../../assets/icons/toddler-1.svg";
-import { ReactComponent as Booster } from "../../assets/icons/seat.svg";
+import Booster from "../../assets/seats-orange.png"
 import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
 import { PassengerDetailsType } from "../../services/passengers-details";
 import { PassengerDetailExtrasType } from "../../services/passengers-detail-extras";
@@ -148,7 +148,7 @@ const BookingSummaryComponent: React.FC<{
                 alignItems="center"
                 mt={1}
               >
-                <Booster className="seating-icon-style-summary" />
+                <img alt="booster-seats" src={ Booster} width={50}/>
                 <Stack
                   direction="column"
                   justifyContent="center"

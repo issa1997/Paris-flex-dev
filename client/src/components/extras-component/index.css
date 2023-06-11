@@ -58,4 +58,10 @@
 .css-9fbjay{
   margin-left: 0 !important;
   margin-bottom: 2% !important;
-}}
+}
+}
+@media screen and (max-width: 600px ){
+  .landmark{
+    width: 90% !important;
+  }
+}

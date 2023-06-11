@@ -78,6 +78,14 @@ border: none !important;
 }
 @media screen and (max-width: 600px) {
   .submit-styles-button {
-    width: 78% !important;
+    width: 95% !important;
+  }
+}
+@media screen and (max-width: 600px) {
+  .MuiOutlinedInput-root  {
+    width: 119% !important;
+  }
+  .tel-input{
+    width: 79% !important;
   }
 }
