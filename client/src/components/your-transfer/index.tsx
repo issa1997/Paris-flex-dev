@@ -21,7 +21,7 @@ import { ReactComponent as Calendar } from "../../assets/icons/calendar.svg";
 import { ReactComponent as Clock } from "../../assets/icons/clock.svg";
 import "./index.css";
 import EditTripModal from "../edit-trp-modal";
-import AddReturnTripModal from "../return-trip-modal";
+import AddReturnModal from "../add-return-modal";
 
 const YourTransfer: React.FC<{
   pickupLocation: string | null;
@@ -125,7 +125,7 @@ const YourTransfer: React.FC<{
         isModalVisible={editModal}
         onClose={handleClose}
       />
-      <AddReturnTripModal isModalVisible={addReturn} onClose={handleClose} />
+      <AddReturnModal isModalVisible={addReturn} onClose={handleClose} />
     </>
   );
 };

@@ -69,7 +69,8 @@ const PassengerDetails: React.FC<{
         phone: values.contact_no,
         travelFrom: values.flight_train_no,
         travelNumber: values.flight_train_from,
-      }; 
+      };
+      props.setActiveStep(props.activeStep + 1);
       if (!_.isEmpty(passenger) || !_.isUndefined(passenger)) {
         createPassenger(passenger)
           .then((response: AxiosResponse) => {
@@ -172,6 +173,7 @@ const PassengerDetails: React.FC<{
               </InputLabel>
 
               <MuiTelInput
+                className="tel-input"
                 id="contact_no"
                 name="contact_no"
                 size="medium"
