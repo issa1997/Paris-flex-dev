@@ -52,10 +52,7 @@ const BookingsPassengrsSummary: React.FC = () => {
                   <TableCell>Pickup Time</TableCell>
                   <TableCell>Luggage Pieces</TableCell>
                   <TableCell>Booking Ref Id</TableCell>
-                  <TableCell>Return Location</TableCell>
-                  <TableCell>Return Drop Location</TableCell>
-                  <TableCell>Return Time</TableCell>
-                  <TableCell>Return Date</TableCell>
+                  <TableCell>Pickup Lank Mark</TableCell>
                   <TableCell>Extras Description</TableCell>
                   <TableCell>Child Seats</TableCell>
                   <TableCell>Booster Seats</TableCell>
@@ -80,7 +77,7 @@ const BookingsPassengrsSummary: React.FC = () => {
                     <TableCell>{row.returnDate}</TableCell>
                     <TableCell>{row.extrasDescription}</TableCell>
                     <TableCell>{row.childSeats}</TableCell>
-                    <TableCell>{row.boosterSeats}</ TableCell>
+                    <TableCell>{row.boosterSeats}</TableCell>
                   </TableRow>
                 ))}
               </TableBody>

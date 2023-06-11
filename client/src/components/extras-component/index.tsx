@@ -106,7 +106,7 @@ const ExtrasComponent: React.FC<{
                 <Autocomplete
                   className="landmark"
                   style={{ width: "95%", border: "1px solid #341ea0", borderRadius: "10px", padding:"10px", margin: "2% 0%"}}
-                  apiKey={"AIzaSyBakrKKSzqtYjnoXJmjFu9WsOqlE4cS6Zw"}
+                  apiKey={"AIzaSyBakrKKSzqtYjnoXJmjFu9WsOqlE4cS6Zw"} // add this to env
                   onPlaceSelected={(place) => {
                     console.log(place);
                   }}

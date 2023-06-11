@@ -82,7 +82,13 @@ export class RatesController {
 
   @Delete(':id')
   async remove(@Param() params: RatesParamsDto) {
-    return this.ratesService.remove(parseInt(params.id));
+    try {
+      const deletedRate = await this.ratesService.remove(parseInt(params.id));
+      return successRes('Rate deleted successfully', deletedRate);
+    } catch (error) {
+      this.logger.error((error as Error).message);
+      return errorRes((error as Error).message);
+    }
   }
 
   @Get('from-location/:toLocation/:fromLocaiton/:passengerCount/:pickUpTime')

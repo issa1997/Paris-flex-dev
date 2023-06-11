@@ -46,7 +46,7 @@ export class RatesService {
 
   // have to make a soft delete
   async remove(id: number) {
-    return await this.ratesRepository.delete({ id });
+    return this.ratesRepository.delete({ id });
   }
 
   async getRateFromLocation(locationParams: RatesFromLocationParamsDto) {

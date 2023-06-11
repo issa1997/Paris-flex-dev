@@ -1,5 +1,12 @@
-import { Box, Button, Grid, Modal, TextField } from "@mui/material";
-import React from "react";
+import {
+  Autocomplete,
+  Box,
+  Button,
+  Grid,
+  Modal,
+  TextField,
+} from "@mui/material";
+import React, { useState } from "react";
 import { RatesType } from "../../../services/rates";
 import { AxiosResponse } from "axios";
 import _ from "lodash";
@@ -11,6 +18,8 @@ interface AddBookingModalType {
   onClose: any;
 }
 const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
+  const [tripType, setTripType] = useState<any>();
+
   const onSubmit = (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
     const formData = new FormData(event.currentTarget);
@@ -20,6 +29,7 @@ const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
       packageName: String(formData.get("packageName")),
       passengerCount: Number(formData.get("passengerCount")),
       price: Number(formData.get("rate")),
+      tripType: tripType.value,
     };
     if (!_.isEmpty(rateData) || !_.isUndefined(rateData)) {
       createRate(rateData)
@@ -92,6 +102,29 @@ const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
               </Grid>
               <Grid item xs={12} sm={6} md={6}>
                 <TextField name="rate" label="Rate" sx={{ width: "64%" }} />
+              </Grid>
+
+              <Grid item xs={12} sm={6} md={6}>
+                <Autocomplete
+                  disablePortal
+                  className="edit-trip-select"
+                  options={[
+                    {
+                      value: "one_way",
+                      label: "One Way",
+                    },
+                    {
+                      value: "round_trip",
+                      label: "Round Trip",
+                    },
+                  ]}
+                  renderInput={(params) => <TextField {...params} />}
+                  onChange={(
+                    event: React.SyntheticEvent<Element, Event>,
+                    value: any
+                  ) => setTripType(value)}
+                  value={tripType}
+                />
               </Grid>
             </Grid>
             <Button

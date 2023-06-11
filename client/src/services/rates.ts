@@ -8,6 +8,7 @@ export interface RatesType {
   passengerCount: number;
   price: number;
   isDelete: boolean;
+  tripType: "one_way" | "round_trip";
 }
 
 export interface RatesFromLocationType {
@@ -34,7 +35,7 @@ export async function editRate(
   return invoke(`api/rates/${id}`, "patch", rate);
 }
 
-export async function deleteRate(id: string) {
+export async function deleteRate(id: number) {
   return invoke(`api/rates/${id}`, "delete", {});
 }
 

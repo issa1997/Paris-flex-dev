@@ -1,4 +1,13 @@
-import { IsNotEmpty, IsNumber, IsString, MaxLength } from 'class-validator';
+import {
+  IsDefined,
+  IsEmpty,
+  IsEnum,
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+} from 'class-validator';
+import { TripType } from 'src/bookings/entities/booking.entity';
 
 export class RateDto {
   @IsString()
@@ -23,6 +32,10 @@ export class RateDto {
   @IsNumber()
   @IsNotEmpty()
   price: number;
+
+  @IsDefined()
+  @IsEnum([TripType.ONE_WAY, TripType.ROUND_TRIP])
+  tripType: TripType;
 }
 
 export class RatesParamsDto {

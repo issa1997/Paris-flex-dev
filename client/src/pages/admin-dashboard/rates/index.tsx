@@ -12,8 +12,10 @@ import { Box, Button, CircularProgress, Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import AddRatesModal from "../rates-modal";
 import NavigationBar from "../navigation-bar";
-import { getAllRates } from "../../../services/rates";
+import { getAllRates, deleteRate } from "../../../services/rates";
 import _ from "lodash";
+import { AxiosResponse } from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const RatesTable: React.FC = () => {
   const [editModal, setEditModal] = useState(false);
@@ -32,34 +34,23 @@ const RatesTable: React.FC = () => {
     });
   }, []);
 
-  const rates = [
-    {
-      id: 1,
-      fromLocation: "New York City",
-      toLocation: "Los Angeles",
-      packageName: "Los Angeles",
-      passengerCount: 2,
-      ratePrice: 500.0,
-    },
-    {
-      id: 2,
-      fromLocation: "San Francisco",
-      toLocation: "Seattle",
-      packageName: "Los Angeles",
-      passengerCount: 1,
-      ratePrice: 350.0,
-    },
-    {
-      id: 3,
-      fromLocation: "Chicago",
-      toLocation: "Houston",
-      passengerCount: 4,
-      packageName: "Los Angeles",
-      ratePrice: 750.0,
-    },
-  ];
+  const handleDeleteRate = (id: number) => {
+    deleteRate(id)
+      .then((response: AxiosResponse) => {
+        const restrcutredResponse: any = response.data;
+        toast.success(restrcutredResponse.message, {
+          position: "bottom-right",
+        });
+      })
+      .catch((error: any) => {
+        const response: any = error.response.data;
+        toast.error(response.message, { position: "bottom-right" });
+      });
+  };
+
   return (
     <div style={{ flexGrow: 1 }}>
+      <ToastContainer />
       <NavigationBar />
       <Box sx={{ maxWidth: "100%", margin: "8%" }}>
         <Typography variant="h3" style={{ flexGrow: 1, textAlign: "center" }}>
@@ -84,7 +75,7 @@ const RatesTable: React.FC = () => {
                   <TableCell>From Location</TableCell>
                   <TableCell>To Location</TableCell>
                   <TableCell>Passenger Count</TableCell>
-                  <TableCell>Package Name</TableCell>
+                  <TableCell>Trip Type</TableCell>
                   <TableCell>Rate Price</TableCell>
                   <TableCell>Actions</TableCell>
                 </TableRow>
@@ -97,11 +88,10 @@ const RatesTable: React.FC = () => {
                     </TableCell>
                     <TableCell>{rate.toLocation}</TableCell>
                     <TableCell>{rate.passengerCount}</TableCell>
-                    <TableCell>{rate.packageName}</TableCell>
+                    <TableCell>{rate.tripType}</TableCell>
                     <TableCell>{rate.price}</TableCell>
                     <TableCell>
-                      <Delete />
-                      <Edit />
+                      <Delete onClick={() => handleDeleteRate(rate.id)} />
                     </TableCell>
                   </TableRow>
                 ))}
