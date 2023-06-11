@@ -7,9 +7,10 @@
   align-items: center;
   justify-content: center;
   padding: 3%;
-  height: 280px;
+  height: auto;
   border-radius: 15px !important;
-  background: url("../../assets/modal-back.png") no-repeat center center fixed;
+  background: url("../../assets/modal-back.png") no-repeat center center;
+  background-size: cover;
 }
 .close-icon {
   float: right;

@@ -16,7 +16,7 @@ import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
 import { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
 import { ReactComponent as BabySeats } from "../../assets/icons/toddler-1.svg";
-import { ReactComponent as Booster } from "../../assets/icons/seats-one.svg";
+import Booster from "../../assets/seats-orange.png"
 import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
 import { ReactComponent as Add } from "../../assets/icons/add.svg";
 import { ReactComponent as Minus } from "../../assets/icons/minus.svg";
@@ -28,6 +28,7 @@ import _ from "lodash";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.min.css";
 import { AxiosResponse } from "axios";
+import Autocomplete from "react-google-autocomplete";
 
 const ExtrasComponent: React.FC<{
   setActiveStep: React.Dispatch<React.SetStateAction<number>>;
@@ -55,6 +56,7 @@ const ExtrasComponent: React.FC<{
       childSeats: Number(formData.get("txtBabySeats")),
       passengerId: props.passengerId,
     };
+    props.setActiveStep(props.activeStep + 1);
     if (!_.isEmpty(passengerExtra) || !_.isUndefined(passengerExtra)) {
       createPassengerExtra(passengerExtra)
         .then((response: AxiosResponse) => {
@@ -96,21 +98,34 @@ const ExtrasComponent: React.FC<{
               <InputLabel>
                 Pickup Land Mark{" "}
                 <span>
-                  <RequiredSign style={{marginBottom: "-0.2%", marginLeft:"1%"}}/>
+                  <RequiredSign
+                    style={{ marginBottom: "-0.2%", marginLeft: "1%" }}
+                  />
                 </span>
+                <br/>
+                <Autocomplete
+                  className="landmark"
+                  style={{ width: "95%", border: "1px solid #341ea0", borderRadius: "10px", padding:"10px", margin: "2% 0%"}}
+                  apiKey={"AIzaSyBakrKKSzqtYjnoXJmjFu9WsOqlE4cS6Zw"}
+                  onPlaceSelected={(place) => {
+                    console.log(place);
+                  }}
+                />
               </InputLabel>
-              <TextField style={{width: "100%", marginTop: "-10px"}} />
+              
             </Grid>
             <Grid xs={12} md={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
                 <InputLabel>
                   Note for chauffeur{" "}
                   <span>
-                    <RequiredSign style={{marginBottom: "-1%",marginLeft:"1%"}}/>
+                    <RequiredSign
+                      style={{ marginBottom: "-1%", marginLeft: "1%" }}
+                    />
                   </span>
                 </InputLabel>
                 <textarea
-                style={{padding: "10px"}}
+                  style={{ padding: "10px" }}
                   id="txtExtraDescription"
                   name="txtExtraDescription"
                   className="input-bx"
@@ -118,7 +133,11 @@ const ExtrasComponent: React.FC<{
               </div>
             </Grid>
             <Grid xs={12} md={6} className="row-style" mt={{ sm: 3, xs: 0 }}>
-              <Box className="free-seats-styles" mb={1} ml={{ sm: 1.5, xs: 0, md: 1.5 }}>
+              <Box
+                className="free-seats-styles"
+                mb={1}
+                ml={{ sm: 1.5, xs: 0, md: 1.5 }}
+              >
                 <Stack
                   direction="row"
                   spacing={0}
@@ -155,7 +174,7 @@ const ExtrasComponent: React.FC<{
               </Box>
               <Box
                 className="free-seats-styles"
-                ml={{ sm: 1.5, xs: 0 ,md: 1.5}}
+                ml={{ sm: 1.5, xs: 0, md: 1.5 }}
                 mb={{ sm: 0, xs: 1.5 }}
               >
                 <Stack
@@ -165,7 +184,7 @@ const ExtrasComponent: React.FC<{
                   alignItems="center"
                   mt={1}
                 >
-                  <Booster className="seating-icon-style" />
+                  <img alt="booster-seats" src={ Booster} width={50}/>
                   <FreeTag />
                   <span className="seats-text">Booster Seats</span>
                   <IconButton
