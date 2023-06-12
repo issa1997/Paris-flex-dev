@@ -15,6 +15,7 @@ export type BookingType = {
   returnDropLocation: string;
   returnTime: string;
   returnDate: string;
+  pickUpLandMark: string;
 };
 
 export async function getAllBookings() {
@@ -27,4 +28,8 @@ export async function getAllBookingsPassengersAndPassengerExtras() {
 
 export async function createBooking(booking: BookingType) {
   return invoke("api/bookings/", "post", booking);
+}
+
+export async function changeBookingStatus(id: number) {
+  return invoke(`api/bookings/change-trip-status/${id}`, "get", {});
 }

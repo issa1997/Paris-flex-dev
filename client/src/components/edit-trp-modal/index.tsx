@@ -137,6 +137,7 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
       returnDropLocation: "",
       returnDate: "",
       returnTime: "",
+      pickUpLandMark: "",
     };
     if (!_.isEmpty(booking) || !_.isUndefined(booking)) {
       createBooking(booking)
@@ -258,7 +259,9 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
             <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
-                  <InputLabel id="select-label" style={{marginBottom:"2%"}}>Pickup Time</InputLabel>
+                  <InputLabel id="select-label" style={{ marginBottom: "2%" }}>
+                    Pickup Time
+                  </InputLabel>
                   <Clock />
                   <DateTimePicker
                     onChange={handleTimeChange}
@@ -275,7 +278,9 @@ const EditTripModal: React.FC<EditTripModalType> = (props) => {
             <Grid item xs={12} md={4}>
               <Grid>
                 <Grid>
-                  <InputLabel id="select-label" style={{marginBottom:"2%"}}>Pickup date</InputLabel>
+                  <InputLabel id="select-label" style={{ marginBottom: "2%" }}>
+                    Pickup date
+                  </InputLabel>
                   <Calendar />
 
                   <DateTimePicker

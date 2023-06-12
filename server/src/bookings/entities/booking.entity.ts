@@ -12,6 +12,12 @@ export enum TripType {
   ONE_WAY = 'one_way',
 }
 
+export enum TripStatus {
+  PENDING = 'pending',
+  ACCEPTED = 'accepted',
+  REJECTED = 'rejected',
+}
+
 @Entity('bookings')
 export class BookingsEntity {
   @PrimaryGeneratedColumn()
@@ -54,19 +60,13 @@ export class BookingsEntity {
   @Column({ default: false })
   isDelete: boolean;
 
-  @Column()
-  returnLocation: string;
+  @Column({
+    type: 'enum',
+    enum: TripStatus,
+    default: TripStatus.PENDING,
+  })
+  tripStatus: TripStatus;
 
   @Column()
-  returnDropLocation: string;
-
-  @Column()
-  returnTime: string;
-
-  @Column()
-  returnDate: string;
-
-  @OneToOne(() => PassengersEntity)
-  @JoinColumn({ name: 'id' })
-  passengers: PassengersEntity;
+  pickUpLandMark: string;
 }

@@ -1,6 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { BookingsEntity } from './entities/booking.entity';
+import {
+  BookingsEntity,
+  TripStatus,
+  TripType,
+} from './entities/booking.entity';
 import { Repository } from 'typeorm';
 import { MailerService } from '@nestjs-modules/mailer';
 import { PassengersService } from '../passengers/passengers.service';
@@ -122,13 +126,19 @@ export class BookingsService {
       'passengers.passengerCount, passengers.travelNumber,' +
       'passengers.travelFrom, bookings.pickUpDate,' +
       'bookings.PickUpTime,bookings.luggagePieces,' +
-      'bookings.bookingRefId,bookings.returnLocation,' +
-      'bookings.returnDropLocation,bookings.returnTime,' +
-      'bookings.returnDate,passengerExtras.extrasDescription,' +
+      'bookings.id,  bookings.tripStatus, bookings.bookingRefId, bookings.pickUpLandMark ,' +
+      'passengerExtras.extrasDescription ,' +
       'passengerExtras.childSeats,passengerExtras.boosterSeats ' +
       'FROM bookings ' +
       'LEFT JOIN passengers ON bookings.passengerId = passengers.id ' +
       'LEFT JOIN passengerExtras ON passengerExtras.passengerId = passengers.id;';
     return await this.bookingRepositoy.query(query);
+  }
+
+  async changeTripStatus(bookingId: number) {
+    return await this.bookingRepositoy.update(
+      { id: bookingId },
+      { tripStatus: TripStatus.ACCEPTED },
+    );
   }
 }

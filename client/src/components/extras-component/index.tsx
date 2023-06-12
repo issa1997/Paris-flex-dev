@@ -7,16 +7,14 @@ import {
   Grid,
   InputLabel,
   Button,
-  Fab,
   Stack,
   IconButton,
-  TextField,
 } from "@mui/material";
 import { ReactComponent as Extras } from "../../assets/icons/extras.svg";
 import { ReactComponent as RequiredSign } from "../../assets/icons/coolicon.svg";
 import { ReactComponent as ArrowIcon } from "../../assets/icons/arrow.svg";
 import { ReactComponent as BabySeats } from "../../assets/icons/toddler-1.svg";
-import Booster from "../../assets/seats-orange.png"
+import Booster from "../../assets/seats-orange.png";
 import { ReactComponent as FreeTag } from "../../assets/icons/free-tag.svg";
 import { ReactComponent as Add } from "../../assets/icons/add.svg";
 import { ReactComponent as Minus } from "../../assets/icons/minus.svg";
@@ -39,6 +37,7 @@ const ExtrasComponent: React.FC<{
       Omit<PassengerDetailExtrasType, "id" | "isDelete"> | undefined
     >
   >;
+  setPickUpLandMark: React.Dispatch<React.SetStateAction<any>>;
 }> = (props) => {
   const [boosterSeats, setBoosterSeats] = useState<number>(0);
   const [babySeats, setBabySeaters] = useState<number>(0);
@@ -102,17 +101,20 @@ const ExtrasComponent: React.FC<{
                     style={{ marginBottom: "-0.2%", marginLeft: "1%" }}
                   />
                 </span>
-                <br/>
+                <br />
                 <Autocomplete
                   className="landmark"
-                  style={{ width: "95%", border: "1px solid #341ea0", borderRadius: "10px", padding:"10px", margin: "2% 0%"}}
-                  apiKey={"AIzaSyBakrKKSzqtYjnoXJmjFu9WsOqlE4cS6Zw"} // add this to env
-                  onPlaceSelected={(place) => {
-                    console.log(place);
+                  style={{
+                    width: "95%",
+                    border: "1px solid #341ea0",
+                    borderRadius: "10px",
+                    padding: "10px",
+                    margin: "2% 0%",
                   }}
+                  apiKey={"AIzaSyBakrKKSzqtYjnoXJmjFu9WsOqlE4cS6Zw"} // add this to env
+                  onPlaceSelected={(place) => props.setPickUpLandMark(place)}
                 />
               </InputLabel>
-              
             </Grid>
             <Grid xs={12} md={6} columnSpacing={{ xs: 1, sm: 2, md: 3 }}>
               <div>
@@ -184,7 +186,7 @@ const ExtrasComponent: React.FC<{
                   alignItems="center"
                   mt={1}
                 >
-                  <img alt="booster-seats" src={ Booster} width={50}/>
+                  <img alt="booster-seats" src={Booster} width={50} />
                   <FreeTag />
                   <span className="seats-text">Booster Seats</span>
                   <IconButton

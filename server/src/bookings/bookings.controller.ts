@@ -11,7 +11,11 @@ import {
   Logger,
 } from '@nestjs/common';
 import { BookingsService } from './bookings.service';
-import { BookingDto, BookingsParamsDto } from './dto/booking.dto';
+import {
+  BookingDto,
+  BookingsChangeStatusParamsDto,
+  BookingsParamsDto,
+} from './dto/booking.dto';
 import { errorRes, successRes } from 'src/utls/response.formatter';
 import _ = require('lodash');
 
@@ -23,7 +27,7 @@ export class BookingsController {
   ) {}
 
   @Post()
-  // @UsePipes(new ValidationPipe())
+  @UsePipes(new ValidationPipe())
   async create(@Body() booking: BookingDto) {
     try {
       const createdBooking = await this.bookingsService.create(booking);
@@ -92,6 +96,21 @@ export class BookingsController {
       return successRes(
         'Bookings and Passengers fetched successfully',
         passengersAndBookings,
+      );
+    } catch (error) {
+      this.logger.error((error as Error).message);
+      return errorRes((error as Error).message);
+    }
+  }
+
+  @Get('change-trip-status/:id')
+  async changeTripStatus(@Param() params: BookingsChangeStatusParamsDto) {
+    try {
+      const bookingStatusChangedResponse =
+        await this.bookingsService.changeTripStatus(params.id);
+      return successRes(
+        'Trip status changed successfully',
+        bookingStatusChangedResponse,
       );
     } catch (error) {
       this.logger.error((error as Error).message);

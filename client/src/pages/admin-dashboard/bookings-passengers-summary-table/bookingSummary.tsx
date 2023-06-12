@@ -8,12 +8,19 @@ import {
   Typography,
   Paper,
   CircularProgress,
+  IconButton,
 } from "@mui/material";
 import { Box } from "@mui/system";
 import NavigationBar from "../navigation-bar";
 import _ from "lodash";
 import { useEffect, useState } from "react";
-import { getAllBookingsPassengersAndPassengerExtras } from "../../../services/bookings";
+import {
+  getAllBookingsPassengersAndPassengerExtras,
+  changeBookingStatus,
+} from "../../../services/bookings";
+import AutorenewIcon from "@mui/icons-material/Autorenew";
+import { AxiosResponse } from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const BookingsPassengrsSummary: React.FC = () => {
   const [tableData, setTableData] = useState<any[]>([]);
@@ -27,8 +34,23 @@ const BookingsPassengrsSummary: React.FC = () => {
     });
   }, []);
 
+  const handleTripStatusChange = (bookingId: number) => {
+    changeBookingStatus(bookingId)
+      .then((response: AxiosResponse) => {
+        const restrcutredResponse: any = response.data;
+        toast.success(restrcutredResponse.message, {
+          position: "bottom-right",
+        });
+      })
+      .catch((error: any) => {
+        const response: any = error.response.data;
+        toast.error(response.message, { position: "bottom-right" });
+      });
+  };
+
   return (
     <div style={{ flexGrow: 1 }}>
+      <ToastContainer />
       <NavigationBar />
       <Box sx={{ maxWidth: "100%", margin: "8%" }}>
         <Typography variant="h3" style={{ flexGrow: 1, textAlign: "center" }}>
@@ -56,6 +78,8 @@ const BookingsPassengrsSummary: React.FC = () => {
                   <TableCell>Extras Description</TableCell>
                   <TableCell>Child Seats</TableCell>
                   <TableCell>Booster Seats</TableCell>
+                  <TableCell>Trip Status</TableCell>
+                  <TableCell>Actions</TableCell>
                 </TableRow>
               </TableHead>
               <TableBody>
@@ -72,12 +96,21 @@ const BookingsPassengrsSummary: React.FC = () => {
                     <TableCell>{row.PickUpTime}</TableCell>
                     <TableCell>{row.luggagePieces}</TableCell>
                     <TableCell>{row.bookingRefId}</TableCell>
-                    <TableCell>{row.returnDropLocation}</TableCell>
-                    <TableCell>{row.returnTime}</TableCell>
-                    <TableCell>{row.returnDate}</TableCell>
+                    <TableCell>{row.pickUpLandMark}</TableCell>
                     <TableCell>{row.extrasDescription}</TableCell>
                     <TableCell>{row.childSeats}</TableCell>
                     <TableCell>{row.boosterSeats}</TableCell>
+                    <TableCell>{row.tripStatus}</TableCell>
+                    <TableCell>
+                      <div onClick={() => handleTripStatusChange(row.id)}>
+                        <IconButton
+                          color="primary"
+                          aria-label="add to shopping cart"
+                        >
+                          <AutorenewIcon />
+                        </IconButton>
+                      </div>
+                    </TableCell>
                   </TableRow>
                 ))}
               </TableBody>

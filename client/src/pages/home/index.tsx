@@ -44,6 +44,7 @@ const RenderStepperComponents: React.FC<{
     | undefined;
   passengerId: number;
   bookingDetails: BookingType;
+  setPickUpLandMark: React.Dispatch<React.SetStateAction<any>>;
 }> = (props) => {
   switch (props.activeStep) {
     case 0:
@@ -63,6 +64,7 @@ const RenderStepperComponents: React.FC<{
           activeStep={props.activeStep}
           passengerId={props.passengerId}
           setPassengerExtrasDetails={props.setPassengerExtrasDetails}
+          setPickUpLandMark={props.setPickUpLandMark}
         />
       );
     case 2:
@@ -95,6 +97,7 @@ const Home: React.FC = () => {
     returnDropLocation: "",
     returnTime: "",
     returnDate: "",
+    pickUpLandMark: "",
   };
 
   const [activeStep, setActiveStep] = useState<number>(0);
@@ -106,6 +109,7 @@ const Home: React.FC = () => {
   const [passengerId, setPassengerId] = useState<number>(0);
   const [bookingDetails, setBookingDetails] =
     useState<BookingType>(bookingInitalType);
+  const [pickUpLandMark, setPickUpLandMark] = useState<any>({});
   const [searchParams] = useSearchParams();
 
   const luggagePieces = searchParams.get("luggagePieces");
@@ -114,6 +118,8 @@ const Home: React.FC = () => {
   const passengers = searchParams.get("passengers");
   const pickupDate = searchParams.get("pickupDate");
   const pickupTime = searchParams.get("pickupTime");
+
+  console.log(pickUpLandMark.formatted_address);
 
   const generateBookingRefId = () => {
     const orderPrefix: string = "BK";
@@ -156,6 +162,9 @@ const Home: React.FC = () => {
             returnDropLocation: "",
             returnTime: "",
             bookingRefId: generateBookingRefId(),
+            pickUpLandMark: !_.isUndefined(pickUpLandMark.formatted_address)
+              ? pickUpLandMark.formatted_address
+              : "",
           });
           if (!_.isEmpty(restrcutredResponse.data)) {
             setBookingPrice(restrcutredResponse.data.price);
@@ -202,6 +211,7 @@ const Home: React.FC = () => {
                   passengerId={passengerId}
                   setPassengerId={setPassengerId}
                   bookingDetails={bookingDetails}
+                  setPickUpLandMark={setPickUpLandMark}
                 />
               </Grid>
             </Grid>

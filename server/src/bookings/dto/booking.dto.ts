@@ -6,7 +6,7 @@ import {
   IsString,
   MaxLength,
 } from 'class-validator';
-import { TripType } from '../entities/booking.entity';
+import { TripStatus, TripType } from '../entities/booking.entity';
 
 export class BookingDto {
   @IsString()
@@ -48,10 +48,24 @@ export class BookingDto {
   @IsNotEmpty()
   @MaxLength(100)
   bookingRefId: string;
+
+  @IsDefined()
+  @IsEnum([TripStatus.ACCEPTED, TripStatus.PENDING, TripStatus.REJECTED])
+  tripStatus: TripStatus;
+
+  @IsString()
+  @IsNotEmpty()
+  pickUpLandMark: string;
 }
 
 export class BookingsParamsDto {
   @IsString()
   @IsNotEmpty()
   id: string;
+}
+
+export class BookingsChangeStatusParamsDto {
+  @IsNumber()
+  @IsNotEmpty()
+  id: number;
 }
