@@ -3,6 +3,7 @@ import {
   Box,
   Button,
   Grid,
+  InputLabel,
   Modal,
   TextField,
 } from "@mui/material";
@@ -12,7 +13,7 @@ import { AxiosResponse } from "axios";
 import _ from "lodash";
 import { createRate } from "../../../services/rates";
 import { toast, ToastContainer } from "react-toastify";
-
+import "./index.css"
 interface AddBookingModalType {
   isModalVisible: boolean;
   onClose: any;
@@ -57,13 +58,14 @@ const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
           width: "auto",
           alignItems: "center",
           justifyContent: "center",
-          margin: "8%",
+          margin: "10%",
+          margiRadius: "10px"
         }}
       >
         <div
           style={{
             backgroundColor: "#fff",
-            padding: "1rem",
+            padding: "2% 4% ",
             borderRadius: "4px",
             outline: "none",
           }}
@@ -73,41 +75,43 @@ const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
           <Box component="form" autoComplete="off" onSubmit={onSubmit}>
             <Grid container spacing={2}>
               <Grid item xs={12} sm={6} md={6}>
+                <InputLabel className="label-name" id="select-label">From Location</InputLabel>
                 <TextField
                   name="fromLocation"
-                  label="From Location"
-                  sx={{ width: "64%" }}
+                  sx={{ width: "90%" }}
                 />
               </Grid>
               <Grid item xs={12} sm={6} md={6}>
+              <InputLabel className="label-name" id="select-label">To Location</InputLabel>
                 <TextField
                   name="toLocation"
-                  label="To Location"
-                  sx={{ width: "64%" }}
+                  sx={{ width: "90%" }}
                 />
               </Grid>
               <Grid item xs={12} sm={6} md={6}>
+              <InputLabel className="label-name" id="select-label">Passenger Count</InputLabel>
                 <TextField
                   name="passengerCount"
-                  label="Passenger Count"
-                  sx={{ width: "64%" }}
+                  sx={{ width: "90%" }}
                 />
               </Grid>
               <Grid item xs={12} sm={6} md={6}>
+              <InputLabel className="label-name" id="select-label">Package Name</InputLabel>
                 <TextField
                   name="packageName"
-                  label="Package Name"
-                  sx={{ width: "64%" }}
+                  sx={{ width: "90%" }}
                 />
               </Grid>
               <Grid item xs={12} sm={6} md={6}>
-                <TextField name="rate" label="Rate" sx={{ width: "64%" }} />
+              <InputLabel id="select-label">Rate</InputLabel>
+                <TextField name="rate"  sx={{ width: "90%" }} />
               </Grid>
 
               <Grid item xs={12} sm={6} md={6}>
+              <InputLabel className="label-name" id="select-label">Trip Type</InputLabel>
                 <Autocomplete
                   disablePortal
-                  className="edit-trip-select"
+                  className="trip-type"
                   options={[
                     {
                       value: "one_way",
@@ -127,6 +131,7 @@ const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
                 />
               </Grid>
             </Grid>
+            <div style={{float: "right", margin:"0 4%"}}>
             <Button
               variant="contained"
               color="primary"
@@ -135,8 +140,11 @@ const AddRatesModal: React.FC<AddBookingModalType> = (props) => {
             >
               Add
             </Button>
+            <Button variant="contained" onClick={props.onClose}>Cancel</Button>
+            </div>
+            
           </Box>
-          <Button variant="contained">Cancel</Button>
+          
         </div>
       </Modal>
     </>

@@ -8,6 +8,7 @@ import PassengersTable from "./pages/admin-dashboard/passengers";
 import BookingSPassengrsSummary from "./pages/admin-dashboard/bookings-passengers-summary-table/bookingSummary";
 import Login from "./pages/login/index";
 import IsAdmin from "./components/is-admin";
+import LocationsTable from "./pages/admin-dashboard/locations";
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
 
         <Route element={<IsAdmin/>}>
           <Route path="/admin" element={<AdminDashboard/>} />
-          <Route path="/admin/rates" element={<RatesTable />} />
+        <Route path="/admin/rates" element={<RatesTable />} />
+        <Route path="/admin/locations" element={<LocationsTable />} />
           <Route path="/admin/bookings" element={<BookingsTable />} />
           <Route path="/admin/passengers" element={<PassengersTable />} />
           <Route
