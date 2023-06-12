@@ -14,18 +14,19 @@ const NavigationBar: React.FC = () => {
             <Button color="inherit" component={Link} to="/admin/rates">
               Rates
             </Button>
-            <Button color="inherit" component={Link} to="/admin/bookings">
-              Bookings
-            </Button>
-            <Button color="inherit" component={Link} to="/admin/passengers">
-              Passengers
-            </Button>
             <Button
               color="inherit"
               component={Link}
               to="/admin/booking-summary"
             >
               Booking Summary
+            </Button>
+            <Button
+              color="inherit"
+              component={Link}
+              to="/admin/locations"
+            >
+              Locations
             </Button>
           </Toolbar>
         </AppBar>
